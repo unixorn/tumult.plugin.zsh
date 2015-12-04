@@ -1,4 +1,5 @@
 #!/bin/bash
+#
 # Copyright 2015 Joseph Block <jpb@apesseekingknowledge.net>
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,6 +13,16 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+#
+# Print the Finder selection
 
-# Print battery percentage
-pmset -g batt | egrep "([0-9]+\%).*" -o --colour=auto | cut -f1 -d';'
+osascript <<EOT
+  tell application "Finder"
+    set theFiles to selection
+    set theList to ""
+    repeat with aFile in theFiles
+      set theList to theList & POSIX path of (aFile as alias) & "\n"
+    end repeat
+    theList
+  end tell
+EOT

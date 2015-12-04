@@ -1,4 +1,5 @@
 #!/bin/bash
+#
 # Copyright 2015 Joseph Block <jpb@apesseekingknowledge.net>
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,6 +13,7 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+#
+# Print screen resolution on OS X
 
-# Print battery percentage
-pmset -g batt | egrep "([0-9]+\%).*" -o --colour=auto | cut -f1 -d';'
+system_profiler SPDisplaysDataType |  awk -F ':' '/Resolution/ {print $2}'
