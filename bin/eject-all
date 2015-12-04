@@ -1,0 +1,5 @@
+#!/bin/bash
+
+# One of the rare occasions where Finder is actually the most reliable option.
+
+osascript -e 'tell application "Finder" to eject (every disk whose ejectable is true)'
