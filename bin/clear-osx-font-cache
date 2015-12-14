@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+#
+# Orignal source:
+#   https://github.com/herrbischoff/awesome-osx-command-line/blob/master/functions.md#app-icons
+
+atsutil databases -removeUser && \
+atsutil server -shutdown && \
+atsutil server -ping
