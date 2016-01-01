@@ -4,13 +4,36 @@
 
 Tumult is an oh-my-zsh compatible plugin that adds a lot of OS X-specific functions and scripts to your environment.
 
-Tumult will check to see if you're running on OS X and not load itself if you aren't. This allows you to use the same plugin list in all your environments without polluting your ZSH with incompatible functions and scripts on non Mac machines.
+Tumult will check to see if you're running on OS X and not load itself if you aren't. This allows you to use the same plugin list in all your environments without polluting your ZSH with incompatible functions and scripts on non-Mac machines.
+
+## Included scripts
+
+* battery-percentage
+* battery-time
+* clear-osx-font-cache
+* column-view
+* eject-all
+* evernote
+* finder-path
+* finder-selection
+* icon-view
+* list-view
+* lockscreen
+* mkdmg
+* mkicns
+* osx-frontmost-app
+* screen-resolution
+* set-osx-hostname
+* volume
+* wifi-name
 
 ## Installation
 
 ### [Antigen](https://github.com/zsh-users/antigen)
 
-Add `antigen bundle unixorn/tumult.plugin.zsh` to your `.zshrc` with your other bundle commands. Antigen will handle cloning the plugin for you automatically the next time you start zsh. You can also add the plugin to a running zsh with `antigen bundle unixorn/tumult.plugin.zsh` for testing before adding it to your `.zshrc`.
+Add `antigen bundle unixorn/tumult.plugin.zsh` to your `.zshrc` with your other bundle commands.
+
+Antigen will handle cloning the plugin for you automatically the next time you start zsh. You can also add the plugin to a running zsh with `antigen bundle unixorn/tumult.plugin.zsh` for testing before adding it to your `.zshrc`.
 
 ### [Oh-My-Zsh](http://ohmyz.sh/)
 
