@@ -8,24 +8,24 @@ Tumult will check to see if you're running on OS X and not load itself if you ar
 
 ## Included scripts
 
-* battery-percentage
-* battery-time
-* clear-osx-font-cache
-* column-view
-* eject-all
-* evernote
-* finder-path
-* finder-selection
-* icon-view
-* list-view
-* lockscreen
-* mkdmg
-* mkicns
-* osx-frontmost-app
-* screen-resolution
-* set-osx-hostname
-* volume
-* wifi-name
+* battery-percentage - Show the percentage of battery charge
+* battery-time - Show the estimated battery life.
+* clear-osx-font-cache - Clears the OSX font cache
+* column-view - Set the current directory to column view in the Finder
+* eject-all - Eject all removable disks
+* evernote - Create a new Evernote note from stdin or a file
+* finder-path - Show the path to the frontmost finder window
+* finder-selection - Show the paths to all items selected in the Finder, quoted so it copes with spaces in your directory or file names
+* icon-view - Set the current directory to icon view in the Finder
+* list-view - Set the current directory to column view in the Finder
+* lockscreen - lock the screen
+* mkdmg - Makes a .dmg file from a directory
+* mkicns - Creates an .icns file from an image file
+* osx-frontmost-app - Shows what application is Frontmost
+* screen-resolution - Display the screen resolution
+* set-osx-hostname - Set the OS X name of your machine. No, `hostname newname` isn't enough if you want the new name to be visible on the network for things like File or Screen sharing
+* volume - Get/set the system volume
+* wifi-name - Returns the name of the WIFI network you're connected to
 
 ## Installation
 
