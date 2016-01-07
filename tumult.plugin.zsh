@@ -26,7 +26,14 @@ if [[ "$(uname -s)" = "Darwin" ]]; then
 
   alias eject="diskutil eject"
   alias flushds="dscacheutil -flushcache"
-  alias killSS='kill -9 `ps ww | grep ScreenSaverEngine | grep -v grep | awk "{print $1}"`'
+
+  killSS() {
+    kill -9 $(ps ww | \
+      grep ScreenSaverEngine | \
+      grep -v grep | \
+      awk "{print $1}")
+  }
+
   alias top='TERM=vt100 top'
 
   # Quicklook and Spotlight
@@ -66,9 +73,9 @@ if [[ "$(uname -s)" = "Darwin" ]]; then
     if [ $# -ne 1 ]; then
       echo -e "pledit: Edit Apple plist file\nusage: pledit plist_filename"
     else
-      sudo plutil -convert xml1 ${1}; # convert the binary file to xml
-      sudo ${EDITOR} ${1}; # use the default editor
-      sudo plutil -convert binary1 ${1} # convert it back to binary
+      sudo plutil -convert xml1 "${1}"; # convert the binary file to xml
+      sudo "${EDITOR}" "${1}"; # use the default editor
+      sudo plutil -convert binary1 "${1}" # convert it back to binary
     fi
   }
 
