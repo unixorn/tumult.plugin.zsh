@@ -145,8 +145,8 @@ if [[ "$(uname -s)" = "Darwin" ]]; then
 
   # Zap those damn .DS_Store files
   zap-ds-store() {
-    if [ -d ${1} ]; then
-      find ${1} -type f -name '.DS_Store' -delete -ls
+    if [ -d "${1}" ]; then
+      find "${1}" -type f -name '.DS_Store' -delete -ls
     fi
   }
 
