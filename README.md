@@ -26,6 +26,7 @@ Tumult will check to see if you're running on OS X and not load itself if you ar
 * battery-percentage - Show the percentage of battery charge
 * battery-time - Show the estimated battery life.
 * clear-osx-font-cache - Clears the OSX font cache
+* speedup-apple-mail - Speeds up Mail.app by vaccuuming the indexes - Originally from [http://www.hawkwings.net/2007/03/03/scripts-to-automate-the-mailapp-envelope-speed-trick/](http://www.hawkwings.net/2007/03/03/scripts-to-automate-the-mailapp-envelope-speed-trick/)
 * column-view - Set the current directory to column view in the Finder
 * eject-all - Eject all removable disks
 * evernote - Create a new Evernote note from stdin or a file
