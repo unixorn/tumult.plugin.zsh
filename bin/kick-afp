@@ -1,0 +1,12 @@
+#!/bin/bash
+#
+# I got tired of having to restart file sharing on my home server through
+# the GUI
+
+if [ $(uname -a | grep -ci DARWIN) != 1 ]; then
+  echo "Sorry, this script only works on OS X"
+  exit 1
+fi
+
+sudo launchctl unload /System/Library/LaunchDaemons/com.apple.AppleFileServer.plist
+sudo launchctl load /System/Library/LaunchDaemons/com.apple.AppleFileServer.plist

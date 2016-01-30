@@ -1,0 +1,13 @@
+#!/bin/bash
+#
+# Screensharing sometimes has a conniption on my Mac Mini that drives my
+# entertainment stack. Now I can kick it without having to remember if it
+# is a LaunchAgent or a LaunchDaemon
+
+if [ $(uname -a | grep -ci DARWIN) != 1 ]; then
+  echo "Sorry, this script only works on OS X"
+  exit 1
+fi
+
+sudo launchctl unload /System/Library/LaunchDaemons/com.apple.screensharing.plist
+sudo launchctl load /System/Library/LaunchDaemons/com.apple.screensharing.plist
