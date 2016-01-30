@@ -33,6 +33,8 @@ Tumult will check to see if you're running on OS X and not load itself if you ar
 * finder-path - Show the path to the frontmost finder window
 * finder-selection - Show the paths to all items selected in the Finder, quoted so it copes with spaces in your directory or file names
 * icon-view - Set the current directory to icon view in the Finder
+* kick-afp - Restart file sharing. I got tired of having to remote desktop in to kick the fileserver every time Apple's file sharing got wedged
+* kick-screensharing - Sometimes screen sharing just hangs on my Mini running 10.11. It is headless and it's a pain in the ass to plug it into the TV just long enough to restart screen sharing.
 * list-view - Set the current directory to column view in the Finder
 * lockscreen - lock the screen
 * mkdmg - Makes a .dmg file from a directory
