@@ -1,0 +1,9 @@
+#!/bin/bash
+#
+# Convert contents of clipboard to plain text.
+if [ $(uname -a | grep -ci DARWIN) != 1 ]; then
+  echo "Sorry, this script only works on OS X"
+  exit 1
+fi
+
+pbpaste | textutil -convert txt -stdin -stdout -encoding 30 | pbcopy
