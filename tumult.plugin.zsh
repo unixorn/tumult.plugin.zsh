@@ -35,6 +35,12 @@ if [[ "$(uname -s)" = "Darwin" ]]; then
   }
 
   alias top='TERM=vt100 top'
+  alias l-d="ls -lFaGd"
+  alias l-h="ls -laFGh"
+  alias l-l="ls -laFG"
+  alias l="ls -laFG"
+  alias ll="ls -lFa | TERM=vt100 less"
+  alias mywireless="system_profiler SPAirPortDataType | awk -F\": \" '/Current Wireless Network/{print $2}'"
 
   # Quicklook and Spotlight
   alias ql='qlmanage -p'
@@ -49,6 +55,11 @@ if [[ "$(uname -s)" = "Darwin" ]]; then
   cleanxmlclip() {
     pbpaste | tidy -xml -wrap 0 | pbcopy
   }
+
+  # Sublime
+  if [[ -x /usr/local/bin/subl ]]; then
+    alias s='/usr/local/bin/subl'
+  fi
 
   # Show/hide hidden files in Finder
   alias show-dotfiles="defaults write com.apple.Finder AppleShowAllFiles -bool true && killall Finder"
