@@ -24,6 +24,8 @@ if [[ "$(uname -s)" = "Darwin" ]]; then
   PLUGIN_BIN="$(dirname $0)/bin"
   export PATH=${PATH}:${PLUGIN_BIN}
 
+  alias -g @NDL='~/Downloads/*(.om[1])'
+
   alias eject="diskutil eject"
   alias flushds="dscacheutil -flushcache"
 
@@ -160,6 +162,22 @@ if [[ "$(uname -s)" = "Darwin" ]]; then
       find "${1}" -type f -name '.DS_Store' -delete -ls
     fi
   }
+
+  # homebrew stuff
+  if [ -f /usr/local/Cellar/memcached/1.4.24/homebrew.mxcl.memcached.plist ]; then
+    alias memcached-load="launchctl load -w /usr/local/Cellar/memcached/1.4.24/homebrew.mxcl.memcached.plist"
+    alias memcached-unload="launchctl unload -w /usr/local/Cellar/memcached/1.4.24/homebrew.mxcl.memcached.plist"
+  fi
+
+  if [ -f /usr/local/Cellar/mysql/5.6.27/homebrew.mxcl.mysql.plist ]; then
+    alias mysql-load="launchctl load -w /usr/local/Cellar/mysql/5.6.27/homebrew.mxcl.mysql.plist"
+    alias mysql-unload="launchctl unload -w /usr/local/Cellar/mysql/5.6.27/homebrew.mxcl.mysql.plist"
+  fi
+
+  if [ -f /usr/local/Cellar/postgresql/9.4.5/homebrew.mxcl.postgresql.plist ]; then
+    alias postgres-load="launchctl load -w /usr/local/Cellar/postgresql/9.4.5/homebrew.mxcl.postgresql.plist"
+    alias postgres-unload="launchctl unload -w /usr/local/Cellar/postgresql/9.4.5/homebrew.mxcl.postgresql.plist"
+  fi
 
   # Yes, these are a pain to customize. Fortunately, Geoff Greer made an online
   # tool that makes it easy to customize your color scheme and keep them in sync
