@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+#
+# Toggle whether Finder shows hidden files
+
+if [ ! -z "$1" ]; then
+  show_dotfiles=$1
+else
+  DOTFILE_STATE=$(defaults read com.apple.finder AppleShowAllFiles)
+  if [ "${DOTFILE_STATE}" == "1" ]; then
+    show_dotfiles="FALSE"
+  else
+    show_dotfiles="TRUE"
+  fi
+fi
+
+defaults write com.apple.finder AppleShowAllFiles $show_dotfiles
+killall Finder
