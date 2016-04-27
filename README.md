@@ -44,6 +44,10 @@ Tumult will check to see if you're running on OS X and not add aliases or inject
 * volume - Get/set the system volume
 * wifi-name - Returns the name of the WIFI network you're connected to
 
+## Other Useful OS X scripts
+
+* [Platypus](https://github.com/sveinbjornt/Platypus) - allows you to wrap a script inside a Mac GUI wrapper.
+
 ## Installation
 
 ### [Antigen](https://github.com/zsh-users/antigen)
