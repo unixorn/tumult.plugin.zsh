@@ -11,6 +11,7 @@ Tumult will check to see if you're running on OS X and not add aliases or inject
 **Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
 
 - [Included scripts](#included-scripts)
+- [Other Useful OS X scripts](#other-useful-os-x-scripts)
 - [Installation](#installation)
   - [[Antigen](https://github.com/zsh-users/antigen)](#antigenhttpsgithubcomzsh-usersantigen)
   - [[Oh-My-Zsh](http://ohmyz.sh/)](#oh-my-zshhttpohmyzsh)
