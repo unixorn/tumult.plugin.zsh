@@ -1,0 +1,8 @@
+#!/bin/bash
+
+if [[ "$(uname -s)" = "Darwin" ]]; then
+  exec osascript -e 'set volume output muted true'
+else
+  echo "$0 only supported on OS X"
+  exit 1
+fi
