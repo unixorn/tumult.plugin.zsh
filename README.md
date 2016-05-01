@@ -39,7 +39,8 @@ Tumult will check to see if you're running on OS X and not add aliases or inject
 * mkdmg - Makes a .dmg file from a directory
 * mkicns - Creates an .icns file from an image file
 * osx-frontmost-app - Shows what application is Frontmost.
-* pbcurl - Shorthand for: curl -L <options> "$(pbpaste)". From Ryan Tomayko's [dotfiles](https://github.com/rtomayko/dotfiles)
+* pbcurl - Indent clipboard text four spaces and update pboard with result. With `-o`, write result to standard output instead of to the pboard. From Ryan Tomayko's [dotfiles](https://github.com/rtomayko/dotfiles)
+* pbindent - Run sed(1) on the contents of the clipboard and put the result back on the clipboard. All sed options and arguments are supported. From Ryan Tomayko's [dotfiles](https://github.com/rtomayko/dotfiles)
 * pbsed - Run sed(1) on the contents of the clipboard and put the result back on the clipboard. All sed options and arguments are supported. From Ryan Tomayko's [dotfiles](https://github.com/rtomayko/dotfiles)
 * screen-resolution - Display the screen resolution
 * set-osx-hostname - Set the OS X name of your machine. No, `sudo hostname newname` isn't enough if you want the new name to be visible on the network for things like File or Screen sharing.

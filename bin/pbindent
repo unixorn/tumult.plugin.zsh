@@ -1,0 +1,22 @@
+#!/bin/sh
+#
+# Source: https://github.com/rtomayko/dotfiles
+#
+# Usage: pbindent [-o]
+# Indent pboard text four spaces and update pboard with result. With -o,
+# write result to standard output instead of to the pboard.
+
+writer='pbcopy'
+while test $# -gt 0
+do
+    case "$1" in
+    -o)     writer='cat'
+            shift;;
+    --help) grep '^# ' $0 | cut -c3-
+            exit 0;;
+    *)      echo "$(basename $0): invalid argument: '$1'"
+            exit 1;;
+    esac
+done
+
+pbpaste | sed 's/^/    /' | $writer
