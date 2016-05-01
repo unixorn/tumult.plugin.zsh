@@ -22,6 +22,7 @@ Tumult will check to see if you're running on OS X and not add aliases or inject
 
 ## Included scripts
 
+* 720p - Resets an application's window to 720p (1280x720) for better screencasting. Doesn't work with apps that don't support window resizing in their AppleScript dictionary. From Derrick Bailey's [blog](http://lostechies.com/derickbailey/2012/09/08/screencasting-tip-resize-your-app-to-720p-1280x720-in-osx/)
 * battery-percentage - Show the percentage of battery charge
 * battery-time - Show the estimated battery life.
 * clear-osx-font-cache - Clears the OSX font cache, originally from [awesome-osx-command-line](https://github.com/herrbischoff/awesome-osx-command-line/blob/master/functions.md#app-icons)
@@ -38,6 +39,7 @@ Tumult will check to see if you're running on OS X and not add aliases or inject
 * mkdmg - Makes a .dmg file from a directory
 * mkicns - Creates an .icns file from an image file
 * osx-frontmost-app - Shows what application is Frontmost.
+* pbsed - Run sed(1) on the contents of the clipboard and put the result back on the clipboard. All sed options and arguments are supported. From Ryan Tomayko's [dotfiles](https://github.com/rtomayko/dotfiles)
 * screen-resolution - Display the screen resolution
 * set-osx-hostname - Set the OS X name of your machine. No, `sudo hostname newname` isn't enough if you want the new name to be visible on the network for things like File or Screen sharing.
 * speedup-apple-mail - Speeds up Mail.app by vaccuuming the indexes - Originally from [http://www.hawkwings.net/2007/03/03/scripts-to-automate-the-mailapp-envelope-speed-trick/](http://www.hawkwings.net/2007/03/03/scripts-to-automate-the-mailapp-envelope-speed-trick/)

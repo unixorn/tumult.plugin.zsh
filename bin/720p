@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+#
+# http://lostechies.com/derickbailey/2012/09/08/screencasting-tip-resize-your-app-to-720p-1280x720-in-osx/
+#
+# Usage:
+#
+#   $ 720p AppName
+#
+# (where “AppName” is the name of the app to resize.)
+#
+# For example:
+#
+#  $ 720p Chrome
+#
+#  $ 720p Terminal
+#
+# Doesn't work with all apps, but does for iTerm2
+
+echo "Setting $1 bounds to 720p"
+
+# 720p is 1280x720.
+# Bounds is startX, startY, endX, endY. Adjust size from starting position to account for this
+osascript -e "tell application \"$1\" to set the bounds of the first window to {250, 220, 1530, 940}"
+
+# activate the app, to bring it to the front
+osascript -e "tell application \"$1\" to activate"
