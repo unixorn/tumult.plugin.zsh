@@ -28,21 +28,13 @@ if [[ "$(uname -s)" = "Darwin" ]]; then
 
   alias eject="diskutil eject"
   alias flushds="dscacheutil -flushcache"
-
-  killSS() {
-    kill -9 $(ps ww | \
-      grep ScreenSaverEngine | \
-      grep -v grep | \
-      awk "{print $1}")
-  }
-
-  alias top='TERM=vt100 top'
   alias l-d="ls -lFaGd"
   alias l-h="ls -laFGh"
   alias l-l="ls -laFG"
   alias l="ls -laFG"
   alias ll="ls -lFa | TERM=vt100 less"
   alias mywireless="system_profiler SPAirPortDataType | awk -F\": \" '/Current Wireless Network/{print $2}'"
+  alias top='TERM=vt100 top'
 
   # Quicklook and Spotlight
   alias ql='qlmanage -p'
@@ -56,6 +48,13 @@ if [[ "$(uname -s)" = "Darwin" ]]; then
 
   cleanxmlclip() {
     pbpaste | tidy -xml -wrap 0 | pbcopy
+  }
+
+  killSS() {
+    kill -9 $(ps ww | \
+      grep ScreenSaverEngine | \
+      grep -v grep | \
+      awk "{print $1}")
   }
 
   # Sublime
@@ -104,6 +103,14 @@ if [[ "$(uname -s)" = "Darwin" ]]; then
   function osx-major-version() {
     sw_vers -productVersion | awk -F '.' '{print $1 "." $2}'
   }
+
+  # Deal with some things OSX userland is missing
+
+  # OS X has no `md5sum`, so use `md5` as a fallback
+  command -v md5sum > /dev/null || alias md5sum="md5"
+
+  # OS X has no `sha1sum`, so use `shasum` as a fallback
+  command -v sha1sum > /dev/null || alias sha1sum="shasum"
 
   # Deal with staleness in OS X userland.
   # Apple never seems to be very current with the versions of things in userland, so
