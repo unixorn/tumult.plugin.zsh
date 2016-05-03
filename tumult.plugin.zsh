@@ -107,10 +107,14 @@ if [[ "$(uname -s)" = "Darwin" ]]; then
   # Deal with some things OSX userland is missing
 
   # OS X has no `md5sum`, so use `md5` as a fallback
-  command -v md5sum > /dev/null || alias md5sum="md5"
+  command -v md5sum > /dev/null || \
+    command -v md5 > /dev/null && \
+    alias md5sum=$(which md5)
 
   # OS X has no `sha1sum`, so use `shasum` as a fallback
-  command -v sha1sum > /dev/null || alias sha1sum="shasum"
+  command -v sha1sum > /dev/null || \
+    command -v shasum > /dev/null && \
+    alias sha1sum=$(which shasum)
 
   # Deal with staleness in OS X userland.
   # Apple never seems to be very current with the versions of things in userland, so
