@@ -104,6 +104,10 @@ if [[ "$(uname -s)" = "Darwin" ]]; then
     sw_vers -productVersion | awk -F '.' '{print $1 "." $2}'
   }
 
+  # Merge PDF files
+  # Usage: `mergepdf -o output.pdf input{1,2,3}.pdf`
+  alias mergepdf='/System/Library/Automator/Combine\ PDF\ Pages.action/Contents/Resources/join.py'
+
   # Deal with some things OSX userland is missing
 
   # Canonical hex dump; some systems have this symlinked
