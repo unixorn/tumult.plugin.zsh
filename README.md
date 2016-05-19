@@ -50,9 +50,10 @@ Tumult will check to see if you're running on OS X and not add aliases or inject
 * volume - Get/set the system volume
 * wifi-name - Returns the name of the WIFI network you're connected to
 
-## Other Useful OS X scripts
+## Other Useful OS X info
 
 * [Platypus](https://github.com/sveinbjornt/Platypus) - allows you to wrap a script inside a Mac GUI wrapper.
+* [awesome-os-command-line](https://github.com/herrbischoff/awesome-osx-command-line) has a lot of ways to manipulate OS X settings and applications from the command line
 
 ## Installation
 
