@@ -55,6 +55,12 @@ Tumult will check to see if you're running on OS X and not add aliases or inject
 
 ## Installation
 
+Tumult is packaged as a zsh plugin to make it easier to use if you're already using a zsh framework (I recommend zgen, it is wicked fast and also supports using oh-my-zsh's internal plugins).
+
+### Bash / not using a framework
+
+If you're using bash, or aren't using a framework, just clone this repository and add its bin to your `$PATH`.
+
 ### [Antigen](https://github.com/zsh-users/antigen)
 
 Add `antigen bundle unixorn/tumult.plugin.zsh` to your `.zshrc` with your other bundle commands.
