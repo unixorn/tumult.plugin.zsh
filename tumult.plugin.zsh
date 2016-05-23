@@ -28,6 +28,7 @@ if [[ "$(uname -s)" = "Darwin" ]]; then
 
   alias eject="diskutil eject"
   alias flushds="dscacheutil -flushcache"
+  alias flushdns="dscacheutil -flushcache"
   alias kickdns="dscacheutil -flushcache"
   alias l-d="ls -lFaGd"
   alias l-h="ls -laFGh"
@@ -46,6 +47,9 @@ if [[ "$(uname -s)" = "Darwin" ]]; then
   alias gpaste="pbpaste | perl -pe 's/\r\n|\r/\n/g'"
   alias pbclean="pbpaste | perl -pe 's/\r\n|\r/\n/g' | pbcopy"
   alias pbsort="pbpaste | sort | pbcopy"
+
+  # `wifi on` to turn wifi on, and `wifi off` to turn it off
+  alias wifi="networksetup -setairportpower $(networksetup -listallhardwareports | grep -A 2 'Hardware Port: Wi-Fi' | grep 'Device:' | awk '{print $2}')"
 
   cleanxmlclip() {
     pbpaste | tidy -xml -wrap 0 | pbcopy
