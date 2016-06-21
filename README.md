@@ -73,8 +73,8 @@ Antigen will handle cloning the plugin for you automatically the next time you s
 ### [Oh-My-Zsh](http://ohmyz.sh/)
 
 1. `cd ~/.oh-my-zsh/custom/plugins`
-2. `git clone git@github.com:unixorn/tumult.plugin.zsh.git`
-3. Add the repo to your plugin list
+2. `git clone git@github.com:unixorn/tumult.plugin.zsh.git tumult`
+3. Add tumult to your plugin list - edit `~.zshrc` and change `plugins=(...)` to `plugins=(... tumult)`
 
 ### [Zgen](https://github.com/tarjoilija/zgen)
 
