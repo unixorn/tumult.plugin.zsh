@@ -4,7 +4,7 @@
 
 Tumult is an oh-my-zsh compatible plugin that adds OS X-specific functions and scripts to your ZSH environment.
 
-Tumult will check to see if you're running on OS X and not add aliases or inject its bin into your PATH if you aren't. This allows you to use the same plugin list in all your environments without polluting your ZSH with incompatible functions and scripts on your non-Mac machines.
+Tumult will check to see if you're running on OS X and not add aliases or inject its bin into your PATH if you aren't. This allows you to use the same plugin list in all your environments without polluting your `$PATH` with incompatible functions and scripts on your non-Mac machines.
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
