@@ -27,8 +27,8 @@ if [[ "$(uname -s)" = "Darwin" ]]; then
   alias -g @NDL='~/Downloads/*(.om[1])'
 
   alias eject="diskutil eject"
-  alias flushds="dscacheutil -flushcache"
   alias flushdns="dscacheutil -flushcache"
+  alias flushds="dscacheutil -flushcache"
   alias kickdns="dscacheutil -flushcache"
   alias l-d="ls -lFaGd"
   alias l-h="ls -laFGh"
@@ -36,6 +36,7 @@ if [[ "$(uname -s)" = "Darwin" ]]; then
   alias l="ls -laFG"
   alias ll="ls -lFa | TERM=vt100 less"
   alias mywireless="system_profiler SPAirPortDataType | awk -F\": \" '/Current Wireless Network/{print $2}'"
+  alias open_dot='dot -Tpng | open -f -a preview'
   alias top='TERM=vt100 top'
 
   # Quicklook and Spotlight
