@@ -4,7 +4,7 @@
 
 Tumult is an oh-my-zsh compatible plugin that adds OS X-specific functions and scripts to your ZSH environment.
 
-Tumult will check to see if you're running on OS X and not add aliases or inject its bin into your PATH if you aren't. This allows you to use the same plugin list in all your environments without polluting your `$PATH` with incompatible functions and scripts on your non-Mac machines.
+Tumult will check to see if you're running on OS X and not add aliases or inject its bin into your PATH if you aren't. This allows you to use the same plugin list in all your environments without polluting your `$path` with incompatible functions and scripts on your non-Mac machines.
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
@@ -41,8 +41,8 @@ Tumult will check to see if you're running on OS X and not add aliases or inject
 * mkdmg - Makes a .dmg file from a directory
 * mkicns - Creates an .icns file from an image file
 * osx-frontmost-app - Shows what application is Frontmost.
-* pbcurl - Indent clipboard text four spaces and update pboard with result. With `-o`, write result to standard output instead of to the pboard. From Ryan Tomayko's [dotfiles](https://github.com/rtomayko/dotfiles)
-* pbindent - Run sed(1) on the contents of the clipboard and put the result back on the clipboard. All sed options and arguments are supported. From Ryan Tomayko's [dotfiles](https://github.com/rtomayko/dotfiles)
+* pbcurl - curl the address in the clipboard. From Ryan Tomayko's [dotfiles](https://github.com/rtomayko/dotfiles)
+* pbindent - Indent the contents of the clipboard 4 spaces. With -o, write result to standard output instead of to the clipboard From Ryan Tomayko's [dotfiles](https://github.com/rtomayko/dotfiles)
 * pbsed - Run sed(1) on the contents of the clipboard and put the result back on the clipboard. All sed options and arguments are supported. From Ryan Tomayko's [dotfiles](https://github.com/rtomayko/dotfiles)
 * screen-resolution - Display the screen resolution
 * set-osx-hostname - Set the OS X name of your machine. No, `sudo hostname newname` isn't enough if you want the new name to be visible on the network for things like File or Screen sharing.

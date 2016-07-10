@@ -57,6 +57,7 @@ if [[ "$(uname -s)" = "Darwin" ]]; then
       grep -v grep | \
       awk "{print $1}")
   }
+  alias killScreenSaver='killSS'
 
   # Sublime
   if [[ -x /usr/local/bin/subl ]]; then
