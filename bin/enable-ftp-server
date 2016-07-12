@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+#
+# Start the FTP Server on OS X and configure it to restart every boot
+#
+# Copyright 2016, Joe Block <jpb@ApesSeekingKnowledge.net>
+
+set -o pipefail
+
+if [[ "$(uname -s)" = "Darwin" ]]; then
+  exec sudo -s launchctl load -w /System/Library/LaunchDaemons/ftp.plist
+else
+  echo "This only works on OS X"
+fi

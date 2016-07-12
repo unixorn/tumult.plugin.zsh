@@ -28,7 +28,11 @@ Tumult will check to see if you're running on OS X and not add aliases or inject
 * battery-time - Show the estimated battery life.
 * clear-osx-font-cache - Clears the OSX font cache, originally from [awesome-osx-command-line](https://github.com/herrbischoff/awesome-osx-command-line/blob/master/functions.md#app-icons)
 * column-view - Set the current directory to column view in the Finder
+* disable-ftp-server - Disable the ftp server on a Mac
+* disable-ssh-server - Disable the ssh server on a Mac
 * eject-all - Eject all removable disks
+* enable-ftp-server - Enable the ftp server on a Mac
+* enable-ssh-server - Enable the ssh server on a Mac
 * evernote - Create a new Evernote note from stdin or a file
 * finder-path - Show the path to the frontmost finder window
 * finder-selection - Show the paths to all items selected in the Finder, quoted so it copes with spaces in your directory or file names
