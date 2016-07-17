@@ -1,0 +1,5 @@
+#!/bin/sh
+#
+# Force opening a URL with Firefox
+
+exec open -a "Firefox" "$@"

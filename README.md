@@ -37,6 +37,7 @@ Tumult will check to see if you're running on OS X and not add aliases or inject
 * evernote - Create a new Evernote note from stdin or a file
 * finder-path - Show the path to the frontmost finder window
 * finder-selection - Show the paths to all items selected in the Finder, quoted so it copes with spaces in your directory or file names
+* firefox - Force opening an URL with Firefox
 * fix-airplay - Kick `coreaudiod` when AirPlay stops responding
 * icon-view - Set the current directory to icon view in the Finder
 * kick-afp - Restart file sharing. I got tired of having to remote desktop in to kick the fileserver every time Apple's file sharing got wedged
@@ -49,6 +50,7 @@ Tumult will check to see if you're running on OS X and not add aliases or inject
 * pbcurl - curl the address in the clipboard. From Ryan Tomayko's [dotfiles](https://github.com/rtomayko/dotfiles)
 * pbindent - Indent the contents of the clipboard 4 spaces. With -o, write result to standard output instead of to the clipboard From Ryan Tomayko's [dotfiles](https://github.com/rtomayko/dotfiles)
 * pbsed - Run sed(1) on the contents of the clipboard and put the result back on the clipboard. All sed options and arguments are supported. From Ryan Tomayko's [dotfiles](https://github.com/rtomayko/dotfiles)
+* safari - Force opening an URL with Safari
 * screen-resolution - Display the screen resolution
 * set-osx-hostname - Set the OS X name of your machine. No, `sudo hostname newname` isn't enough if you want the new name to be visible on the network for things like File or Screen sharing.
 * speedup-apple-mail - Speeds up Mail.app by vaccuuming the indexes - Originally from [http://www.hawkwings.net/2007/03/03/scripts-to-automate-the-mailapp-envelope-speed-trick/](http://www.hawkwings.net/2007/03/03/scripts-to-automate-the-mailapp-envelope-speed-trick/)
