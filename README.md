@@ -27,6 +27,7 @@ Tumult will check to see if you're running on OS X and not add aliases or inject
 * battery-percentage - Show the percentage of battery charge
 * battery-time - Show the estimated battery life.
 * clear-osx-font-cache - Clears the OSX font cache, originally from [awesome-osx-command-line](https://github.com/herrbischoff/awesome-osx-command-line/blob/master/functions.md#app-icons)
+* chrome - Open an URL with Chrome
 * column-view - Set the current directory to column view in the Finder
 * disable-ftp-server - Disable the ftp server on a Mac
 * disable-ssh-server - Disable the ssh server on a Mac
