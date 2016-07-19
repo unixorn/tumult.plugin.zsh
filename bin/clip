@@ -1,0 +1,14 @@
+#!/bin/bash
+#
+# clipboard helper
+
+if [ $(uname -a | grep -ci DARWIN) != 1 ]; then
+  echo "Sorry, this script only works on OS X"
+  exit 1
+fi
+
+if [[ $# > 0 ]]; then
+  echo -n $* | pbcopy
+else
+  pbcopy < /dev/stdin
+fi
