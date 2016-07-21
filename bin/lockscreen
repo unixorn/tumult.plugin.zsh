@@ -4,4 +4,5 @@ if [ $(uname -a | grep -ci DARWIN) -eq 1 ]; then
   exec /System/Library/CoreServices/"Menu Extras"/User.menu/Contents/Resources/CGSession -suspend
 else
   echo "This only works on OS X, sorry"
+  exit 1
 fi
