@@ -4,5 +4,9 @@
 #
 # Usage: pbcurl <options>
 # Shorthand for: curl -L <options> "$(pbpaste)"
+if [ $(uname -a | grep -ci Darwin) != 1 ]; then
+  echo "Sorry, this script only works on OS X"
+  exit 1
+fi
 
 exec curl -L "$@" $(pbpaste)

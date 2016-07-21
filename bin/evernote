@@ -17,6 +17,10 @@
 # limitations under the License.
 #
 # Create a new note in evernote
+if [ $(uname -a | grep -ci Darwin) != 1 ]; then
+  echo "Sorry, this script only works on OS X"
+  exit 1
+fi
 
 if [[ -n $1 ]]; then
   msg=$1

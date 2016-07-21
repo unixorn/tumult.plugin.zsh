@@ -15,5 +15,9 @@
 # limitations under the License.
 #
 # Print screen resolution on OS X
+if [ $(uname -a | grep -ci Darwin) != 1 ]; then
+  echo "Sorry, this script only works on OS X"
+  exit 1
+fi
 
 system_profiler SPDisplaysDataType |  awk -F ':' '/Resolution/ {print $2}'

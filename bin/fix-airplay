@@ -11,4 +11,9 @@ if [[ "$(whoami)" != "root" ]]; then
   exit 1
 fi
 
+if [ $(uname -a | grep -ci Darwin) != 1 ]; then
+  echo "Sorry, this script only works on OS X"
+  exit 1
+fi
+
 kill $(ps -ax | grep '/usr/sbin/coreaudiod' | awk '{print $1}')

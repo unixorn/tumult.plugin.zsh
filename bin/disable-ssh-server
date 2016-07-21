@@ -10,4 +10,5 @@ if [[ "$(uname -s)" = "Darwin" ]]; then
   exec sudo -s launchctl unload -w /System/Library/LaunchDaemons/ssh.plist
 else
   echo "This only works on OS X"
+  exit 1
 fi

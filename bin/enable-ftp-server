@@ -10,4 +10,5 @@ if [[ "$(uname -s)" = "Darwin" ]]; then
   exec sudo -s launchctl load -w /System/Library/LaunchDaemons/ftp.plist
 else
   echo "This only works on OS X"
+  exit 1
 fi

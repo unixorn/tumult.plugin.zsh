@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
 #
 # Toggle whether Finder shows hidden files
+if [ $(uname -a | grep -ci Darwin) != 1 ]; then
+  echo "Sorry, this script only works on OS X"
+  exit 1
+fi
 
 if [ ! -z "$1" ]; then
   show_dotfiles=$1
