@@ -4,7 +4,7 @@
 
 Tumult is an oh-my-zsh compatible plugin that adds OS X-specific functions and scripts to your ZSH environment.
 
-Tumult will check to see if you're running on OS X and not add aliases or inject its bin into your PATH if you aren't. This allows you to use the same plugin list in all your environments without polluting your `$path` with incompatible functions and scripts on your non-Mac machines.
+Tumult will check to see if you're running on OS X and not add aliases or inject its bin into your PATH if you aren't. This allows you to use the same plugin list in all your environments without polluting your `$PATH` with incompatible functions and scripts on your non-Mac machines.
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
@@ -47,6 +47,7 @@ Tumult will check to see if you're running on OS X and not add aliases or inject
 * lockscreen - lock the screen
 * mkdmg - Makes a .dmg file from a directory
 * mkicns - Creates an .icns file from an image file
+* naptime - Put the machine to sleep
 * osx-frontmost-app - Shows what application is Frontmost.
 * pbcurl - curl the address in the clipboard. From Ryan Tomayko's [dotfiles](https://github.com/rtomayko/dotfiles)
 * pbindent - Indent the contents of the clipboard 4 spaces. With -o, write result to standard output instead of to the clipboard From Ryan Tomayko's [dotfiles](https://github.com/rtomayko/dotfiles)
