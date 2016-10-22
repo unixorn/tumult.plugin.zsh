@@ -25,7 +25,7 @@ Tumult will check to see if you're running on OS X and not add aliases or inject
 
 | Script | Description |
 | ------ | ----------- |
-| 720p | Resets an application's window to 720p (1280x720) for better screencasting. Doesn't work with apps that don't support window resizing in their AppleScript dictionary. From Derrick Bailey's [blog](http://lostechies.com/derickbailey/2012/09/08/screencasting-tip-resize-your-app-to-720p-1280x720-in-osx/) |
+| 720p | Resets an application's window to 720p (1280x720) for better screencasting. Doesn't work with apps that don't support window resizing in their AppleScript dictionary. Copied from Derrick Bailey's [blog](http://lostechies.com/derickbailey/2012/09/08/screencasting-tip-resize-your-app-to-720p-1280x720-in-osx/) |
 | battery-percentage | Show the percentage of battery charge |
 | battery-time | Show the estimated battery life. |
 | chrome | Force opening an URL with Chrome |
@@ -51,9 +51,9 @@ Tumult will check to see if you're running on OS X and not add aliases or inject
 | mkicns | Creates an .icns file from an image file |
 | naptime | Put the machine to sleep |
 | osx-frontmost-app | Shows what application is Frontmost. |
-| pbcurl | curl the address in the clipboard. From Ryan Tomayko's [dotfiles](https://github.com/rtomayko/dotfiles) |
-| pbindent | Indent the contents of the clipboard 4 spaces. With -o, write result to standard output instead of to the clipboard From Ryan Tomayko's [dotfiles](https://github.com/rtomayko/dotfiles) |
-| pbsed | Run sed(1) on the contents of the clipboard and put the result back on the clipboard. All sed options and arguments are supported. From Ryan Tomayko's [dotfiles](https://github.com/rtomayko/dotfiles) |
+| pbcurl | curl the address in the clipboard. Originally from Ryan Tomayko's [dotfiles](https://github.com/rtomayko/dotfiles) |
+| pbindent | Indent the contents of the clipboard 4 spaces. With -o, write result to standard output instead of to the clipboard. Originally from Ryan Tomayko's [dotfiles](https://github.com/rtomayko/dotfiles) |
+| pbsed | Run sed(1) on the contents of the clipboard and put the result back on the clipboard. All sed options and arguments are supported. Originally from Ryan Tomayko's [dotfiles](https://github.com/rtomayko/dotfiles) |
 | safari | Force opening an URL with Safari |
 | screen-resolution | Display the screen resolution |
 | set-osx-hostname | Set the OS X name of your machine. No, `sudo hostname newname` isn't enough if you want the new name to be visible on the network for things like File or Screen sharing. |
