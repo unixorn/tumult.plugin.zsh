@@ -33,6 +33,7 @@ if [[ "$(uname -s)" = "Darwin" ]]; then
   alias mywireless="system_profiler SPAirPortDataType | awk -F\": \" '/Current Wireless Network/{print $2}'"
   alias open_dot='dot -Tpng | open -f -a preview'
   alias top='TERM=vt100 top'
+  alias reveal='open --reveal'
 
   # Quicklook and Spotlight
   alias ql='qlmanage -p'
