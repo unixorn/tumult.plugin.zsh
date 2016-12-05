@@ -43,7 +43,7 @@ Tumult will check to see if you're running on OS X and not add aliases or inject
 | firefox | Force opening an URL with Firefox |
 | fix-airplay | Kick `coreaudiod` when AirPlay stops responding |
 | icon-view | Set the current directory to icon view in the Finder |
-| kick-afp | Restart file sharing. I got tired of having to remote desktop in to kick the fileserver every time Apple's file sharing got wedged |
+| kick-afp | Restart file sharing from the CLI. I got tired of having to remote desktop in to kick the fileserver via the GUI every time Apple's file sharing got wedged, now it can be fixed over `ssh` |
 | kick-screensharing | Sometimes screen sharing just hangs on my Mini running 10.11. This is not new to 10.11, it was exhibiting the same annoying behavior on 10.10 and 10.9. The mini is headless and it's a pain in the ass to plug it into the TV just long enough to restart screen sharing, so I wrote this so I can fix it over ssh. |
 | list-view | Set the current directory to column view in the Finder |
 | lockscreen | lock the screen |
@@ -51,12 +51,12 @@ Tumult will check to see if you're running on OS X and not add aliases or inject
 | mkicns | Creates an .icns file from an image file |
 | naptime | Put the machine to sleep |
 | osx-frontmost-app | Shows what application is Frontmost. |
-| pbcurl | curl the address in the clipboard. Originally from Ryan Tomayko's [dotfiles](https://github.com/rtomayko/dotfiles) |
+| pbcurl | `curl` the address in the clipboard. Originally from Ryan Tomayko's [dotfiles](https://github.com/rtomayko/dotfiles) |
 | pbindent | Indent the contents of the clipboard 4 spaces. With -o, write result to standard output instead of to the clipboard. Originally from Ryan Tomayko's [dotfiles](https://github.com/rtomayko/dotfiles) |
-| pbsed | Run sed(1) on the contents of the clipboard and put the result back on the clipboard. All sed options and arguments are supported. Originally from Ryan Tomayko's [dotfiles](https://github.com/rtomayko/dotfiles) |
+| pbsed | Run `sed`(1) on the contents of the clipboard and put the result back on the clipboard. All `sed` options and arguments are supported. Originally from Ryan Tomayko's [dotfiles](https://github.com/rtomayko/dotfiles) |
 | safari | Force opening an URL with Safari |
 | screen-resolution | Display the screen resolution |
-| set-osx-hostname | Set the OS X name of your machine. No, `sudo hostname newname` isn't enough if you want the new name to be visible on the network for things like File or Screen sharing. |
+| set-osx-hostname | Set the OS X name of your machine. No, `sudo hostname newname` isn't enough if you want the new name to be visible on the network for things like File and Screen sharing. |
 | speedup-apple-mail | Speeds up Mail.app by vaccuuming the indexes - Originally from [http://www.hawkwings.net/2007/03/03/scripts-to-automate-the-mailapp-envelope-speed-trick/](http://www.hawkwings.net/2007/03/03/scripts-to-automate-the-mailapp-envelope-speed-trick/) |
 | toggle-finder-show-dotfiles | Toggle whether Finder shows dotfiles |
 | volume | Get/set the system volume |
@@ -73,7 +73,7 @@ Tumult is packaged as a zsh plugin to make it easier to use if you're already us
 
 ### Bash / not using a framework
 
-If you're using bash, or aren't using a framework, just clone this repository and add its bin to your `$PATH`.
+If you're using bash, or aren't using a framework, just clone this repository and add its bin directory to your `$PATH`.
 
 ### [Antigen](https://github.com/zsh-users/antigen)
 
