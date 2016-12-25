@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# Disable the SSH server on OS X
+# Disable the SSH server on macOS
 #
 # Copyright 2016, Joe Block <jpb@ApesSeekingKnowledge.net>
 
@@ -9,6 +9,6 @@ set -o pipefail
 if [[ "$(uname -s)" = "Darwin" ]]; then
   exec sudo -s launchctl unload -w /System/Library/LaunchDaemons/ssh.plist
 else
-  echo "This only works on OS X"
+  echo "This only works on macOS"
   exit 1
 fi

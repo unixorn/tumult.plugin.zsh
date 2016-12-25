@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# Enable the SSH server on OS X and configure it to start every boot
+# Enable the SSH server on macOS and configure it to start every boot
 #
 # Copyright 2016, Joe Block <jpb@ApesSeekingKnowledge.net>
 
@@ -9,6 +9,6 @@ set -o pipefail
 if [[ "$(uname -s)" = "Darwin" ]]; then
   exec sudo -s launchctl load -w /System/Library/LaunchDaemons/ssh.plist
 else
-  echo "This only works on OS X"
+  echo "This only works on macOS"
   exit 1
 fi

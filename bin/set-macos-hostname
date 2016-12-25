@@ -12,9 +12,21 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+
 if [ $(uname -a | grep -ci Darwin) != 1 ]; then
   echo "Sorry, this script only works on macOS"
   exit 1
 fi
 
-/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport -I | awk '/ SSID/ {print substr($0, index($0, $2))}'
+# Set a new hostname for your Mac. No, you can't just use hostname.
+
+if [[ -z "$1" ]]; then
+  echo "You must specify a new hostname"
+  exit 1
+fi
+
+sudo scutil --set ComputerName "$1" && \
+sudo scutil --set HostName "$1" && \
+sudo scutil --set LocalHostName "$1" && \
+sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "$1"
+sudo hostname "$1"
