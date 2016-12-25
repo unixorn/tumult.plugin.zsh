@@ -2,16 +2,16 @@
 
 ## About
 
-Tumult is an oh-my-zsh compatible plugin that adds OS X-specific functions and scripts to your ZSH environment.
+Tumult is an oh-my-zsh compatible plugin that adds macOS-specific functions and scripts to your ZSH environment.
 
-Tumult will check to see if you're running on OS X and not add aliases or inject its bin into your PATH if you aren't. This allows you to use the same plugin list in all your environments without polluting your `$PATH` with incompatible functions and scripts on your non-Mac machines.
+Tumult will check to see if you're running on macOS and not add aliases or inject its bin into your PATH if you aren't. This allows you to use the same plugin list in all your environments without polluting your `$PATH` with incompatible functions and scripts on your non-Mac machines.
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 **Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
 
 - [Included scripts](#included-scripts)
-- [Other Useful OS X info](#other-useful-os-x-info)
+- [Other Useful macOS tools](#other-useful-macos-tools)
 - [Installation](#installation)
   - [Bash / not using a framework](#bash--not-using-a-framework)
   - [[Antigen](https://github.com/zsh-users/antigen)](#antigenhttpsgithubcomzsh-usersantigen)
@@ -30,7 +30,7 @@ Tumult will check to see if you're running on OS X and not add aliases or inject
 | battery-time | Show the estimated battery life. |
 | chrome | Force opening an URL with Chrome |
 | clean-clipboard | Converts contents of clipboard to plain text. |
-| clear-osx-font-cache | Clears the OSX font cache, originally from [awesome-osx-command-line](https://github.com/herrbischoff/awesome-osx-command-line/blob/master/functions.md#app-icons) |
+| clear-macos-font-cache | Clears the macOS font cache, originally from [awesome-osx-command-line](https://github.com/herrbischoff/awesome-osx-command-line/blob/master/functions.md#app-icons) |
 | column-view | Set the current directory to column view in the Finder |
 | disable-ftp-server | Disable the ftp server on a Mac |
 | disable-ssh-server | Disable the ssh server on a Mac |
@@ -47,25 +47,25 @@ Tumult will check to see if you're running on OS X and not add aliases or inject
 | kick-screensharing | Sometimes screen sharing just hangs on my Mini running 10.11. This is not new to 10.11, it was exhibiting the same annoying behavior on 10.10 and 10.9. The mini is headless and it's a pain in the ass to plug it into the TV just long enough to restart screen sharing, so I wrote this so I can fix it over ssh. |
 | list-view | Set the current directory to column view in the Finder |
 | lockscreen | lock the screen |
+| macos-frontmost-app | Shows what application is Frontmost. |
 | mkdmg | Makes a .dmg file from a directory |
 | mkicns | Creates an .icns file from an image file |
 | naptime | Put the machine to sleep |
-| osx-frontmost-app | Shows what application is Frontmost. |
 | pbcurl | `curl` the address in the clipboard. Originally from Ryan Tomayko's [dotfiles](https://github.com/rtomayko/dotfiles) |
 | pbindent | Indent the contents of the clipboard 4 spaces. With -o, write result to standard output instead of to the clipboard. Originally from Ryan Tomayko's [dotfiles](https://github.com/rtomayko/dotfiles) |
 | pbsed | Run `sed`(1) on the contents of the clipboard and put the result back on the clipboard. All `sed` options and arguments are supported. Originally from Ryan Tomayko's [dotfiles](https://github.com/rtomayko/dotfiles) |
 | safari | Force opening an URL with Safari |
 | screen-resolution | Display the screen resolution |
-| set-osx-hostname | Set the OS X name of your machine. No, `sudo hostname newname` isn't enough if you want the new name to be visible on the network for things like File and Screen sharing. |
+| set-macos-hostname | Set the macOS name of your machine. No, `sudo hostname newname` isn't enough if you want the new name to be visible on the network for things like File and Screen sharing. |
 | speedup-apple-mail | Speeds up Mail.app by vaccuuming the indexes - Originally from [http://www.hawkwings.net/2007/03/03/scripts-to-automate-the-mailapp-envelope-speed-trick/](http://www.hawkwings.net/2007/03/03/scripts-to-automate-the-mailapp-envelope-speed-trick/) |
 | toggle-finder-show-dotfiles | Toggle whether Finder shows dotfiles |
 | volume | Get/set the system volume |
 | wifi-name | Returns the name of the WIFI network you're connected to |
 
-## Other Useful OS X info
+## Other Useful macOS tools
 
 * [Platypus](https://github.com/sveinbjornt/Platypus) - allows you to wrap a script inside a Mac GUI wrapper.
-* [awesome-os-command-line](https://github.com/herrbischoff/awesome-osx-command-line) has a lot of ways to manipulate OS X settings and applications from the command line
+* [awesome-os-command-line](https://github.com/herrbischoff/awesome-osx-command-line) has a lot of ways to manipulate macOS settings and applications from the command line
 
 ## Installation
 

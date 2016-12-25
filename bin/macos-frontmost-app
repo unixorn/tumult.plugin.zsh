@@ -1,0 +1,17 @@
+#!/bin/bash
+#
+# Originally from oh-my-zsh's osx.plugin.zsh by Sorin Ionescu <sorin.ionescu@gmail.com>
+# MIT License
+if [ $(uname -a | grep -ci Darwin) != 1 ]; then
+  echo "Sorry, this script only works on macOS"
+  exit 1
+fi
+
+the_app=$(
+osascript 2>/dev/null <<EOF
+  tell application "System Events"
+    name of first item of (every process whose frontmost is true)
+  end tell
+EOF
+)
+echo "$the_app"

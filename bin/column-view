@@ -16,7 +16,7 @@
 #
 # Set the current directory's view to column view
 if [ $(uname -a | grep -ci Darwin) != 1 ]; then
-  echo "Sorry, this script only works on OS X"
+  echo "Sorry, this script only works on macOS"
   exit 1
 fi
 

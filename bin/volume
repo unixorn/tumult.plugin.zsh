@@ -14,11 +14,11 @@
 # limitations under the License.
 
 if [ $(uname -a | grep -ci Darwin) != 1 ]; then
-  echo "Sorry, this script only works on OS X"
+  echo "Sorry, this script only works on macOS"
   exit 1
 fi
 
-# Get or set the volume on OS X
+# Get or set the volume on macOS
 
 if [[ -n $1 ]]; then
   osascript -e "set volume output volume $1"

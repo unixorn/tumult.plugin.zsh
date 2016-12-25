@@ -2,7 +2,7 @@
 #
 # Convert contents of clipboard to plain text.
 if [ $(uname -a | grep -ci DARWIN) != 1 ]; then
-  echo "Sorry, this script only works on OS X"
+  echo "Sorry, this script only works on macOS"
   exit 1
 fi
 

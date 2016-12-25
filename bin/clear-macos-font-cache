@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+#
+# Orignal source:
+#   https://github.com/herrbischoff/awesome-osx-command-line/blob/master/functions.md#app-icons
+if [ $(uname -a | grep -ci Darwin) != 1 ]; then
+  echo "Sorry, this script only works on macOS"
+  exit 1
+fi
+
+atsutil databases -removeUser && \
+atsutil server -shutdown && \
+atsutil server -ping
