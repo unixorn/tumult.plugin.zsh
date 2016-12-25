@@ -12,10 +12,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# All of this stuff is OSX-specific, so if we're not on Darwin, bail out
+# All of this stuff is macOS-specific, so if we're not on Darwin, bail out
 # gracefully.
 #
-# This makes it easier to use the same plugin list on both Linux and OS X
+# This makes it easier to use the same plugin list on both Linux and macOS
 # without polluting your Linux environment with functions and files that
 # will fail.
 
@@ -104,8 +104,13 @@ if [[ "$(uname -s)" = "Darwin" ]]; then
     done
   }
 
-  # OS X has a habit of changing the way it does some of its non-posixy things
+  # macOS has a habit of changing the way it does some of its non-posixy things
   # every major rev or so. Add a helper to standardize detecting the rev
+  function macos-major-version() {
+    sw_vers -productVersion | awk -F '.' '{print $1 "." $2}'
+  }
+
+  # Don't break Tumult backward compatibility
   function osx-major-version() {
     sw_vers -productVersion | awk -F '.' '{print $1 "." $2}'
   }
@@ -114,24 +119,24 @@ if [[ "$(uname -s)" = "Darwin" ]]; then
   # Usage: `mergepdf -o output.pdf input{1,2,3}.pdf`
   alias mergepdf='/System/Library/Automator/Combine\ PDF\ Pages.action/Contents/Resources/join.py'
 
-  # Deal with some things OSX userland is missing
+  # Deal with some things macOS userland is missing
 
   # Canonical hex dump; some systems have this symlinked
   command -v hd > /dev/null || \
     command -v hexdump > /dev/null && \
     alias hd="hexdump -C"
 
-  # OS X has no `md5sum`, so use `md5` as a fallback
+  # macOS has no `md5sum`, so use `md5` as a fallback
   command -v md5sum > /dev/null || \
     command -v md5 > /dev/null && \
     alias md5sum=$(which md5)
 
-  # OS X has no `sha1sum`, so use `shasum` as a fallback
+  # macOS has no `sha1sum`, so use `shasum` as a fallback
   command -v sha1sum > /dev/null || \
     command -v shasum > /dev/null && \
     alias sha1sum=$(which shasum)
 
-  # Deal with staleness in OS X userland.
+  # Deal with staleness in macOS userland.
   # Apple never seems to be very current with the versions of things in userland, so
   # we're going to set up some aliases to force user-installed versions of programs to
   # override the stale versions in /usr.
