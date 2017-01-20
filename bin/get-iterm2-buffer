@@ -1,0 +1,5 @@
+#! /usr/bin/env osascript
+
+tell app "iTerm2" to tell current session of first window 
+    contents
+end tell
