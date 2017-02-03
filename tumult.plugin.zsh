@@ -199,6 +199,10 @@ if [[ "$(uname -s)" = "Darwin" ]]; then
     ioreg -n "AppleBluetoothHIDMouse" | grep -i "batterypercent" | sed 's/[^[:digit:]]//g'
   }
 
+  manp() {
+    man -t $* | ps2pdf - - | open -f -a Preview
+  }
+
   # homebrew stuff
   if [ -f /usr/local/Cellar/memcached/1.4.24/homebrew.mxcl.memcached.plist ]; then
     alias memcached-load="launchctl load -w /usr/local/Cellar/memcached/1.4.24/homebrew.mxcl.memcached.plist"
