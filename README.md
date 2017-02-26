@@ -28,6 +28,7 @@ Tumult will check to see if you're running on macOS and not add aliases or injec
 | 720p | Resets an application's window to 720p (1280x720) for better screencasting. Doesn't work with apps that don't support window resizing in their AppleScript dictionary. Copied from Derrick Bailey's [blog](http://lostechies.com/derickbailey/2012/09/08/screencasting-tip-resize-your-app-to-720p-1280x720-in-osx/) |
 | battery-percentage | Show the percentage of battery charge |
 | battery-time | Show the estimated battery life. |
+| change-wallpaper | If you have your desktop wallpaper set to rotate through a folder of images at intervals, this will force an immediate switch |
 | chrome | Force opening an URL with Chrome |
 | clean-clipboard | Converts contents of clipboard to plain text. |
 | clear-macos-font-cache | Clears the macOS font cache, originally from [awesome-osx-command-line](https://github.com/herrbischoff/awesome-osx-command-line/blob/master/functions.md#app-icons) |
