@@ -30,6 +30,7 @@ Tumult will check to see if you're running on macOS and not add aliases or injec
 | battery-time | Show the estimated battery life. |
 | change-wallpaper | If you have your desktop wallpaper set to rotate through a folder of images at intervals, this will force an immediate switch |
 | chrome | Force opening an URL with Chrome |
+| chrome-tabs | Outputs the URLs for all your open Chrome tabs so you can snapshot them |
 | clean-clipboard | Converts contents of clipboard to plain text. |
 | clear-macos-font-cache | Clears the macOS font cache, originally from [awesome-osx-command-line](https://github.com/herrbischoff/awesome-osx-command-line/blob/master/functions.md#app-icons) |
 | column-view | Set the current directory to column view in the Finder |

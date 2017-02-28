@@ -1,0 +1,25 @@
+#!/bin/bash
+#
+# Originally by @philsnow on the xooglers slack
+
+if [ $(uname -a | grep -ci Darwin) != 1 ]; then
+  echo "Sorry, this script only works on macOS"
+  exit 1
+fi
+
+ts () {
+  date +'%Fz%T'
+}
+
+chrome_tabs () {
+  for win in $(seq 0 $(osascript -e 'tell application "Chrome" to get count every window'))
+  do
+    for tab in $(seq 0 $(osascript -e "tell application \"Chrome\" to get count every tab of window ${win}"))
+    do
+      echo -n "win $win tab $tab: "
+      osascript -e "tell application \"Chrome\" to get URL of tab $tab of window $win"
+    done
+  done
+}
+
+chrome_tabs
