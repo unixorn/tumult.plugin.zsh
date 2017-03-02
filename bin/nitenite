@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+#
+# Make it easier to remember how to sleep a Mac from the command line.
+#
+# Copyright 2017, Joe Block <jpb@unixorn.net>
+
+if [ $(uname -a | grep -ci Darwin) != 1 ]; then
+  echo "Sorry, this script only works on macOS"
+  exit 1
+fi
+
+exec pmset sleepnow
