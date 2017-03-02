@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+#
+# Set your mac to use regular sleep mode
+#
+# Copyright 2017, Joe Block <jpb@unixorn.net>
+
+if [ $(uname -a | grep -ci Darwin) != 1 ]; then
+  echo "Sorry, this script only works on macOS"
+  exit 1
+fi
+
+sudo pmset -a hibernatemode 0

@@ -49,11 +49,15 @@ Tumult will check to see if you're running on macOS and not add aliases or injec
 | kick-afp | Restart file sharing from the CLI. I got tired of having to remote desktop in to kick the fileserver via the GUI every time Apple's file sharing got wedged, now it can be fixed over `ssh` |
 | kick-screensharing | Sometimes screen sharing just hangs on my Mini running 10.11. This is not new to 10.11, it was exhibiting the same annoying behavior on 10.10 and 10.9. The mini is headless and it's a pain in the ass to plug it into the TV just long enough to restart screen sharing, so I wrote this so I can fix it over ssh. |
 | list-view | Set the current directory to column view in the Finder |
-| lockscreen | lock the screen |
+| lockscreen | Lock the screen |
+| mac-hibernate | Set a Mac to use hibernate mode when sleeping |
+| mac-safesleep | Set a Mac to use safesleep mode when sleeping |
+| mac-sleep | Set a Mac to use the default sleep mode when sleeping |
 | macos-frontmost-app | Shows what application is Frontmost. |
 | mkdmg | Makes a .dmg file from a directory |
 | mkicns | Creates an .icns file from an image file |
 | naptime | Put the machine to sleep |
+| nitenite | Make a Mac go to sleep |
 | pbcurl | `curl` the address in the clipboard. Originally from Ryan Tomayko's [dotfiles](https://github.com/rtomayko/dotfiles) |
 | pbindent | Indent the contents of the clipboard 4 spaces. With -o, write result to standard output instead of to the clipboard. Originally from Ryan Tomayko's [dotfiles](https://github.com/rtomayko/dotfiles) |
 | pbsed | Run `sed`(1) on the contents of the clipboard and put the result back on the clipboard. All `sed` options and arguments are supported. Originally from Ryan Tomayko's [dotfiles](https://github.com/rtomayko/dotfiles) |
