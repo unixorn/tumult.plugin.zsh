@@ -36,9 +36,11 @@ Tumult will check to see if you're running on macOS and not add aliases or injec
 | column-view | Set the current directory to column view in the Finder |
 | disable-ftp-server | Disable the ftp server on a Mac |
 | disable-ssh-server | Disable the ssh server on a Mac |
+| disable-startup-chime | Disable the boot chime |
 | eject-all | Eject all removable disks |
 | enable-ftp-server | Enable the ftp server on a Mac |
 | enable-ssh-server | Enable the ssh server on a Mac |
+| enable-startup-chime | Re-enable the boot chime |
 | evernote | Create a new Evernote note from stdin or a file |
 | finder-path | Show the path to the frontmost finder window |
 | finder-selection | Show the paths to all items selected in the Finder, quoted so it copes with spaces in your directory or file names |
