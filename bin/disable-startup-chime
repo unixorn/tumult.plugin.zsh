@@ -1,0 +1,7 @@
+#!/bin/bash
+#
+# Enable startup sound
+#
+# Copyright 2017, Joe Block <jpb@unixorn.net>
+
+exec sudo nvram SystemAudioVolume=%80
