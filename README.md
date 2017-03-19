@@ -48,6 +48,7 @@ Tumult will check to see if you're running on macOS and not add aliases or injec
 | fix-airplay | Kick `coreaudiod` when AirPlay stops responding |
 | get-iterm2-buffer | Gets the current iterm2 window's scrollback contents |
 | icon-view | Set the current directory to icon view in the Finder |
+| imgcat | Display an image directly in your terminal. Only works with iTerm 2 |
 | kick-afp | Restart file sharing from the CLI. I got tired of having to remote desktop in to kick the fileserver via the GUI every time Apple's file sharing got wedged, now it can be fixed over `ssh` |
 | kick-screensharing | Sometimes screen sharing just hangs on my Mini running 10.11. This is not new to 10.11, it was exhibiting the same annoying behavior on 10.10 and 10.9. The mini is headless and it's a pain in the ass to plug it into the TV just long enough to restart screen sharing, so I wrote this so I can fix it over ssh. |
 | list-view | Set the current directory to column view in the Finder |
