@@ -55,13 +55,8 @@ if [[ "$(uname -s)" = "Darwin" ]]; then
     pbpaste | tidy -xml -wrap 0 | pbcopy
   }
 
-  killSS() {
-    kill -9 $(ps ww | \
-      grep ScreenSaverEngine | \
-      grep -v grep | \
-      awk "{print $1}")
-  }
-  alias killScreenSaver='killSS'
+  alias killScreenSaver='kill-screensaver'
+  alias killSS='kill-screensaver'
 
   # Sublime
   if [[ -x /usr/local/bin/subl ]]; then
@@ -87,23 +82,6 @@ if [[ "$(uname -s)" = "Darwin" ]]; then
     alias airport='/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport'
   fi
 
-  function pledit() { # plist editor.
-    if [ $# -ne 1 ]; then
-      echo -e "pledit: Edit Apple plist file\nusage: pledit plist_filename"
-    else
-      sudo plutil -convert xml1 "${1}"; # convert the binary file to xml
-      sudo "${EDITOR}" "${1}"; # use the default editor
-      sudo plutil -convert binary1 "${1}" # convert it back to binary
-    fi
-  }
-
-  # Manually remove a downloaded app or file from the quarantine
-  function unquarantine() {
-    for attribute in com.apple.metadata:kMDItemDownloadedDate com.apple.metadata:kMDItemWhereFroms com.apple.quarantine; do
-      xattr -r -d "$attribute" "$@"
-    done
-  }
-
   # macOS has a habit of changing the way it does some of its non-posixy things
   # every major rev or so. Add a helper to standardize detecting the rev
   function macos-major-version() {
@@ -126,12 +104,14 @@ if [[ "$(uname -s)" = "Darwin" ]]; then
     command -v hexdump > /dev/null && \
     alias hd="hexdump -C"
 
-  # macOS has no `md5sum`, so use `md5` as a fallback
+  # macOS has no `md5sum`, so use `md5` as a fallback if it hasn't been
+  # been installed with brew/macports/fink
   command -v md5sum > /dev/null || \
     command -v md5 > /dev/null && \
     alias md5sum=$(which md5)
 
-  # macOS has no `sha1sum`, so use `shasum` as a fallback
+  # macOS has no `sha1sum`, so use `shasum` as a fallback if it hasn't been
+  # been installed with brew/macports/fink
   command -v sha1sum > /dev/null || \
     command -v shasum > /dev/null && \
     alias sha1sum=$(which shasum)
@@ -183,8 +163,8 @@ if [[ "$(uname -s)" = "Darwin" ]]; then
 
   export VISUAL=${EDITOR}
 
-  # Old-school OS9 Mac text files had a different line ending than *nix, deal with
-  # converting back and forth.
+  # Old-school OS9 and early Mac text files had a different line ending than
+  # *nix, deal with converting back and forth.
   alias mac2unix="tr '\015' '\012'"
   alias unix2mac="tr '\012' '\015'"
 
@@ -209,14 +189,14 @@ if [[ "$(uname -s)" = "Darwin" ]]; then
     alias memcached-unload="launchctl unload -w /usr/local/Cellar/memcached/1.4.24/homebrew.mxcl.memcached.plist"
   fi
 
-  if [ -f /usr/local/Cellar/mysql/5.6.27/homebrew.mxcl.mysql.plist ]; then
-    alias mysql-load="launchctl load -w /usr/local/Cellar/mysql/5.6.27/homebrew.mxcl.mysql.plist"
-    alias mysql-unload="launchctl unload -w /usr/local/Cellar/mysql/5.6.27/homebrew.mxcl.mysql.plist"
+  if [ -f /usr/local/Cellar/mysql/5.7.17/homebrew.mxcl.mysql.plist ]; then
+    alias mysql-load="launchctl load -w /usr/local/Cellar/mysql/5.7.17/homebrew.mxcl.mysql.plist"
+    alias mysql-unload="launchctl unload -w /usr/local/Cellar/mysql/5.7.17/homebrew.mxcl.mysql.plist"
   fi
 
-  if [ -f /usr/local/Cellar/postgresql/9.4.5/homebrew.mxcl.postgresql.plist ]; then
-    alias postgres-load="launchctl load -w /usr/local/Cellar/postgresql/9.4.5/homebrew.mxcl.postgresql.plist"
-    alias postgres-unload="launchctl unload -w /usr/local/Cellar/postgresql/9.4.5/homebrew.mxcl.postgresql.plist"
+  if [ -f /usr/local/Cellar/postgresql/9.6.2/homebrew.mxcl.postgresql.plist ]; then
+    alias postgres-load="launchctl load -w /usr/local/Cellar/postgresql/9.6.2/homebrew.mxcl.postgresql.plist"
+    alias postgres-unload="launchctl unload -w /usr/local/Cellar/postgresql/9.6.2/homebrew.mxcl.postgresql.plist"
   fi
 
 fi

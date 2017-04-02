@@ -52,6 +52,7 @@ Tumult will check to see if you're running on macOS and not add aliases or injec
 | itunesctl | Play/Pause iTunes from terminal. |
 | kick-afp | Restart file sharing from the CLI. I got tired of having to remote desktop in to kick the fileserver via the GUI every time Apple's file sharing got wedged, now it can be fixed over `ssh` |
 | kick-screensharing | Sometimes screen sharing just hangs on my Mini running 10.11. This is not new to 10.11, it was exhibiting the same annoying behavior on 10.10 and 10.9. The mini is headless and it's a pain in the ass to plug it into the TV just long enough to restart screen sharing, so I wrote this so I can fix it over ssh. |
+| kill-screensaver | Kill the screensaver when it locks up |
 | list-view | Set the current directory to column view in the Finder |
 | lockscreen | Lock the screen |
 | mac-hibernate | Set a Mac to use hibernate mode when sleeping |
@@ -65,11 +66,13 @@ Tumult will check to see if you're running on macOS and not add aliases or injec
 | pbcurl | `curl` the address in the clipboard. Originally from Ryan Tomayko's [dotfiles](https://github.com/rtomayko/dotfiles) |
 | pbindent | Indent the contents of the clipboard 4 spaces. With -o, write result to standard output instead of to the clipboard. Originally from Ryan Tomayko's [dotfiles](https://github.com/rtomayko/dotfiles) |
 | pbsed | Run `sed`(1) on the contents of the clipboard and put the result back on the clipboard. All `sed` options and arguments are supported. Originally from Ryan Tomayko's [dotfiles](https://github.com/rtomayko/dotfiles) |
+| pledit | Convert a plist to XML, run ${EDITOR} on it, then convert it back. |
 | safari | Force opening an URL with Safari |
 | screen-resolution | Display the screen resolution |
 | set-macos-hostname | Set the macOS name of your machine. No, `sudo hostname newname` isn't enough if you want the new name to be visible on the network for things like File and Screen sharing. |
 | speedup-apple-mail | Speeds up Mail.app by vaccuuming the indexes - Originally from [http://www.hawkwings.net/2007/03/03/scripts-to-automate-the-mailapp-envelope-speed-trick/](http://www.hawkwings.net/2007/03/03/scripts-to-automate-the-mailapp-envelope-speed-trick/) |
 | toggle-finder-show-dotfiles | Toggle whether Finder shows dotfiles |
+| unquarantine | Unquarantine a file |
 | volume | Get/set the system volume |
 | wifi-name | Returns the name of the WIFI network you're connected to |
 

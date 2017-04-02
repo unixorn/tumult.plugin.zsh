@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+#
+# Unquarantine a file
+#
+# Copyright 2017, Joe Block <jpb@unixorn.net>
+
+set -o pipefail
+set -e
+
+if [[ $(uname -a | grep -ci Darwin) != 1 ]]; then
+  echo "Sorry, this script only works on macOS"
+  exit 1
+fi
+
+# Manually remove a downloaded app or file from the quarantine
+for attribute in com.apple.metadata:kMDItemDownloadedDate com.apple.metadata:kMDItemWhereFroms com.apple.quarantine; do
+  xattr -r -d "$attribute" "$@"
+done

@@ -17,7 +17,7 @@
 # limitations under the License.
 #
 # Create a new note in evernote
-if [ $(uname -a | grep -ci Darwin) != 1 ]; then
+if [[ $(uname -a | grep -ci Darwin) != 1 ]]; then
   echo "Sorry, this script only works on macOS"
   exit 1
 fi

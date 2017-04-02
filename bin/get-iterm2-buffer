@@ -1,5 +1,10 @@
 #! /usr/bin/env osascript
 
-tell app "iTerm2" to tell current session of first window 
+if [[ $(uname -a | grep -ci Darwin) != 1 ]]; then
+  echo "Sorry, this script only works on macOS"
+  exit 1
+fi
+
+tell app "iTerm2" to tell current session of first window
     contents
 end tell

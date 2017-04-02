@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+#
+# Convert a binary plist into XML, run $EDITOR on it, then convert it back
+#
+# Copyright 2017, Joe Block <jpb@unixorn.net>
+
+set -o pipefail
+
+if [[ $(uname -a | grep -ci Darwin) != 1 ]]; then
+  echo "Sorry, this script only works on macOS"
+  exit 1
+fi
+
+if [[ $# -ne 1 ]]; then
+  echo -e "pledit: Edit Apple plist file\nusage: pledit plist_filename"
+else
+  if [[ ! -w "${1}" ]]; then
+    prefix='sudo'
+  else
+    prefix=''
+  fi
+  "${prefix}" plutil -convert xml1 "${1}"; # convert the binary file to xml
+  "${prefix}" "${EDITOR}" "${1}"; # use the default editor
+  "${prefix}" plutil -convert binary1 "${1}" # convert it back to binary
+fi

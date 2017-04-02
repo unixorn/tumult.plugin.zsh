@@ -1,12 +1,18 @@
-#!/bin/bash
+#!/usr/bin/env bash
 #
-# Enable startup sound
+# Kill screensaver
 #
 # Copyright 2017, Joe Block <jpb@unixorn.net>
+
+set -e
+set -o pipefail
 
 if [[ $(uname -a | grep -ci Darwin) != 1 ]]; then
   echo "Sorry, this script only works on macOS"
   exit 1
 fi
 
-exec sudo nvram SystemAudioVolume=%80
+exec kill -9 $(ps ww | \
+  grep ScreenSaverEngine | \
+  grep -v grep | \
+  awk "{print $1}")
