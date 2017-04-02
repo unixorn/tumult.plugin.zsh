@@ -87,16 +87,6 @@ if [[ "$(uname -s)" = "Darwin" ]]; then
     alias airport='/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport'
   fi
 
-  function pledit() { # plist editor.
-    if [ $# -ne 1 ]; then
-      echo -e "pledit: Edit Apple plist file\nusage: pledit plist_filename"
-    else
-      sudo plutil -convert xml1 "${1}"; # convert the binary file to xml
-      sudo "${EDITOR}" "${1}"; # use the default editor
-      sudo plutil -convert binary1 "${1}" # convert it back to binary
-    fi
-  }
-
   # Manually remove a downloaded app or file from the quarantine
   function unquarantine() {
     for attribute in com.apple.metadata:kMDItemDownloadedDate com.apple.metadata:kMDItemWhereFroms com.apple.quarantine; do
