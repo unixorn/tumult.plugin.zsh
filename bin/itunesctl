@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+#
+# shim script to control iTunes
+#
+# Copyright 2016, Joe Block <jpb@unixorn.net>
+#
+# License: Apache 2.0
+
+if [[ $# != 1 ]]; then
+  echo "$(basename $0) needs to be given a command"
+  exit 1
+fi
+
+case $1 in
+  pause)
+    exec osascript -e 'tell application "iTunes" to pause'
+    ;;
+  play)
+    exec osascript -e 'tell application "iTunes" to play'
+    ;;
+  *)
+    echo "$1 is not a valid subcommand"
+    exit 1
+    ;;
+esac
+
+# TODO: Add next track, previous track, playpause
