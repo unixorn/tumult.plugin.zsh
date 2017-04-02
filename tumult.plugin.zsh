@@ -194,14 +194,14 @@ if [[ "$(uname -s)" = "Darwin" ]]; then
     alias memcached-unload="launchctl unload -w /usr/local/Cellar/memcached/1.4.24/homebrew.mxcl.memcached.plist"
   fi
 
-  if [ -f /usr/local/Cellar/mysql/5.6.27/homebrew.mxcl.mysql.plist ]; then
-    alias mysql-load="launchctl load -w /usr/local/Cellar/mysql/5.6.27/homebrew.mxcl.mysql.plist"
-    alias mysql-unload="launchctl unload -w /usr/local/Cellar/mysql/5.6.27/homebrew.mxcl.mysql.plist"
+  if [ -f /usr/local/Cellar/mysql/5.7.17/homebrew.mxcl.mysql.plist ]; then
+    alias mysql-load="launchctl load -w /usr/local/Cellar/mysql/5.7.17/homebrew.mxcl.mysql.plist"
+    alias mysql-unload="launchctl unload -w /usr/local/Cellar/mysql/5.7.17/homebrew.mxcl.mysql.plist"
   fi
 
-  if [ -f /usr/local/Cellar/postgresql/9.4.5/homebrew.mxcl.postgresql.plist ]; then
-    alias postgres-load="launchctl load -w /usr/local/Cellar/postgresql/9.4.5/homebrew.mxcl.postgresql.plist"
-    alias postgres-unload="launchctl unload -w /usr/local/Cellar/postgresql/9.4.5/homebrew.mxcl.postgresql.plist"
+  if [ -f /usr/local/Cellar/postgresql/9.6.2/homebrew.mxcl.postgresql.plist ]; then
+    alias postgres-load="launchctl load -w /usr/local/Cellar/postgresql/9.6.2/homebrew.mxcl.postgresql.plist"
+    alias postgres-unload="launchctl unload -w /usr/local/Cellar/postgresql/9.6.2/homebrew.mxcl.postgresql.plist"
   fi
 
 fi
