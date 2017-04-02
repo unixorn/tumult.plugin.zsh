@@ -87,13 +87,6 @@ if [[ "$(uname -s)" = "Darwin" ]]; then
     alias airport='/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport'
   fi
 
-  # Manually remove a downloaded app or file from the quarantine
-  function unquarantine() {
-    for attribute in com.apple.metadata:kMDItemDownloadedDate com.apple.metadata:kMDItemWhereFroms com.apple.quarantine; do
-      xattr -r -d "$attribute" "$@"
-    done
-  }
-
   # macOS has a habit of changing the way it does some of its non-posixy things
   # every major rev or so. Add a helper to standardize detecting the rev
   function macos-major-version() {
