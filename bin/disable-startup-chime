@@ -4,4 +4,9 @@
 #
 # Copyright 2017, Joe Block <jpb@unixorn.net>
 
+if [[ $(uname -a | grep -ci Darwin) != 1 ]]; then
+  echo "Sorry, this script only works on macOS"
+  exit 1
+fi
+
 exec sudo nvram SystemAudioVolume=%80
