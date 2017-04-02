@@ -55,13 +55,8 @@ if [[ "$(uname -s)" = "Darwin" ]]; then
     pbpaste | tidy -xml -wrap 0 | pbcopy
   }
 
-  killSS() {
-    kill -9 $(ps ww | \
-      grep ScreenSaverEngine | \
-      grep -v grep | \
-      awk "{print $1}")
-  }
-  alias killScreenSaver='killSS'
+  alias killScreenSaver='kill-screensaver'
+  alias killSS='kill-screensaver'
 
   # Sublime
   if [[ -x /usr/local/bin/subl ]]; then
