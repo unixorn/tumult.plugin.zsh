@@ -109,12 +109,14 @@ if [[ "$(uname -s)" = "Darwin" ]]; then
     command -v hexdump > /dev/null && \
     alias hd="hexdump -C"
 
-  # macOS has no `md5sum`, so use `md5` as a fallback
+  # macOS has no `md5sum`, so use `md5` as a fallback if it hasn't been
+  # been installed with brew/macports/fink
   command -v md5sum > /dev/null || \
     command -v md5 > /dev/null && \
     alias md5sum=$(which md5)
 
-  # macOS has no `sha1sum`, so use `shasum` as a fallback
+  # macOS has no `sha1sum`, so use `shasum` as a fallback if it hasn't been
+  # been installed with brew/macports/fink
   command -v sha1sum > /dev/null || \
     command -v shasum > /dev/null && \
     alias sha1sum=$(which shasum)
@@ -166,8 +168,8 @@ if [[ "$(uname -s)" = "Darwin" ]]; then
 
   export VISUAL=${EDITOR}
 
-  # Old-school OS9 Mac text files had a different line ending than *nix, deal with
-  # converting back and forth.
+  # Old-school OS9 and early Mac text files had a different line ending than
+  # *nix, deal with converting back and forth.
   alias mac2unix="tr '\015' '\012'"
   alias unix2mac="tr '\012' '\015'"
 
