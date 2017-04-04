@@ -51,10 +51,8 @@ if [[ "$(uname -s)" = "Darwin" ]]; then
   # Add DS_Store to files ignored during completion
   fignore=(DS_Store $fignore)
 
-  cleanxmlclip() {
-    pbpaste | tidy -xml -wrap 0 | pbcopy
-  }
-
+  # Aliases for things renamed as they were extracted into scripts
+  alias cleanxmlclip='clean-xml-clip'
   alias killScreenSaver='kill-screensaver'
   alias killSS='kill-screensaver'
 

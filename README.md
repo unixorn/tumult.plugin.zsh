@@ -29,6 +29,7 @@ Tumult will check to see if you're running on macOS and not add aliases or injec
 | battery-percentage | Show the percentage of battery charge |
 | battery-time | Show the estimated battery life. |
 | change-wallpaper | If you have your desktop wallpaper set to rotate through a folder of images at intervals, this will force an immediate switch |
+| clean-xml-clip | Clean up the XML on the clipboard |
 | chrome | Force opening an URL with Chrome |
 | chrome-tabs | Outputs the URLs for all your open Chrome tabs so you can snapshot them |
 | clean-clipboard | Converts contents of clipboard to plain text. |

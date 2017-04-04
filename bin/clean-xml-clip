@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+#
+# Clean up the XML in the clipboard
+#
+# Copyright 2017, Joe Block <jpb@unixorn.net>
+
+set -o pipefail
+
+if [[ $(uname -a | grep -ci Darwin) != 1 ]]; then
+  echo "Sorry, this script only works on macOS"
+  exit 1
+fi
+
+pbpaste | tidy -xml -wrap 0 | pbcopy
