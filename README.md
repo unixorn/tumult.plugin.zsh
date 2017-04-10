@@ -70,7 +70,7 @@ Tumult will check to see if you're running on macOS and not add aliases or injec
 | pledit | Convert a plist to XML, run ${EDITOR} on it, then convert it back. |
 | safari | Force opening an URL with Safari |
 | screen-resolution | Display the screen resolution |
-| set-macos-hostname | Set the macOS name of your machine. No, `sudo hostname newname` isn't enough if you want the new name to be visible on the network for things like File and Screen sharing. |
+| set-macos-hostname | Set the macOS name of your machine. macOS may be UNIX-based, but the Apple eccentricities mean that no, `sudo hostname newname` isn't enough if you want the new name to be visible on the network for things like File and Screen sharing. |
 | speedup-apple-mail | Speeds up Mail.app by vaccuuming the indexes - Originally from [http://www.hawkwings.net/2007/03/03/scripts-to-automate-the-mailapp-envelope-speed-trick/](http://www.hawkwings.net/2007/03/03/scripts-to-automate-the-mailapp-envelope-speed-trick/) |
 | toggle-finder-show-dotfiles | Toggle whether Finder shows dotfiles |
 | unquarantine | Unquarantine a file |
@@ -88,7 +88,9 @@ Tumult is packaged as a zsh plugin to make it easier to use if you're already us
 
 ### Bash / not using a framework
 
-If you're using bash, or aren't using a framework, just clone this repository and add its bin directory to your `$PATH`.
+If you're using bash, or aren't using a framework, you can either
+* Clone this repository and add its bin directory to your `$PATH`
+* Use `pip` to install with `pip install tumult`. Because I have to explicitly publish new versions to pypi, the pip package may not alaways be as current as the git repository.
 
 ### [Antigen](https://github.com/zsh-users/antigen)
 
