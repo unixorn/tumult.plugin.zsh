@@ -18,8 +18,10 @@ if [ $(uname -a | grep -ci Darwin) != 1 ]; then
   exit 1
 fi
 
-# Set a new hostname for your Mac. No, you can't just use hostname.
-
+# Set a new hostname for your Mac. macOS may be UNIX-based, but the Apple
+# eccentricities mean that no, `sudo hostname newname` isn't enough if you
+# want the new name to be visible on the network for things like File and
+# Screen sharing.
 if [[ -z "$1" ]]; then
   echo "You must specify a new hostname"
   exit 1
