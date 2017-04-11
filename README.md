@@ -60,6 +60,8 @@ Tumult will check to see if you're running on macOS and not add aliases or injec
 | mac-safesleep | Set a Mac to use safesleep mode when sleeping |
 | mac-sleep | Set a Mac to use the default sleep mode when sleeping |
 | macos-frontmost-app | Shows what application is Frontmost. |
+| menubar-dark | Set the menubar to be white text on black background |
+| menubar-light | Set the menubar to the default black text on white background style |
 | mkdmg | Makes a .dmg file from a directory |
 | mkicns | Creates an .icns file from an image file |
 | naptime | Put the machine to sleep |
