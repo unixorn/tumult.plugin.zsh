@@ -1,0 +1,18 @@
+#!/bin/bash
+#
+# Switch to light menubar
+
+set -e
+
+if [ $(uname -a | grep -ci Darwin) != 1 ]; then
+  echo "Sorry, this script only works on macOS"
+  exit 1
+fi
+
+exec osascript <<EOF
+tell application "System Events"
+  tell appearance preferences
+    set dark mode to false
+  end tell
+end tell
+EOF

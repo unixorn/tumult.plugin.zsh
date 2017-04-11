@@ -118,6 +118,8 @@ setup(
     'bin/mac-sleep',
     'bin/mac-smartsleep',
     'bin/macos-frontmost-app',
+    'bin/menubar-dark',
+    'bin/menubar-light',
     'bin/mkdmg',
     'bin/mkicns',
     'bin/mute',
