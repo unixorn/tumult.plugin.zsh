@@ -69,7 +69,7 @@ Tumult will check to see if you're running on macOS and not add aliases or injec
 | pbcurl | `curl` the address in the clipboard. Originally from Ryan Tomayko's [dotfiles](https://github.com/rtomayko/dotfiles) |
 | pbindent | Indent the contents of the clipboard 4 spaces. With -o, write result to standard output instead of to the clipboard. Originally from Ryan Tomayko's [dotfiles](https://github.com/rtomayko/dotfiles) |
 | pbsed | Run `sed`(1) on the contents of the clipboard and put the result back on the clipboard. All `sed` options and arguments are supported. Originally from Ryan Tomayko's [dotfiles](https://github.com/rtomayko/dotfiles) |
-| pledit | Convert a plist to XML, run ${EDITOR} on it, then convert it back. |
+| pledit | Convert a plist to XML, run `${EDITOR}` on it, then convert it back. |
 | safari | Force opening an URL with Safari |
 | screen-resolution | Display the screen resolution |
 | set-macos-hostname | Set the macOS name of your machine. macOS may be UNIX-based, but the Apple eccentricities mean that no, `sudo hostname newname` isn't enough if you want the new name to be visible on the network for things like File and Screen sharing. |
