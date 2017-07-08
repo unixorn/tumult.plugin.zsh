@@ -35,6 +35,7 @@ Tumult will check to see if you're running on macOS and not add aliases or injec
 | clean-clipboard | Converts contents of clipboard to plain text. |
 | clear-macos-font-cache | Clears the macOS font cache, originally from [awesome-osx-command-line](https://github.com/herrbischoff/awesome-osx-command-line/blob/master/functions.md#app-icons) |
 | column-view | Set the current directory to column view in the Finder |
+| diceware-password | Generate a random but memorable passphrase using the Diceware Passphrase Algorithm. See [http://world.std.com/~reinhold/diceware.html](http://world.std.com/~reinhold/diceware.html) |
 | disable-ftp-server | Disable the ftp server on a Mac |
 | disable-ssh-server | Disable the ssh server on a Mac |
 | disable-startup-chime | Disable the boot chime |

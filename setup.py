@@ -91,6 +91,7 @@ setup(
     'bin/clear-osx-font-cache',
     'bin/clip',
     'bin/column-view',
+    'bin/diceware-password',
     'bin/disable-ftp-server',
     'bin/disable-ssh-server',
     'bin/disable-startup-chime',
