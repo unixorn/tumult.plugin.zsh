@@ -1,5 +1,10 @@
 # Tumult
 
+[![Build Status](https://travis-ci.org/unixorn/tumult.plugin.zsh.svg?branch=master)](https://travis-ci.org/unixorn/tumult.plugin.zsh)
+[![Code Climate](https://codeclimate.com/github/unixorn/tumult.plugin.zsh/badges/gpa.svg)](https://codeclimate.com/github/unixorn/tumult.plugin.zsh)
+[![GitHub stars](https://img.shields.io/github/stars/unixorn/bigriver-tools.svg)](https://github.com/unixorn/bigriver-tools/stargazers)
+[![Issue Count](https://codeclimate.com/github/unixorn/tumult.plugin.zsh/badges/issue_count.svg)](https://codeclimate.com/github/unixorn/tumult.plugin.zsh)
+
 ## About
 
 Tumult is an oh-my-zsh compatible plugin that adds macOS-specific functions and scripts to your ZSH environment.
