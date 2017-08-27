@@ -47,14 +47,11 @@ class CleanCommand(Command):
   description = 'Clean up'
   user_options = []
 
-
   def initialize_options(self):
     self.cwd = None
 
-
   def finalize_options(self):
     self.cwd = os.getcwd()
-
 
   def run(self):
     assert os.getcwd() == self.cwd, "Must be in package root: %s" % self.cwd
@@ -62,7 +59,6 @@ class CleanCommand(Command):
       shutil.rmtree('build')
     if os.path.isdir('dist'):
       shutil.rmtree('dist')
-
 
 
 setup(
