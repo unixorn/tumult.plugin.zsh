@@ -34,9 +34,10 @@ ratings:
   - "**.md"
 exclude_paths:
   - .bundle/
+  - benchmarks/**/*
+  - bin/imgcat
   - build/
   - dist/
-  - benchmarks/**/*
   - include/**/*
   - lib/**/*
   - License.md
