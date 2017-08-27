@@ -11,6 +11,13 @@ engines:
     enabled: true
     exclude_paths:
       - config/engines.yml
+  pep8:
+    enabled: true
+    checks:
+      E111:
+        enabled: false
+      E501:
+        enabled: false
   markdownlint:
     enabled: true
     checks:
