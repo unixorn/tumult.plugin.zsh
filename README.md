@@ -1,5 +1,6 @@
 # Tumult
 
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![Build Status](https://travis-ci.org/unixorn/tumult.plugin.zsh.svg?branch=master)](https://travis-ci.org/unixorn/tumult.plugin.zsh)
 [![Code Climate](https://codeclimate.com/github/unixorn/tumult.plugin.zsh/badges/gpa.svg)](https://codeclimate.com/github/unixorn/tumult.plugin.zsh)
 [![GitHub stars](https://img.shields.io/github/stars/unixorn/bigriver-tools.svg)](https://github.com/unixorn/bigriver-tools/stargazers)
@@ -7,9 +8,9 @@
 
 ## About
 
-Tumult is an oh-my-zsh compatible plugin that adds macOS-specific functions and scripts to your ZSH environment.
+Tumult is an [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh) compatible plugin that adds macOS-specific functions and scripts to your ZSH environment.
 
-Tumult will check to see if you're running on macOS and not add aliases or inject its bin into your PATH if you aren't. This allows you to use the same plugin list in all your environments without polluting your `$PATH` with incompatible functions and scripts on your non-Mac machines.
+Tumult will check to see if you're running on macOS and not add aliases or inject its bin into your `$PATH` if you aren't. This allows you to use the same plugin list in all your environments without polluting your `$PATH` with incompatible functions and scripts on your non-Mac machines.
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
@@ -88,15 +89,16 @@ Tumult will check to see if you're running on macOS and not add aliases or injec
 ## Other Useful macOS tools
 
 * [Platypus](https://github.com/sveinbjornt/Platypus) - allows you to wrap a script inside a Mac GUI wrapper.
-* [awesome-osx-command-line](https://github.com/herrbischoff/awesome-osx-command-line) has a lot of ways to manipulate macOS settings and applications from the command line
+* [awesome-osx-command-line](https://github.com/herrbischoff/awesome-osx-command-line) documents many ways to manipulate macOS settings and applications from the command line
 
 ## Installation
 
-Tumult is packaged as a zsh plugin to make it easier to use if you're already using a zsh framework (I recommend zgen, it is wicked fast and also supports using oh-my-zsh's internal plugins).
+Tumult is packaged as a zsh plugin to make it easier to use if you're already using a zsh framework (I recommend [zgen](https://github.com/tarjoilija/zgen), it is wicked fast and also supports using [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh)'s internal plugins).
 
 ### Bash / not using a framework
 
-If you're using bash, or aren't using a framework, you can either
+If you're using bash, or aren't using a framework, you can either:
+
 * Clone this repository and add its bin directory to your `$PATH`
 * Use `pip` to install with `pip install tumult`. Because I have to explicitly publish new versions to pypi, the pip package may not alaways be as current as the git repository.
 
