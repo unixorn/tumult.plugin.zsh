@@ -37,7 +37,6 @@ exclude_paths:
   - build/
   - dist/
   - benchmarks/**/*
-  - bin/**/*
   - include/**/*
   - lib/**/*
   - License.md
