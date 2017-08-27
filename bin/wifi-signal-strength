@@ -12,6 +12,8 @@ fi
 
 all_signal=(▁ ▃ ▅ ▇ )
 
+# egrep ships on macOS
+# shellcheck disable=SC2196
 current=$(/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport -I | egrep "agrCtlRSSI|state|lastTxRate| SSID" | tr "\\n" ";" | awk '{print $2,$4,$6,$8}')
 
 if [ "$current" == "" ]
@@ -19,9 +21,13 @@ then
   echo "(WIFI off)"
 fi
 
+# shellcheck disable=SC2086
 strength=$(echo $current | cut -d";" -f1-1 | cut -d" " -f2-)
+# shellcheck disable=SC2086
 state=$(echo $current | cut -d";" -f2-2 | cut -d" " -f2-)
+# shellcheck disable=SC2086
 bandwidth=$(echo $current | cut -d";" -f3-3 | cut -d" " -f2-)
+# shellcheck disable=SC2086
 name=$(echo $current | cut -d";" -f4-4 | cut -d" " -f2-)
 
 if [ "$state" != "running" ]
