@@ -7,11 +7,13 @@
 set -e
 set -o pipefail
 
-if [[ $(uname -a | grep -ci Darwin) != 1 ]]; then
-  echo "Sorry, this script only works on macOS"
+if [[ "$(uname -s)" != 'Darwin' ]]; then
+  echo 'Sorry, this script only works on macOS'
   exit 1
 fi
 
+# macOS doesn't ship with pgrep, so ps | grep instead
+# shellcheck disable=SC2009,SC2046
 exec kill -9 $(ps ww | \
   grep ScreenSaverEngine | \
   grep -v grep | \

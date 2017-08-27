@@ -15,8 +15,9 @@
 # limitations under the License.
 #
 # Print screen resolution on macOS
-if [ $(uname -a | grep -ci Darwin) != 1 ]; then
-  echo "Sorry, this script only works on macOS"
+
+if [[ "$(uname -s)" != 'Darwin' ]]; then
+  echo 'Sorry, this script only works on macOS'
   exit 1
 fi
 

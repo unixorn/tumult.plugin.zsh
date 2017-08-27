@@ -1,11 +1,12 @@
-#!/bin/sh
+#!/bin/bash
 #
 # https://github.com/rtomayko/dotfiles
 #
 # Usage: pbcurl <options>
 # Shorthand for: curl -L <options> "$(pbpaste)"
-if [ $(uname -a | grep -ci Darwin) != 1 ]; then
-  echo "Sorry, this script only works on macOS"
+
+if [[ "$(uname -s)" != 'Darwin' ]]; then
+  echo 'Sorry, this script only works on macOS'
   exit 1
 fi
 

@@ -26,14 +26,14 @@
 #
 # The result will be a file called <volname>.dmg
 
+if [[ "$(uname -s)" != 'Darwin' ]]; then
+  echo 'Sorry, mkdmg only works on macOS'
+  exit 1
+fi
+
 if [ $# != 2 ]; then
   echo "usage: $(basename $0) VolumeName SourceDirectory"
   exit 0
-fi
-
-if [ $(uname -a | grep -ci DARWIN) != 1 ]; then
-  echo "Sorry, this script only works on macOS"
-  exit 1
 fi
 
 VOLUME_NAME="$1"

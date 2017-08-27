@@ -13,8 +13,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-if [ $(uname -a | grep -ci Darwin) != 1 ]; then
-  echo "Sorry, this script only works on macOS"
+if [[ "$(uname -s)" != 'Darwin' ]]; then
+  echo 'Sorry, this script only works on macOS'
   exit 1
 fi
 
