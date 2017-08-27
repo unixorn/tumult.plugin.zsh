@@ -8,7 +8,7 @@ if [[ "$(uname -s)" != 'Darwin' ]]; then
 fi
 
 if [[ $# > 0 ]]; then
-  echo -n $* | pbcopy
+  echo -n "$@" | pbcopy
 else
   pbcopy < /dev/stdin
 fi
