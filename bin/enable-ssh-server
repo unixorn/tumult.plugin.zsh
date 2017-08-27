@@ -6,9 +6,9 @@
 
 set -o pipefail
 
-if [[ "$(uname -s)" = "Darwin" ]]; then
+if [[ "$(uname -s)" = 'Darwin' ]]; then
   exec sudo -s launchctl load -w /System/Library/LaunchDaemons/ssh.plist
 else
-  echo "This only works on macOS"
+  echo 'This only works on macOS'
   exit 1
 fi

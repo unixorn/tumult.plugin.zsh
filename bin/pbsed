@@ -4,8 +4,9 @@
 #/ Run sed(1) on the contents of the pboard and put the result back
 #/ on the pboard. All sed options and arguments are supported.
 set -e
-if [ $(uname -a | grep -ci Darwin) != 1 ]; then
-  echo "Sorry, this script only works on macOS"
+
+if [[ "$(uname -s)" != 'Darwin' ]]; then
+  echo 'Sorry, this script only works on macOS'
   exit 1
 fi
 

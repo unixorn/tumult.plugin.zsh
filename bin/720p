@@ -16,7 +16,7 @@
 #
 # Doesn't work with all apps, but does for iTerm2
 
-if [[ $(uname -a | grep -ci Darwin) != 1 ]]; then
+if [ "$(uname -a | grep -ci DARWIN)" != 1 ]; then
   echo "Sorry, this script only works on macOS"
   exit 1
 fi

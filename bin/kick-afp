@@ -3,8 +3,8 @@
 # I got tired of having to restart file sharing on my home server through
 # the GUI
 
-if [ $(uname -a | grep -ci DARWIN) != 1 ]; then
-  echo "Sorry, this script only works on macOS"
+if [[ "$(uname -s)" != 'Darwin' ]]; then
+  echo 'Sorry, this script only works on macOS'
   exit 1
 fi
 

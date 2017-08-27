@@ -4,10 +4,15 @@
 
 # Original source - https://github.com/TSPARR/macOS-Scripts/blob/master/Install%20Latest%20Chrome.sh
 
+if [[ "$(uname -s)" != 'Darwin' ]]; then
+  echo 'Sorry, this script only works on macOS'
+  exit 1
+fi
+
 # Checking if Chrome is running
 if pgrep "Google Chrome" > /dev/null
 then
-    killall "Google Chrome"
+  killall "Google Chrome"
 fi
 
 # Installing Chrome

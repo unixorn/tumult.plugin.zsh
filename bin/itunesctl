@@ -6,6 +6,11 @@
 #
 # License: Apache 2.0
 
+if [[ "$(uname -s)" != 'Darwin' ]]; then
+  echo 'Sorry, this script only works on macOS'
+  exit 1
+fi
+
 if [[ $# != 1 ]]; then
   echo "$(basename $0) needs to be given a command"
   exit 1

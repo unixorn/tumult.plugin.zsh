@@ -1,8 +1,8 @@
 #!/bin/sh
 #
 # Force opening a URL with Firefox
-if [ $(uname -a | grep -ci Darwin) != 1 ]; then
-  echo "Sorry, this script only works on macOS"
+if [[ "$(uname -s)" != 'Darwin' ]]; then
+  echo 'Sorry, this script only works on macOS'
   exit 1
 fi
 
