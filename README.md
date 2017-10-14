@@ -45,6 +45,8 @@ Tumult will check to see if you're running on macOS and not add aliases or injec
 | disable-ftp-server | Disable the ftp server on a Mac |
 | disable-ssh-server | Disable the ssh server on a Mac |
 | disable-startup-chime | Disable the boot chime |
+| disturb | Re-enable notifications in Notification Center |
+| do-not-disturb | Stifle notifications in Notification Center |
 | eject-all | Eject all removable disks |
 | enable-ftp-server | Enable the ftp server on a Mac |
 | enable-ssh-server | Enable the ssh server on a Mac |
