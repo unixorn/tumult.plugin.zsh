@@ -1,0 +1,15 @@
+#!/bin/bash
+#
+# Stifle notifications
+#
+# Copyright 2017, Joe Block <jpb@unixorn.net>
+
+# Turn off Apple notifications.
+#
+# Based on an answer by Jacques Rioux  on discussions.apple.com.
+#
+# https://discussions.apple.com/thread/7520296?start=0&tstart=0
+now=$(date -u "+%Y-%m-%dT%TZ")
+defaults -currentHost write com.apple.notificationcenterui doNotDisturb -bool TRUE
+defaults -currentHost write com.apple.notificationcenterui doNotDisturbDate -date "$now"
+osascript -e 'quit application "Notification Center"'
