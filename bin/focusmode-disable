@@ -1,0 +1,4 @@
+#!/bin/bash
+
+# Enable Focus Mode (aka Single App Mode)
+defaults write com.apple.dock single-app -bool true && killall Dock
