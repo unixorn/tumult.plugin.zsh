@@ -93,9 +93,10 @@ Tumult will check to see if you're running on macOS and not add aliases or injec
 ## Other Useful macOS tools
 
 * [apple-touchbar](https://github.com/zsh-users/zsh-apple-touchbar) - ZSH plugin that adds MacBook Pro's touchbar support in iTerm2.
-* [awesome-osx-command-line](https://github.com/herrbischoff/awesome-osx-command-line) documents many ways to manipulate macOS settings and applications from the command line
+* [awesome-osx-command-line](https://github.com/herrbischoff/awesome-osx-command-line) documents many ways to manipulate macOS settings and applications from the command line.
 * [bash-snippets](https://github.com/unixorn/Bash-Snippets) - `brew`-installable set of handy command-line tools.
-* [Platypus](https://github.com/sveinbjornt/Platypus) - allows you to wrap a script inside a Mac GUI wrapper.
+* [desktoppr](https://github.com/scriptingosx/desktoppr) - A command line tool which can read and set the desktop picture.
+* [Platypus](https://github.com/sveinbjornt/Platypus) - Allows you to wrap a script inside a Mac GUI wrapper.
 * [sekey](https://github.com/ntrippar/sekey) - Allows you to use Touch ID / Secure Enclave for SSH Authentication.
 
 ## Installation
