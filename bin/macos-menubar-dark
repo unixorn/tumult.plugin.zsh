@@ -1,1 +1,18 @@
-menubar-dark
+#!/bin/bash
+#
+# Enable dark mode
+
+set -e
+
+if [[ "$(uname -s)" != 'Darwin' ]]; then
+  echo 'Sorry, this script only works on macOS'
+  exit 1
+fi
+
+exec osascript <<EOF
+tell application "System Events"
+  tell appearance preferences
+    set dark mode to true
+  end tell
+end tell
+EOF
