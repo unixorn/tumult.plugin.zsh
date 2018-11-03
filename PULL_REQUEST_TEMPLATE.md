@@ -10,6 +10,11 @@
 
 - [ ] A helper script
 - [ ] A link to an external resource like a blog post or video
+- [ ] Text change (fix typos, update formatting)
+
+# Copyright Assignment
+
+- [ ] This document is covered by the [Apache License](https://github.com/unixorn/tumult.plugin.zsh/blob/master/LICENSE), and I agree to contribute this PR under the terms of that license.
 
 # Checklist:
 
@@ -17,7 +22,7 @@
 <!--- If you're unsure about any of these, don't hesitate to ask. I'm happy to help! -->
 
 - [ ] All new and existing tests pass.
-- [ ] Any scripts added use `#!/usr/bin/env interpreter` instead of direct paths (`#!/bin/sh` is an ok exception)\
+- [ ] Any scripts added use `#!/usr/bin/env interpreter` instead of direct paths (`#!/bin/sh` is an ok exception)
 - [ ] Scripts are marked executable
 - [ ] I have added a credit line to README.md for the script
 - [ ] If there was no author credit in a script added in this PR, I have added one.

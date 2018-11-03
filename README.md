@@ -86,7 +86,7 @@ Tumult will check to see if you're running on macOS and not add aliases or injec
 | `set-macos-hostname` | Set the macOS name of your machine. macOS may be UNIX-based, but the Apple eccentricities mean that no, `sudo hostname newname` isn't enough if you want the new name to be visible on the network for things like File and Screen sharing. |
 | `speedup-apple-mail` | Speeds up Mail.app by vaccuuming the indexes - Originally from [http://www.hawkwings.net/2007/03/03/scripts-to-automate-the-mailapp-envelope-speed-trick/](http://www.hawkwings.net/2007/03/03/scripts-to-automate-the-mailapp-envelope-speed-trick/) |
 | `toggle-finder-show-dotfiles` | Toggle whether Finder shows dotfiles |
-| unquarantine | Unquarantine a file |
+| `unquarantine` | Unquarantine a file |
 | `volume` | Get/set the system volume |
 | `wifi-name` | Returns the name of the WIFI network you're connected to |
 
