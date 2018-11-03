@@ -108,7 +108,6 @@ Tumult is packaged as a zsh plugin to make it easier to use if you're already us
 If you're using bash, or aren't using a framework, you can either:
 
 * Clone this repository and add its bin directory to your `$PATH`
-* Use `pip` to install with `pip install tumult`. Because I have to explicitly publish new versions to pypi, the pip package may not alaways be as current as the git repository.
 
 ### [Antigen](https://github.com/zsh-users/antigen)
 
