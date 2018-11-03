@@ -57,7 +57,7 @@ Tumult will check to see if you're running on macOS and not add aliases or injec
 | firefox | Force opening an URL with Firefox |
 | fix-airplay | Kick `coreaudiod` when AirPlay stops responding |
 | focusmode-disable | Turn off single-app mode |
-| focusmode-ensable | Turn on single-app mode |
+| focusmode-enable | Turn on single-app mode |
 | get-iterm2-buffer | Gets the current iterm2 window's scrollback contents |
 | icon-view | Set the current directory to icon view in the Finder |
 | imgcat | Display an image directly in your terminal. Only works with iTerm 2 |
