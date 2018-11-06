@@ -9,6 +9,13 @@
 # This script allows you to set the warning threshold to a different number
 # of gigabytes of free space before Mojave whines at you.
 
+DISKSPACE_D_PLIST='/System/Library/LaunchAgents/com.apple.diskspaced.plist'
+
+if [[ ! -f $DISKSPACE_D_PLIST ]]; then
+  echo "No $DISKSPACE_D_PLIST, exiting"
+  exit 0
+fi
+
 if [[ $# -ne 1 ]]; then
   # shellcheck disable=SC2086
   echo "$(basename $0) takes a single argument, the minimum number of gigabytes of free space before complaining"
@@ -21,3 +28,5 @@ if ! [[ "$1" =~ ^[0-9]+$ ]]; then
 fi
 
 defaults write com.apple.diskspaced minFreeSpace "${1}"
+launchctl unload -w "${DISKSPACE_D_PLIST}"
+launchctl load -w "${DISKSPACE_D_PLIST}"
