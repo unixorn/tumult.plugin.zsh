@@ -10,6 +10,7 @@
 # of gigabytes of free space before Mojave whines at you.
 
 if [[ $# -ne 1 ]]; then
+  # shellcheck disable=SC2086
   echo "$(basename $0) takes a single argument, the minimum number of gigabytes of free space before complaining"
   exit 1
 fi
