@@ -28,7 +28,7 @@ if ! [[ "$1" =~ ^[0-9]+$ ]]; then
 fi
 
 defaults write com.apple.diskspaced minFreeSpace "${1}"
-sipError=$(launchctl unload -w "${DISKSPACE_D_PLIST}" 2>&1 | grep -i 'System Integrity Protection' | wc -l)
+sipError=$(launchctl unload -w "${DISKSPACE_D_PLIST}" 2>&1 | grep -i 'System Integrity Protection' -c)
 if [[ "$sipError" -eq 1 ]]; then
   echo "It looks like you have SIP enabled. It's ok, it's the default macOS setting and more secure."
   echo "You're going to have to reboot to get rid of those damn popups whining about disk space though."
