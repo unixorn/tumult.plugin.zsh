@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+#
+# Copyright 2018, Joe Block <jpb@unixorn.net>
+# License: Apache 2.0
+#
+# Mojave has a pain in the ass warning about not enough disk being free, and
+# on my MBA, it pops up every few minutes. Fuck that noise.
+#
+# This script allows you to set the warning threshold to a different number
+# of gigabytes of free space before Mojave whines at you.
+
+DISKSPACE_D_PLIST='/System/Library/LaunchAgents/com.apple.diskspaced.plist'
+
+if [[ ! -f $DISKSPACE_D_PLIST ]]; then
+  echo "No $DISKSPACE_D_PLIST, exiting"
+  exit 0
+fi
+
+if [[ $# -ne 1 ]]; then
+  # shellcheck disable=SC2086
+  echo "$(basename $0) takes a single argument, the minimum number of gigabytes of free space before complaining"
+  exit 1
+fi
+
+if ! [[ "$1" =~ ^[0-9]+$ ]]; then
+  echo "You must specify an integer number of gigabytes free on disk to trigger the Mojave disk warning"
+  exit 1
+fi
+
+defaults write com.apple.diskspaced minFreeSpace "${1}"
+sipError=$(launchctl unload -w "${DISKSPACE_D_PLIST}" 2>&1 | grep -i 'System Integrity Protection' -c)
+if [[ "$sipError" -eq 1 ]]; then
+  echo "It looks like you have SIP enabled. It's ok, it's the default macOS setting and more secure."
+  echo "You're going to have to reboot to get rid of those damn popups whining about disk space though."
+fi
+launchctl load -w "${DISKSPACE_D_PLIST}"
