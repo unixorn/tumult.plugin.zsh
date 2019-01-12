@@ -8,7 +8,7 @@
 
 <!--- What types of changes does your submission introduce? Put an `x` in all the boxes that apply: -->
 
-- [ ] A helper script
+- [ ] Add/update a helper script
 - [ ] A link to an external resource like a blog post or video
 - [ ] Text change (fix typos, update formatting)
 
