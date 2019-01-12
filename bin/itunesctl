@@ -1,10 +1,23 @@
 #!/usr/bin/env bash
 #
-# shim script to control iTunes
+# Helper script to control iTunes
 #
-# Copyright 2016, Joe Block <jpb@unixorn.net>
+# Copyright 2016-2019, Joe Block <jpb@unixorn.net>
 #
 # License: Apache 2.0
+
+usage() {
+  name=$(basename "$0")
+  echo "${name} allows you to control iTunes from the command line."
+  echo
+  echo "  ${name} pause"
+  echo "  ${name} play"
+  echo "  ${name} mute"
+  echo "  ${name} unmute"
+  echo "  ${name} prev"
+  echo "  ${name} next"
+  echo "  ${name} play"
+}
 
 if [[ "$(uname -s)" != 'Darwin' ]]; then
   echo 'Sorry, this script only works on macOS'
@@ -12,21 +25,32 @@ if [[ "$(uname -s)" != 'Darwin' ]]; then
 fi
 
 if [[ $# != 1 ]]; then
-  echo "$(basename $0) needs to be given a command"
-  exit 1
+ usage
+ exit
 fi
 
 case $1 in
+  mute)
+    exec osascript -e 'tell application "iTunes" to set mute to true'
+    ;;
+  unmute)
+    exec osascript -e 'tell application "iTunes" to set mute to false'
+    ;;
   pause)
     exec osascript -e 'tell application "iTunes" to pause'
     ;;
   play)
     exec osascript -e 'tell application "iTunes" to play'
     ;;
+  next)
+    exec osascript -e 'tell application "iTunes" to next track'
+    ;;
+  prev)
+    exec osascript -e 'tell application "iTunes" to previous track'
+    ;;
   *)
     echo "$1 is not a valid subcommand"
+    usage
     exit 1
     ;;
 esac
-
-# TODO: Add next track, previous track, playpause
