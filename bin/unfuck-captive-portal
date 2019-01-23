@@ -1,0 +1,14 @@
+#!/bin/bash
+#
+# Sometimes macOS' captive portal detection shits the bed and won't render
+# the html for a wifi captive portal page, so you can't get onto WIFI.
+#
+# You can work around this by opening Apple's hotspot detection page
+# in Safari, so here's a command line tool to do so.
+
+if [[ "$(uname -s)" != 'Darwin' ]]; then
+  echo 'Sorry, this script only works on macOS'
+  exit 1
+fi
+
+exec open -a "Safari" "http://captive.apple.com/hotspot-detect.html"
