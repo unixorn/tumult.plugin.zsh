@@ -88,6 +88,7 @@ Tumult will check to see if you're running on macOS and not add aliases or injec
 | `speedup-apple-mail` | Speeds up Mail.app by vaccuuming the indexes - Originally from [http://www.hawkwings.net/2007/03/03/scripts-to-automate-the-mailapp-envelope-speed-trick/](http://www.hawkwings.net/2007/03/03/scripts-to-automate-the-mailapp-envelope-speed-trick/) |
 | `toggle-finder-show-dotfiles` | Toggle whether Finder shows dotfiles |
 | `unquarantine` | Unquarantine a file |
+| `unfuck-captive-portal` | Cope when macOs fails to render the captive portal page for a WIFI network. |
 | `volume` | Get/set the system volume |
 | `wifi-name` | Returns the name of the WIFI network you're connected to |
 
