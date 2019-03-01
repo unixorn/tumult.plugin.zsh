@@ -8,9 +8,9 @@
 
 ## About
 
-Tumult is an [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh) compatible plugin that adds macOS-specific functions and scripts to your ZSH environment.
+Tumult is an [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh) compatible plugin that adds macOS-specific functions and scripts to your ZSH environment. Some of these are mine, and have an Apache 2.0 license, some of them were written by other people - the authors and licenses are embedded in those scripts.
 
-Tumult will check to see if you're running on macOS and not add aliases or inject its bin into your `$PATH` if you aren't. This allows you to use the same plugin list in all your environments without polluting your `$PATH` with incompatible functions and scripts on your non-Mac machines.
+Tumult will check to see if you're running on macOS and not add aliases or inject its bin into your `$PATH` if you aren't. This allows you to use the same plugin list in all your environments without polluting your `$PATH` with incompatible functions and scripts on your non-Apple machines.
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
@@ -103,13 +103,11 @@ Tumult will check to see if you're running on macOS and not add aliases or injec
 
 ## Installation
 
-Tumult is packaged as a zsh plugin to make it easier to use if you're already using a zsh framework (I recommend [zgen](https://github.com/tarjoilija/zgen), it is wicked fast and also supports using [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh)'s internal plugins).
+Tumult is packaged as a zsh plugin to make it easier to use if you're already using a zsh framework. I recommend [zgen](https://github.com/tarjoilija/zgen), it is wicked fast and also supports using [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh)'s internal plugins.
 
 ### Bash / not using a framework
 
-If you're using bash, or aren't using a framework, you can either:
-
-* Clone this repository and add its bin directory to your `$PATH`
+If you're using bash, or aren't using a framework, just clone this repository and add its bin directory to your `$PATH`.
 
 ### [Antigen](https://github.com/zsh-users/antigen)
 
@@ -125,7 +123,7 @@ Antigen will handle cloning the plugin for you automatically the next time you s
 
 ### [Zgen](https://github.com/tarjoilija/zgen)
 
-Add `zgen load unixorn/tumult.plugin.zsh` to your .zshrc file in the same function you're doing your other `zgen load` calls in. Zgen will handle automatically cloning the plugin for you the next time you do a `zgen save`.
+Add `zgen load unixorn/tumult.plugin.zsh` to your `.zshrc` file in the same function you're doing your other `zgen load` calls in. Zgen will handle automatically cloning the plugin for you the next time you do a `zgen save`.
 
 ## License
 
