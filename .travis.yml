@@ -1,7 +1,0 @@
-language: ruby
-rvm:
-  - 2.2
-before_script:
-  - gem install awesome_bot
-script:
-  - awesome_bot README.md --allow-dupe --allow-redirect --white-list http://www.hawkwings.net/2007/03/03/scripts-to-automate-the-mailapp-envelope-speed-trick,http://lostechies.com/derickbailey/2012/09/08/screencasting-tip-resize-your-app-to-720p-1280x720-in-osx/
