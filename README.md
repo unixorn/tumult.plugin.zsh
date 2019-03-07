@@ -14,7 +14,7 @@ Tumult will check to see if you're running on macOS and not add aliases or injec
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
+## Table of Contents
 
 - [Included scripts](#included-scripts)
 - [Other Useful macOS tools](#other-useful-macos-tools)
@@ -88,7 +88,7 @@ Tumult will check to see if you're running on macOS and not add aliases or injec
 | `speedup-apple-mail` | Speeds up Mail.app by vaccuuming the indexes - Originally from [http://www.hawkwings.net/2007/03/03/scripts-to-automate-the-mailapp-envelope-speed-trick/](http://www.hawkwings.net/2007/03/03/scripts-to-automate-the-mailapp-envelope-speed-trick/) |
 | `toggle-finder-show-dotfiles` | Toggle whether Finder shows dotfiles |
 | `unquarantine` | Unquarantine a file |
-| `unfuck-captive-portal` | Cope when macOs fails to render the captive portal page for a WIFI network. |
+| `unfuck-captive-portal` | Cope when macOs fails to render the captive portal page for joining a WIFI network by directly opening Apple's captive portal detection page with Safari. |
 | `volume` | Get/set the system volume |
 | `wifi-name` | Returns the name of the WIFI network you're connected to |
 
@@ -103,17 +103,19 @@ Tumult will check to see if you're running on macOS and not add aliases or injec
 
 ## Installation
 
-Tumult is packaged as a zsh plugin to make it easier to use if you're already using a zsh framework. I recommend [zgen](https://github.com/tarjoilija/zgen), it is wicked fast and also supports using [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh)'s internal plugins.
+Tumult is packaged as a ZSH plugin to make it easier to use if you're already using a ZSH framework. If you don't already use a framework, I recommend [zgen](https://github.com/tarjoilija/zgen), it is wicked fast and also supports using [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh)'s internal plugins.
 
 ### Bash / not using a framework
 
-If you're using bash, or aren't using a framework, just clone this repository and add its bin directory to your `$PATH`.
+If you're using `bash`, or aren't using a framework, you can either:
+
+* Clone this repository and add its bin directory to your `$PATH`
 
 ### [Antigen](https://github.com/zsh-users/antigen)
 
 Add `antigen bundle unixorn/tumult.plugin.zsh` to your `.zshrc` with your other bundle commands.
 
-Antigen will handle cloning the plugin for you automatically the next time you start zsh. You can also add the plugin to a running zsh with `antigen bundle unixorn/tumult.plugin.zsh` for testing before adding it to your `.zshrc`.
+Antigen will handle cloning the plugin for you automatically the next time you start `zsh`. You can also add the plugin to a running ZSH with `antigen bundle unixorn/tumult.plugin.zsh` for testing before adding it to your `.zshrc`.
 
 ### [Oh-My-Zsh](http://ohmyz.sh/)
 
