@@ -8,7 +8,9 @@
 
 ## About
 
-Tumult is an [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh) compatible plugin that adds macOS-specific functions and scripts to your ZSH environment. Some of these are mine, and have an Apache 2.0 license, some of them were written by other people - the authors and licenses are embedded in those scripts.
+Tumult is an [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh)-compatible plugin that adds macOS-specific functions and scripts to your ZSH environment.
+
+Some of these are mine, and have an Apache 2.0 license, some of them were written by other people - the authors and licenses are embedded in those scripts.
 
 Tumult will check to see if you're running on macOS and not add aliases or inject its bin into your `$PATH` if you aren't. This allows you to use the same plugin list in all your environments without polluting your `$PATH` with incompatible functions and scripts on your non-Apple machines.
 
@@ -42,12 +44,14 @@ Tumult will check to see if you're running on macOS and not add aliases or injec
 | `clear-macos-font-cache` | Clears the macOS font cache, originally from [awesome-osx-command-line](https://github.com/herrbischoff/awesome-osx-command-line/blob/master/functions.md#app-icons) |
 | `column-view` | Set the current directory to column view in the Finder |
 | `diceware-password` | Generate a random but memorable passphrase using the Diceware Passphrase Algorithm. See [http://world.std.com/~reinhold/diceware.html](http://world.std.com/~reinhold/diceware.html) |
+| `disable-bouncing-dock-icons` | Disable icons bouncing in your Dock |
 | `disable-ftp-server` | Disable the ftp server on a Mac |
 | `disable-ssh-server` | Disable the ssh server on a Mac |
 | `disable-startup-chime` | Disable the boot chime |
 | `disturb` | Re-enable notifications in Notification Center |
 | `do-not-disturb` | Stifle notifications in Notification Center |
 | `eject-all` | Eject all removable disks |
+| `enable-bouncing-dock-icons` | Enable icons bouncing in your Dock |
 | `enable-ftp-server` | Enable the ftp server on a Mac |
 | `enable-ssh-server` | Enable the ssh server on a Mac |
 | `enable-startup-chime` | Re-enable the boot chime |
@@ -94,7 +98,7 @@ Tumult will check to see if you're running on macOS and not add aliases or injec
 
 ## Other Useful macOS tools
 
-* [apple-touchbar](https://github.com/zsh-users/zsh-apple-touchbar) - ZSH plugin that adds MacBook Pro's touchbar support in iTerm2.
+* [apple-touchbar](https://github.com/zsh-users/zsh-apple-touchbar) - ZSH plugin that adds support for the MacBook Pro's touchbar to iTerm2.
 * [awesome-osx-command-line](https://github.com/herrbischoff/awesome-osx-command-line) documents many ways to manipulate macOS settings and applications from the command line.
 * [bash-snippets](https://github.com/unixorn/Bash-Snippets) - `brew`-installable set of handy command-line tools.
 * [desktoppr](https://github.com/scriptingosx/desktoppr) - A command line tool which can read and set the desktop picture.
@@ -103,7 +107,7 @@ Tumult will check to see if you're running on macOS and not add aliases or injec
 
 ## Installation
 
-Tumult is packaged as a ZSH plugin to make it easier to use if you're already using a ZSH framework. If you don't already use a framework, I recommend [zgen](https://github.com/tarjoilija/zgen), it is wicked fast and also supports using [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh)'s internal plugins.
+Tumult is packaged as a ZSH plugin to make it easier to use if you're already using a ZSH framework. If you don't already use a framework, I recommend [zgen](https://github.com/tarjoilija/zgen), because it is wicked fast and also supports using [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh)'s internal plugins.
 
 ### Bash / not using a framework
 
@@ -129,4 +133,4 @@ Add `zgen load unixorn/tumult.plugin.zsh` to your `.zshrc` file in the same func
 
 ## License
 
-Tumult is Apache 2.0 licensed, except for some scripts in bin that have other license statements inline.
+Tumult is Apache 2.0 licensed, except for some scripts in the bin directory that have other license statements embedded inline in their source.
