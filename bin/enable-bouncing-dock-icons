@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+#
+# Enable bouncing dock icons
+#
+# Copyright 2020, Joe Block
+
+set -o pipefail
+
+defaults write com.apple.dock no-bouncing -bool FALSE
+killall Dock
