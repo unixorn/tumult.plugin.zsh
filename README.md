@@ -81,9 +81,9 @@ Tumult will check to see if you're running on macOS and not add aliases or injec
 | `mkicns` | Creates an .icns file from an image file |
 | `naptime` | Put the machine to sleep |
 | `nitenite` | Make a Mac go to sleep |
-| `pbcurl` | `curl` the address in the clipboard. Originally from Ryan Tomayko's [dotfiles](https://github.com/rtomayko/dotfiles) |
-| `pbindent` | Indent the contents of the clipboard 4 spaces. With -o, write result to standard output instead of to the clipboard. Originally from Ryan Tomayko's [dotfiles](https://github.com/rtomayko/dotfiles) |
-| `pbsed` | Run `sed`(1) on the contents of the clipboard and put the result back on the clipboard. All `sed` options and arguments are supported. Originally from Ryan Tomayko's [dotfiles](https://github.com/rtomayko/dotfiles) |
+| `pbcurl` | `curl` the address in the clipboard. Originally from Ryan Tomayko's [dotfiles](https://github.com/rtomayko) |
+| `pbindent` | Indent the contents of the clipboard 4 spaces. With -o, write result to standard output instead of to the clipboard. Originally from Ryan Tomayko's [dotfiles](https://github.com/rtomayko) |
+| `pbsed` | Run `sed`(1) on the contents of the clipboard and put the result back on the clipboard. All `sed` options and arguments are supported. Originally from Ryan Tomayko's [dotfiles](https://github.com/rtomayko) |
 | `pledit` | Convert a plist to XML, run `${EDITOR}` on it, then convert it back. |
 | `safari` | Force opening an URL with Safari |
 | `screen-resolution` | Display the screen resolution |
