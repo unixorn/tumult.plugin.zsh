@@ -46,6 +46,7 @@ Tumult will check to see if you're running on macOS and not add aliases or injec
 | `diceware-password` | Generate a random but memorable passphrase using the Diceware Passphrase Algorithm. See [http://world.std.com/~reinhold/diceware.html](http://world.std.com/~reinhold/diceware.html) |
 | `disable-bouncing-dock-icons` | Disable icons bouncing in your Dock |
 | `disable-ftp-server` | Disable the ftp server on a Mac |
+| `disable-network-ds-store` | Disable writing `.DS_Store` files to network shares|
 | `disable-ssh-server` | Disable the ssh server on a Mac |
 | `disable-startup-chime` | Disable the boot chime |
 | `disturb` | Re-enable notifications in Notification Center |
@@ -55,6 +56,7 @@ Tumult will check to see if you're running on macOS and not add aliases or injec
 | `enable-ftp-server` | Enable the ftp server on a Mac |
 | `enable-ssh-server` | Enable the ssh server on a Mac |
 | `enable-startup-chime` | Re-enable the boot chime |
+| `enable-network-ds-store` | Enable writing `.DS_Store` files to network shares (the default behavior) |
 | `evernote` | Create a new Evernote note from stdin or a file |
 | `finder-path` | Show the path to the frontmost finder window |
 | `finder-selection` | Show the paths to all items selected in the Finder, quoted so it copes with spaces in your directory or file names |
