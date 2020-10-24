@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+#
+# Disable writing .DS_Store to network shares
+#
+# Copyright 2020, Joe Block <jpb@unixorn.net>
+
+exec defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool TRUE
