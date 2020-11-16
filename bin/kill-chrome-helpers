@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+#
+# Kill Chrome helpers
+#
+# Copyright 2020, Joe Block
+
+set -o pipefail
+
+# shellcheck disable=SC2068,SC2009
+ps ux | grep -i 'Chrome Helper' | grep -v extension-process | tr -s ' ' | cut -d ' ' -f2 | xargs kill $@
