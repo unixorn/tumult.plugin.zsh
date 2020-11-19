@@ -1,4 +1,4 @@
-# Copyright 2015-2018 Joseph Block <jpb@apesseekingknowledge.net>
+# Copyright 2015-2020 Joseph Block <jpb@unixorn.net>
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -165,13 +165,6 @@ if [[ "$(uname -s)" = "Darwin" ]]; then
   # *nix, deal with converting back and forth.
   alias mac2unix="tr '\015' '\012'"
   alias unix2mac="tr '\012' '\015'"
-
-  # Zap those damn .DS_Store files
-  zap-ds-store() {
-    if [ -d "${1}" ]; then
-      find "${1}" -type f -name '.DS_Store' -delete -ls
-    fi
-  }
 
   mighty-mouse-battery() {
     ioreg -n "AppleBluetoothHIDMouse" | grep -i "batterypercent" | sed 's/[^[:digit:]]//g'
