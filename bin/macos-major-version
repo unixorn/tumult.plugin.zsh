@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+#
+# Copyright 2020, Joe Block <jpb@unixorn.net>
+#
+# macOS has a habit of changing the way it does some of its non-posixy things
+# every major rev or so. Add a helper to standardize detecting the rev
+
+set -o pipefail
+
+sw_vers -productVersion | awk -F '.' '{print $1 "." $2}'
