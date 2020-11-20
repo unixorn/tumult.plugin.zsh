@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+#
+# Zap .DS_Store files in a directory tree
+#
+# Copyright 2020, Joe Block <jpb@unixorn.net>
+
+set -o pipefail
+
+if [ -d "${1}" ]; then
+  find "${1}" -type f -name '.DS_Store' -delete -ls
+fi
