@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+#
+# Merge PDF files
+#
+# Copyright 2020, Joe Block <jpb@unixorn.net>
+
+set -o pipefail
+
+usage() {
+  echo "Usage:"
+  # shellcheck disable=SC2086
+  echo "$(basename $0) -o outputname.pdf input1.pdf input2.pdf input{3,4}.pdf"
+}
+
+if [[ $# -eq 0 ]]; then
+  usage
+  exit 0
+fi
+
+# shellcheck disable=SC2068
+/System/Library/Automator/Combine\ PDF\ Pages.action/Contents/Resources/join.py $@

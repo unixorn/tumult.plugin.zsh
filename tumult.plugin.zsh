@@ -80,21 +80,6 @@ if [[ "$(uname -s)" = "Darwin" ]]; then
     alias airport='/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport'
   fi
 
-  # macOS has a habit of changing the way it does some of its non-posixy things
-  # every major rev or so. Add a helper to standardize detecting the rev
-  function macos-major-version() {
-    sw_vers -productVersion | awk -F '.' '{print $1 "." $2}'
-  }
-
-  # Don't break Tumult backward compatibility
-  function osx-major-version() {
-    sw_vers -productVersion | awk -F '.' '{print $1 "." $2}'
-  }
-
-  # Merge PDF files
-  # Usage: `mergepdf -o output.pdf input{1,2,3}.pdf`
-  alias mergepdf='/System/Library/Automator/Combine\ PDF\ Pages.action/Contents/Resources/join.py'
-
   # Deal with some things macOS userland is missing
 
   # Canonical hex dump; some systems have this symlinked
