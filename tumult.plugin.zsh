@@ -37,7 +37,6 @@ if [[ "$(uname -s)" = "Darwin" ]]; then
 
   # Quicklook and Spotlight
   alias ql='qlmanage -p'
-  alias quicklook='qlmanage -p'
   alias spotlighter='mdfind -onlyin `pwd`'
 
   # Clipboard manipulation
