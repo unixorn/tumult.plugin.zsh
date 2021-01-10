@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+#
+# Display an alert on macOs
+#
+# Copyright 2021, Joe Block <jpb@unixorn.net>
+
+set -o pipefail
+
+# shellcheck disable=SC2086
+usage(){
+  echo "Usage: $(basename $0) AlertTitle AlertBody"
+  echo " or"
+  echo "Usage: $(basename $0) AlertTitle"
+}
+
+if [[ "$(uname -s)" = "Darwin" ]]; then
+  if [[ $# -eq 1 ]]; then
+    message_command="display alert \"$1\""
+    exec osascript -e "$message_command"
+  fi
+
+  if [[ $# -eq 2 ]]; then
+    message_command="display alert \"$1\" message  \"$2\""
+    exec osascript -e "$message_command"
+  fi
+
+  # shellcheck disable=SC2068
+  usage $@
+  exit 1
+else
+  # shellcheck disable=SC2086
+  echo "$(basename $0) only works on macOs"
+  exit 1
+fi

@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+#
+# Display a notification on macOs
+#
+# Copyright 2021, Joe Block <jpb@unixorn.net>
+
+set -o pipefail
+
+# shellcheck disable=SC2086
+usage(){
+  echo "Usage:"
+  echo "   $(basename $0) text"
+  echo "   $(basename $0) notificationTitle text"
+  echo "   $(basename $0) notificationTitle subTitle text"
+}
+
+if [[ "$(uname -s)" = "Darwin" ]]; then
+  if [[ $# -eq 1 ]]; then
+    message_command="display notification \"$1\""
+    exec osascript -e "$message_command"
+  fi
+
+  if [[ $# -eq 2 ]]; then
+    message_command="display notification \"$2\" with title  \"$1\""
+    exec osascript -e "$message_command"
+  fi
+
+  if [[ $# -eq 3 ]]; then
+    message_command="display notification \"$3\" with title  \"$1\" subtitle  \"$2\""
+    exec osascript -e "$message_command"
+  fi
+
+# shellcheck disable=SC2068
+  usage $@
+  exit 1
+else
+  # shellcheck disable=SC2086
+  echo "$(basename $0) only works on macOs"
+  exit 1
+fi
