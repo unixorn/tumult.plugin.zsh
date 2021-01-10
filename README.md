@@ -74,7 +74,9 @@ Tumult will check to see if you're running on macOS and not add aliases or injec
 | `kill-screensaver` | Kill the screensaver when it locks up |
 | `list-view` | Set the current directory to column view in the Finder |
 | `lockscreen` | Lock the screen |
+| `mac-alert` | Display a GUI alert with `osascript` |
 | `mac-hibernate` | Set a Mac to use hibernate mode when sleeping |
+| `mac-notification` | Display a notification using the macOs notification manager with `osascript` |
 | `mac-safesleep` | Set a Mac to use safesleep mode when sleeping |
 | `mac-sleep` | Set a Mac to use the default sleep mode when sleeping |
 | `macos-frontmost-app` | Shows what application is Frontmost. |
