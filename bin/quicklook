@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+#
+# Run quicklook on files
+#
+# Copyright 2021, Joe Block <jpb@unixorn.net>
+
+set -o pipefail
+if [[ -n "$DEBUG" ]]; then
+  set -x
+fi
+
+# shellcheck disable=SC2048,SC2086
+(( $# > 0 )) && qlmanage -p $* &>/dev/null &
