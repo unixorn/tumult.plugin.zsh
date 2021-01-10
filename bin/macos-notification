@@ -12,6 +12,7 @@ usage(){
   echo "   $(basename $0) text"
   echo "   $(basename $0) notificationTitle text"
   echo "   $(basename $0) notificationTitle subTitle text"
+  echo "   $(basename $0) notificationTitle subTitle soundName text"
 }
 
 if [[ "$(uname -s)" = "Darwin" ]]; then
@@ -27,6 +28,13 @@ if [[ "$(uname -s)" = "Darwin" ]]; then
 
   if [[ $# -eq 3 ]]; then
     message_command="display notification \"$3\" with title  \"$1\" subtitle  \"$2\""
+    echo "message_command: $message_command"
+    exec osascript -e "$message_command"
+  fi
+
+  if [[ $# -eq 4 ]]; then
+    message_command="display notification \"$4\" with title  \"$1\" subtitle  \"$2\" sound name  \"$3\""
+    echo "message_command: $message_command"
     exec osascript -e "$message_command"
   fi
 
