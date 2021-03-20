@@ -72,6 +72,7 @@ Tumult will check to see if you're running on macOS and not add aliases or injec
 | `kick-afp` | Restart file sharing from the CLI. I got tired of having to remote desktop in to kick the fileserver via the GUI every time Apple's file sharing got wedged, now it can be fixed over `ssh` |
 | `kick-screensharing` | Sometimes screen sharing just hangs on my Mini running 10.11. This is not new to 10.11, it was exhibiting the same annoying behavior on 10.10 and 10.9. The mini is headless and it's a pain in the ass to plug it into the TV just long enough to restart screen sharing, so I wrote this so I can fix it over ssh. |
 | `kill-screensaver` | Kill the screensaver when it locks up |
+| `kill-sophos-dead` | From a slack, but won't name names lest their employer find out they kill sophos. Kill Sophos' useless scanner when it gobbles up all your CPU. People wouldn't hate antivirus software so much on macOS if it restricted itself to using one CPU core. |
 | `list-view` | Set the current directory to column view in the Finder |
 | `lockscreen` | Lock the screen |
 | `mac-alert` | Display a GUI alert with `osascript` |
