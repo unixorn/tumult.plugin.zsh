@@ -5,4 +5,3 @@
 # its scanner process.
 
 exec sudo /bin/sh -c 'while true; do pkill -9 com.sophos.endpoint.scanextension; sleep 1; done'
-
