@@ -9,4 +9,5 @@ if [[ -n "$DEBUG" ]]; then
   set -x
 fi
 
-log show --predicate 'subsystem == "com.apple.TimeMachine"' --info --last 6h | grep -F 'eMac' | grep -Fv 'etat' | awk -F']' '{print substr($0,1,19), $NF}' 
+# show --last 6h instead of stream will only dispay the last 6h, then quit.
+log stream --color always --predicate 'subsystem == "com.apple.TimeMachine"' --info | grep -v ' SmCp'
