@@ -41,6 +41,7 @@ Tumult will check to see if you're running on macOS and not add aliases or injec
 | `chrome` | Force opening an URL with Chrome |
 | `chrome-tabs` | Outputs the URLs for all your open Chrome tabs so you can snapshot them |
 | `clean-clipboard` | Converts contents of clipboard to plain text. |
+| `clean-file-context-menu` | Zaps extra entries from the file context menu. |
 | `clear-macos-font-cache` | Clears the macOS font cache, originally from [awesome-osx-command-line](https://github.com/herrbischoff/awesome-osx-command-line/blob/master/functions.md#app-icons) |
 | `column-view` | Set the current directory to column view in the Finder |
 | `diceware-password` | Generate a random but memorable passphrase using the Diceware Passphrase Algorithm. See [http://world.std.com/~reinhold/diceware.html](http://world.std.com/~reinhold/diceware.html) |
