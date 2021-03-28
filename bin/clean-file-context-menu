@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+#
+# Zap all the entries in the file context menu
+#
+# Copyright 2021, Joe Block <jpb@unixorn.net>
+
+set -o pipefail
+if [[ -n "$DEBUG" ]]; then
+  set -x
+fi
+
+set -e
+
+LSREGISTER=/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister
+
+if [[ -x "$LSREGISTER" ]]; then
+  $LSREGISTER -kill -r -domain local -domain system -domain user
+  killall Finder
+else
+  echo "$LSREGISTER is not an executable."
+  exit 13
+fi
