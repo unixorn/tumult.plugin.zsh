@@ -99,6 +99,8 @@ Tumult will check to see if you're running on macOS and not add aliases or injec
 | `set-mojave-disk-warning-threshold` | Mojave now pops up a warning when you're running low on disk space. Unfortunately the threshold they pick triggers a warning every couple of minutes on my MacBook Air. This script lets you set a different number of free gigabytes to warn at. |
 | `speedup-apple-mail` | Speeds up Mail.app by vaccuuming the indexes - Originally from [http://www.hawkwings.net/2007/03/03/scripts-to-automate-the-mailapp-envelope-speed-trick/](http://www.hawkwings.net/2007/03/03/scripts-to-automate-the-mailapp-envelope-speed-trick/) |
 | `time-machine-log-viewer` | Dump the Time Machine logs |
+| `time-machine-throttle` | Restore default Time Machine throttle setting |
+| `time-machine-unthrottle` | Disable throttling Time Machine backups - I am having issues with very slow Time Machine backups to an SMB share. No guarantees that this will not cause _other_ subtle issues. |
 | `toggle-finder-show-dotfiles` | Toggle whether Finder shows dotfiles |
 | `unquarantine` | Unquarantine a file |
 | `unfuck-captive-portal` | Cope when macOs fails to render the captive portal page for joining a WIFI network by directly opening Apple's captive portal detection page with Safari. |

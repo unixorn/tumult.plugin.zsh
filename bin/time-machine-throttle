@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+#
+# Unthrottle time machine so the backup doesn't take so long
+#
+# Copyright 2021, Joe Block <jpb@unixorn.ne>
+
+exec sudo sysctl debug.lowpri_throttle_enabled=1
