@@ -35,6 +35,7 @@ Tumult will check to see if you're running on macOS and not add aliases or injec
 | ------ | ----------- |
 | `720p` | Resets an application's window to 720p (1280x720) for better screencasting. Doesn't work with apps that don't support window resizing in their AppleScript dictionary. Copied from Derrick Bailey's [blog](http://lostechies.com/derickbailey/2012/09/08/screencasting-tip-resize-your-app-to-720p-1280x720-in-osx/) |
 | `battery-percentage` | Show the percentage of battery charge |
+| `battery-prompt` | Prints battery status as a string suitable for embedding in a prompt. |
 | `battery-time` | Show the estimated battery life. |
 | `change-wallpaper` | If you have your desktop wallpaper set to rotate through a folder of images at intervals, this will force an immediate switch |
 | `clean-xml-clip` | Clean up the XML on the clipboard |
@@ -66,6 +67,7 @@ Tumult will check to see if you're running on macOS and not add aliases or injec
 | `focusmode-disable` | Turn off single-app mode |
 | `focusmode-enable` | Turn on single-app mode |
 | `get-iterm2-buffer` | Gets the current iterm2 window's scrollback contents |
+| `get-wifi-password` | Helper script to print the password for the wifi network you're connected to. |
 | `google` | Does a google search from the command line |
 | `icon-view` | Set the current directory to icon view in the Finder |
 | `imgcat` | Display an image directly in your terminal. Only works with iTerm 2 |
@@ -84,6 +86,7 @@ Tumult will check to see if you're running on macOS and not add aliases or injec
 | `mac-safesleep` | Set a Mac to use safesleep mode when sleeping |
 | `mac-sleep` | Set a Mac to use the default sleep mode when sleeping |
 | `macos-frontmost-app` | Shows what application is Frontmost. |
+| `markdown-open` | Converts a markdown file to html and opens it in your browser |
 | `menubar-dark` | Set the menubar to be white text on black background |
 | `menubar-light` | Set the menubar to the default black text on white background style |
 | `mkdmg` | Makes a .dmg file from a directory |

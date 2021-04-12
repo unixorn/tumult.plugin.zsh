@@ -1,0 +1,42 @@
+#!/usr/bin/env bash
+#
+# https://github.com/rtomayko/dotfiles/blob/rtomayko/bin/markdown-open
+
+function debug() {
+  echo "$@" 1>&2
+}
+
+f=$1
+if [ -z "$f" ] || [ "$f" = "-" ] ; then
+  f=/tmp/markdown-$$.txt
+  cat > $f
+  trap "rm -f $f" 0
+fi
+
+bn=$(basename $f | sed 's:^\(.*\)\.txt$:\1:')
+html_file="$(dirname $f)/$bn.html"
+cat <<EOF > "$html_file"
+<html>
+  <head>
+  <title>$f</title>
+  <link href="https://github.com/assets/github.css" media="screen" rel="stylesheet" type="text/css" />
+  <style type="text/css">
+    div#container {
+      max-width:  852px;
+      margin:     50px auto;
+    }
+  </style>
+  <body>
+    <div id="container" class="markdown-body">
+EOF
+cat "$f" | sundown >> "$html_file"
+cat <<EOF >> "$html_file"
+    </div>
+  </body>
+</html>
+EOF
+rslt=$?
+[ $rslt != 0 ] && exit $rslt
+open "$html_file"
+sleep 0.5
+unlink "$html_file"
