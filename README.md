@@ -66,6 +66,7 @@ Tumult will check to see if you're running on macOS and not add aliases or injec
 | `focusmode-disable` | Turn off single-app mode |
 | `focusmode-enable` | Turn on single-app mode |
 | `get-iterm2-buffer` | Gets the current iterm2 window's scrollback contents |
+| `google` | Does a google search from the command line |
 | `icon-view` | Set the current directory to icon view in the Finder |
 | `imgcat` | Display an image directly in your terminal. Only works with iTerm 2 |
 | `itunesctl` | Play/Pause iTunes from terminal. |
