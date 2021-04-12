@@ -69,6 +69,7 @@ Tumult will check to see if you're running on macOS and not add aliases or injec
 | `google` | Does a google search from the command line |
 | `icon-view` | Set the current directory to icon view in the Finder |
 | `imgcat` | Display an image directly in your terminal. Only works with iTerm 2 |
+| `iterm` | Open a new `iTerm 2` session with the argument given |
 | `itunesctl` | Play/Pause iTunes from terminal. |
 | `keychainctl` | CRUD for secrets in your macOS keychain - from AriaFallah's [gist](https://gist.github.com/AriaFallah/fe7b651ba2652bd301334e011749e4b2/)|
 | `kick-afp` | Restart file sharing from the CLI. I got tired of having to remote desktop in to kick the fileserver via the GUI every time Apple's file sharing got wedged, now it can be fixed over `ssh` |
