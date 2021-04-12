@@ -10,7 +10,7 @@ f=$1
 if [ -z "$f" ] || [ "$f" = "-" ] ; then
   f=/tmp/markdown-$$.txt
   cat > $f
-  trap "rm -f $f" 0
+  trap 'rm -f $f' 0
 fi
 
 bn=$(basename $f | sed 's:^\(.*\)\.txt$:\1:')
@@ -29,7 +29,7 @@ cat <<EOF > "$html_file"
   <body>
     <div id="container" class="markdown-body">
 EOF
-cat "$f" | sundown >> "$html_file"
+sundown < "$f" >> "$html_file"
 cat <<EOF >> "$html_file"
     </div>
   </body>
