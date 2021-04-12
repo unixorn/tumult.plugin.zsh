@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 #
 # Open a new iTerm session with the command given
 # as argument.
@@ -24,7 +24,7 @@
 # 9/20/2005 damonp - make sure new session opens in current window, clear screen
 # 9/15/2005 damonp - modify for iTerm usage
 
-if [ -z $3 ]; then
+if [ -z "$3" ]; then
 echo '~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~'
 echo 'Launch the iTerm application in a certain folder'
 echo 'USAGE:'
@@ -41,9 +41,10 @@ if [ "x-x" = x"$1" ]; then
 fi
 
 if [[ -d "$1" ]]; then
-    WD=`cd "$1"; pwd`; shift;
+	# shellcheck disable=SC2164
+    WD=$(cd "$1"; pwd); shift;
 else
-    WD="'`pwd`'";
+    WD="'$(pwd)'";
 fi
 
 COMMAND="cd $WD"
