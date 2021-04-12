@@ -8,4 +8,4 @@ fi
 IFS='+'
 query="$*"
 
-open "https://www.google.com/#q=${query}"
+exec open "https://www.google.com/#q=${query}"
