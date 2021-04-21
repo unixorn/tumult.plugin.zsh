@@ -123,7 +123,7 @@ Tumult will check to see if you're running on macOS and not add aliases or injec
 
 ## Installation
 
-Tumult is packaged as a ZSH plugin to make it easier to use if you're already using a ZSH framework. If you don't already use a framework, I recommend [zgen](https://github.com/tarjoilija/zgen), because it is wicked fast and also supports using [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh)'s internal plugins.
+Tumult is packaged as a ZSH plugin to make it easier to use if you're already using a ZSH framework. If you don't already use a framework, I recommend [Zgenom](https://github.com/jandamm/zgenom), because it is wicked fast and also supports using [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh)'s internal plugins.
 
 ### Bash / not using a framework
 
