@@ -143,9 +143,9 @@ Antigen will handle cloning the plugin for you automatically the next time you s
 2. `git clone git@github.com:unixorn/tumult.plugin.zsh.git tumult`
 3. Add tumult to your plugin list - edit `~.zshrc` and change `plugins=(...)` to `plugins=(... tumult)`
 
-### [Zgen](https://github.com/tarjoilija/zgen)
+### [Zgenom](https://github.com/jandamm/zgenom)
 
-Add `zgen load unixorn/tumult.plugin.zsh` to your `.zshrc` file in the same function you're doing your other `zgen load` calls in. Zgen will handle automatically cloning the plugin for you the next time you do a `zgen save`.
+Add `zgenom load unixorn/tumult.plugin.zsh` to your `.zshrc` file in the same function you're doing your other `zgenom load` calls in. Zgen will handle automatically cloning the plugin for you the next time you do a `zgenom save`.
 
 ## License
 
