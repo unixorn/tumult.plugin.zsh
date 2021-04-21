@@ -145,7 +145,7 @@ Antigen will handle cloning the plugin for you automatically the next time you s
 
 ### [Zgenom](https://github.com/jandamm/zgenom)
 
-Add `zgenom load unixorn/tumult.plugin.zsh` to your `.zshrc` file in the same function you're doing your other `zgenom load` calls in. Zgen will handle automatically cloning the plugin for you the next time you do a `zgenom save`.
+Add `zgenom load unixorn/tumult.plugin.zsh` to your `.zshrc` file in the same function you're doing your other `zgenom load` calls in. Zgenom will handle automatically cloning the plugin for you the next time you do a `zgenom save`.
 
 ## License
 
