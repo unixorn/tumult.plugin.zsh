@@ -15,4 +15,4 @@ jobs:
     - uses: actions/checkout@v1
     - uses: docker://dkhamsing/awesome_bot:latest
       with:
-        args: /github/workspace/README.md --allow-dupe --request-delay 1 --allow-redirect --white-list http://www.hawkwings.net/2007/03/03/scripts-to-automate-the-mailapp-envelope-speed-trick,http://lostechies.com/derickbailey/2012/09/08/screencasting-tip-resize-your-app-to-720p-1280x720-in-osx/
+        args: /github/workspace/README.md --allow-dupe --request-delay 1 --allow-redirect --white-list http://www.hawkwings.net/2007/03/03/scripts-to-automate-the-mailapp-envelope-speed-trick,http://lostechies.com/derickbailey/2012/09/08/screencasting-tip-resize-your-app-to-720p-1280x720-in-osx/,https://img.shields.io
