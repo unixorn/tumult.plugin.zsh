@@ -114,12 +114,12 @@ Tumult will check to see if you're running on macOS and not add aliases or injec
 
 ## Other Useful macOS tools
 
-* [apple-touchbar](https://github.com/zsh-users/zsh-apple-touchbar) - ZSH plugin that adds support for the MacBook Pro's touchbar to iTerm2.
-* [awesome-osx-command-line](https://github.com/herrbischoff/awesome-osx-command-line) documents many ways to manipulate macOS settings and applications from the command line.
-* [bash-snippets](https://github.com/unixorn/Bash-Snippets) - `brew`-installable set of handy command-line tools.
-* [desktoppr](https://github.com/scriptingosx/desktoppr) - A command line tool which can read and set the desktop picture.
-* [Platypus](https://github.com/sveinbjornt/Platypus) - Allows you to wrap a script inside a Mac GUI wrapper.
-* [sekey](https://github.com/ntrippar/sekey) - Allows you to use Touch ID / Secure Enclave for SSH Authentication.
+- [apple-touchbar](https://github.com/zsh-users/zsh-apple-touchbar) - ZSH plugin that adds support for the MacBook Pro's touchbar to iTerm2.
+- [awesome-osx-command-line](https://github.com/herrbischoff/awesome-osx-command-line) documents many ways to manipulate macOS settings and applications from the command line.
+- [bash-snippets](https://github.com/unixorn/Bash-Snippets) - `brew`-installable set of handy command-line tools.
+- [desktoppr](https://github.com/scriptingosx/desktoppr) - A command line tool which can read and set the desktop picture.
+- [Platypus](https://github.com/sveinbjornt/Platypus) - Allows you to wrap a script inside a Mac GUI wrapper.
+- [sekey](https://github.com/ntrippar/sekey) - Allows you to use Touch ID / Secure Enclave for SSH Authentication.
 
 ## Installation
 
@@ -127,9 +127,7 @@ Tumult is packaged as a ZSH plugin to make it easier to use if you're already us
 
 ### Bash / not using a framework
 
-If you're using `bash`, or aren't using a framework, you can either:
-
-* Clone this repository and add its bin directory to your `$PATH`
+If you're using `bash`, or aren't using a framework, you can install it by cloning this repository and adding its bin directory to your `$PATH`.
 
 ### [Antigen](https://github.com/zsh-users/antigen)
 
@@ -149,4 +147,4 @@ Add `zgenom load unixorn/tumult.plugin.zsh` to your `.zshrc` file in the same fu
 
 ## License
 
-Tumult is Apache 2.0 licensed, except for some scripts in the bin directory that have other license statements embedded inline in their source.
+The Tumult collection is Apache 2.0 licensed. Some scripts in the bin directory have different licenses - if so, they have those other license statements embedded inline in their source.
