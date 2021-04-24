@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+#
+# Load pubkey into clipboard.
+# I do this enough that I wanted a helper script
+#
+# Copyright 2021, Joe Block <jpb@unixorn.net>
+# License: Apache 2.0
+
+set -o pipefail
+
+function fail {
+  printf '%s\n' "$1" >&2  ## Write message to stderr.
+  exit "${2-1}"  ## Return a code specified by $2 or 1 by default.
+}
+
+if [[ -n "$DEBUG" ]]; then
+  set -x
+fi
+
+if [[ $# -eq 0 ]]; then
+  keyname="${HOME}/.ssh/id_rsa.pub"
+else
+  keyname="${HOME}/.ssh/${1}.pub"
+fi
+
+if [[ ! -r "$keyname" ]]; then
+  fail "Can't read $keyname" 
+fi
+
+pbcopy < "$keyname"
+exit $?
