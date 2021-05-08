@@ -41,11 +41,6 @@ if [[ "$(uname -s)" = "Darwin" ]]; then
 
   # Clipboard manipulation
   alias gpaste="pbpaste | perl -pe 's/\r\n|\r/\n/g'"
-  alias pbclean="pbpaste | perl -pe 's/\r\n|\r/\n/g' | pbcopy"
-  alias pbsort="pbpaste | sort | pbcopy"
-
-  # `wifi on` to turn wifi on, and `wifi off` to turn it off
-  alias wifi="networksetup -setairportpower $(networksetup -listallhardwareports | grep -A 2 'Hardware Port: Wi-Fi' | grep 'Device:' | awk '{print $2}')"
 
   # Add DS_Store to files ignored during completion
   fignore=(DS_Store $fignore)
@@ -59,10 +54,6 @@ if [[ "$(uname -s)" = "Darwin" ]]; then
   if [[ -x /usr/local/bin/subl ]]; then
     alias s='/usr/local/bin/subl'
   fi
-
-  # Show/hide hidden files in Finder
-  alias show-dotfiles="defaults write com.apple.Finder AppleShowAllFiles -bool true && killall Finder"
-  alias hide-dotfiles="defaults write com.apple.Finder AppleShowAllFiles -bool false && killall Finder"
 
   # Hide/show all desktop icons for presenting
   alias show-desktop-icons="defaults write com.apple.finder CreateDesktop -bool true && killall Finder"
