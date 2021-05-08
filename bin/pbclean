@@ -1,0 +1,9 @@
+#!/bin/bash
+#
+
+if [[ "$(uname -s)" != 'Darwin' ]]; then
+  echo 'Sorry, this script only works on macOS'
+  exit 1
+fi
+
+pbpaste | perl -pe 's/\r\n|\r/\n/g' | pbcopy
