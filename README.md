@@ -96,6 +96,7 @@ Tumult will check to see if you're running on macOS and not add aliases or injec
 | `pbcurl` | `curl` the address in the clipboard. Originally from Ryan Tomayko's [dotfiles](https://github.com/rtomayko) |
 | `pbindent` | Indent the contents of the clipboard 4 spaces. With -o, write result to standard output instead of to the clipboard. Originally from Ryan Tomayko's [dotfiles](https://github.com/rtomayko) |
 | `pbsed` | Run `sed`(1) on the contents of the clipboard and put the result back on the clipboard. All `sed` options and arguments are supported. Originally from Ryan Tomayko's [dotfiles](https://github.com/rtomayko) |
+| `pbsort` | Sorts the contents of the clipboard |
 | `pledit` | Convert a plist to XML, run `${EDITOR}` on it, then convert it back. |
 | `pubkey` | Quick script to load an ssh public key onto your clipboard by name without you having to specify the full path to it. |
 | `quicklook` | Triggers quicklook on files so you can see what they are. |

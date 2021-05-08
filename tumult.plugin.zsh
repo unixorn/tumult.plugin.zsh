@@ -41,7 +41,6 @@ if [[ "$(uname -s)" = "Darwin" ]]; then
 
   # Clipboard manipulation
   alias gpaste="pbpaste | perl -pe 's/\r\n|\r/\n/g'"
-  alias pbclean="pbpaste | perl -pe 's/\r\n|\r/\n/g' | pbcopy"
   alias pbsort="pbpaste | sort | pbcopy"
 
   # `wifi on` to turn wifi on, and `wifi off` to turn it off
