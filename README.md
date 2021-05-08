@@ -112,6 +112,7 @@ Tumult will check to see if you're running on macOS and not add aliases or injec
 | `unquarantine` | Unquarantine a file |
 | `unfuck-captive-portal` | Cope when macOs fails to render the captive portal page for joining a WIFI network by directly opening Apple's captive portal detection page with Safari. |
 | `volume` | Get/set the system volume |
+| `wifi` | Usage: `wifi on` or `wifi off` - toggles your wifi |
 | `wifi-name` | Returns the name of the WIFI network you're connected to |
 
 ## Other Useful macOS tools

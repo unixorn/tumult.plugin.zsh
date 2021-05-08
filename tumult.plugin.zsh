@@ -41,10 +41,6 @@ if [[ "$(uname -s)" = "Darwin" ]]; then
 
   # Clipboard manipulation
   alias gpaste="pbpaste | perl -pe 's/\r\n|\r/\n/g'"
-  alias pbsort="pbpaste | sort | pbcopy"
-
-  # `wifi on` to turn wifi on, and `wifi off` to turn it off
-  alias wifi="networksetup -setairportpower $(networksetup -listallhardwareports | grep -A 2 'Hardware Port: Wi-Fi' | grep 'Device:' | awk '{print $2}')"
 
   # Add DS_Store to files ignored during completion
   fignore=(DS_Store $fignore)

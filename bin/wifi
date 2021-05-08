@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+#
+# Toggle wifi on and off from the command line
+# `wifi on` to turn wifi on, and `wifi off` to turn it off
+#
+# Copyright 2021, Joe Block <jpb@unixorn.net>
+# License: Apache 2
+
+set -o pipefail
+
+if [[ -n "$DEBUG" ]]; then
+  set -x
+fi
+
+if [[ "$(uname -s)" != 'Darwin' ]]; then
+  echo 'Sorry, this script only works on macOS'
+  exit 1
+fi
+
+# shellcheck disable=SC2046,SC2068
+networksetup -setairportpower $(networksetup -listallhardwareports | grep -A 2 'Hardware Port: Wi-Fi' | grep 'Device:' | awk '{print $2}') $@
