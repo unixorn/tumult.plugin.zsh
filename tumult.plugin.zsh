@@ -55,10 +55,6 @@ if [[ "$(uname -s)" = "Darwin" ]]; then
     alias s='/usr/local/bin/subl'
   fi
 
-  # Show/hide hidden files in Finder
-  alias show-dotfiles="defaults write com.apple.Finder AppleShowAllFiles -bool true && killall Finder"
-  alias hide-dotfiles="defaults write com.apple.Finder AppleShowAllFiles -bool false && killall Finder"
-
   # Hide/show all desktop icons for presenting
   alias show-desktop-icons="defaults write com.apple.finder CreateDesktop -bool true && killall Finder"
   alias hide-desktop-icons="defaults write com.apple.finder CreateDesktop -bool false && killall Finder"

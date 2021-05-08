@@ -38,11 +38,11 @@ Tumult will check to see if you're running on macOS and not add aliases or injec
 | `battery-prompt` | Prints battery status as a string suitable for embedding in a prompt. |
 | `battery-time` | Show the estimated battery life. |
 | `change-wallpaper` | If you have your desktop wallpaper set to rotate through a folder of images at intervals, this will force an immediate switch |
-| `clean-xml-clip` | Clean up the XML on the clipboard |
-| `chrome` | Force opening an URL with Chrome |
 | `chrome-tabs` | Outputs the URLs for all your open Chrome tabs so you can snapshot them |
+| `chrome` | Force opening an URL with Chrome |
 | `clean-clipboard` | Converts contents of clipboard to plain text. |
 | `clean-file-context-menu` | Zaps extra entries from the file context menu. |
+| `clean-xml-clip` | Clean up the XML on the clipboard |
 | `clear-macos-font-cache` | Clears the macOS font cache, originally from [awesome-osx-command-line](https://github.com/herrbischoff/awesome-osx-command-line/blob/master/functions.md#app-icons) |
 | `column-view` | Set the current directory to column view in the Finder |
 | `diceware-password` | Generate a random but memorable passphrase using the Diceware Passphrase Algorithm. See [http://world.std.com/~reinhold/diceware.html](http://world.std.com/~reinhold/diceware.html) |
@@ -56,9 +56,9 @@ Tumult will check to see if you're running on macOS and not add aliases or injec
 | `eject-all` | Eject all removable disks |
 | `enable-bouncing-dock-icons` | Enable icons bouncing in your Dock |
 | `enable-ftp-server` | Enable the ftp server on a Mac |
+| `enable-network-ds-store-files` | Enable writing `.DS_Store` files to network shares (the default behavior) |
 | `enable-ssh-server` | Enable the ssh server on a Mac |
 | `enable-startup-chime` | Re-enable the boot chime |
-| `enable-network-ds-store-files` | Enable writing `.DS_Store` files to network shares (the default behavior) |
 | `evernote` | Create a new Evernote note from stdin or a file |
 | `finder-path` | Show the path to the frontmost finder window |
 | `finder-selection` | Show the paths to all items selected in the Finder, quoted so it copes with spaces in your directory or file names |
@@ -69,6 +69,7 @@ Tumult will check to see if you're running on macOS and not add aliases or injec
 | `get-iterm2-buffer` | Gets the current iterm2 window's scrollback contents |
 | `get-wifi-password` | Helper script to print the password for the wifi network you're connected to. |
 | `google` | Does a google search from the command line |
+| `hide-dotfiles` | Hide dotfiles in Finder windows to return to Apple default behavior |
 | `icon-view` | Set the current directory to icon view in the Finder |
 | `imgcat` | Display an image directly in your terminal. Only works with iTerm 2 |
 | `iterm` | Open a new `iTerm 2` session with the argument given |
@@ -104,16 +105,17 @@ Tumult will check to see if you're running on macOS and not add aliases or injec
 | `screen-resolution` | Display the screen resolution |
 | `set-macos-hostname` | Set the macOS name of your machine. macOS may be UNIX-based, but the Apple eccentricities mean that no, `sudo hostname newname` isn't enough if you want the new name to be visible on the network for things like File and Screen sharing. |
 | `set-mojave-disk-warning-threshold` | Mojave now pops up a warning when you're running low on disk space. Unfortunately the threshold they pick triggers a warning every couple of minutes on my MacBook Air. This script lets you set a different number of free gigabytes to warn at. |
+| `show-dotfiles` | Display dotfiles in Finder windows |
 | `speedup-apple-mail` | Speeds up Mail.app by vaccuuming the indexes - Originally from [http://www.hawkwings.net/2007/03/03/scripts-to-automate-the-mailapp-envelope-speed-trick/](http://www.hawkwings.net/2007/03/03/scripts-to-automate-the-mailapp-envelope-speed-trick/) |
 | `time-machine-log-viewer` | Dump the Time Machine logs |
 | `time-machine-throttle` | Restore default Time Machine throttle setting |
 | `time-machine-unthrottle` | Disable throttling Time Machine backups - I am having issues with very slow Time Machine backups to an SMB share. No guarantees that this will not cause _other_ subtle issues. |
 | `toggle-finder-show-dotfiles` | Toggle whether Finder shows dotfiles |
-| `unquarantine` | Unquarantine a file |
 | `unfuck-captive-portal` | Cope when macOs fails to render the captive portal page for joining a WIFI network by directly opening Apple's captive portal detection page with Safari. |
+| `unquarantine` | Unquarantine a file |
 | `volume` | Get/set the system volume |
-| `wifi` | Usage: `wifi on` or `wifi off` - toggles your wifi |
 | `wifi-name` | Returns the name of the WIFI network you're connected to |
+| `wifi` | Usage: `wifi on` or `wifi off` - toggles your wifi |
 
 ## Other Useful macOS tools
 

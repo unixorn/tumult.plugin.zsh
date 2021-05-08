@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+#
+# Show dotfiles in Finder
+#
+# Copyright 2021, Joe Block <jpb@unixorn.net>
+# License: Apache 2
+
+set -o pipefail
+
+if [[ -n "$DEBUG" ]]; then
+  set -x
+fi
+
+if [[ "$(uname -s)" != 'Darwin' ]]; then
+  echo 'Sorry, this script only works on macOS'
+  exit 1
+fi
+
+defaults write com.apple.Finder AppleShowAllFiles -bool true && killall Finder
