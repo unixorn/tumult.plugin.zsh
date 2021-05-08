@@ -10,9 +10,9 @@
 
 Tumult is an [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh)-compatible plugin that adds macOS-specific functions and scripts to your ZSH environment.
 
-Some of these are mine, and have an Apache 2.0 license, some of them were written by other people - the authors and licenses are embedded in those scripts.
+Some of these are mine, and have an Apache 2.0 license, some of them were written by other people and just colllected by me - the authors and licenses are embedded in those scripts.
 
-Tumult will check to see if you're running on macOS and not add aliases or inject its bin into your `$PATH` if you aren't. This allows you to use the same plugin list in all your environments without polluting your `$PATH` with incompatible functions and scripts on your non-Apple machines.
+Tumult will check to see if you're running on macOS and not add aliases or inject its bin into your `$PATH` if you aren't. This was done to enable you to use the same plugin list in all your environments without polluting your `$PATH` with incompatible functions and scripts on your non-Apple machines.
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
