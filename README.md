@@ -6,6 +6,22 @@
 [![GitHub stars](https://img.shields.io/github/stars/unixorn/bigriver-tools.svg)](https://github.com/unixorn/bigriver-tools/stargazers)
 [![Issue Count](https://codeclimate.com/github/unixorn/tumult.plugin.zsh/badges/issue_count.svg)](https://codeclimate.com/github/unixorn/tumult.plugin.zsh)
 
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+## Table of Contents
+
+- [About](#about)
+- [License](#license)
+- [Included scripts](#included-scripts)
+- [Other Useful macOS tools](#other-useful-macos-tools)
+- [Installation](#installation)
+  - [Bash / not using a framework](#bash--not-using-a-framework)
+  - [Antigen](#antigen)
+  - [Oh-My-Zsh](#oh-my-zsh)
+  - [Zgenom](#zgenom)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 ## About
 
 Tumult is an [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh)-compatible plugin that adds macOS-specific functions and scripts to your ZSH environment.
@@ -14,20 +30,11 @@ Some of these are mine, and have an Apache 2.0 license, some of them were writte
 
 Tumult will check to see if you're running on macOS and not add aliases or inject its bin into your `$PATH` if you aren't. This was done to enable you to use the same plugin list in all your environments without polluting your `$PATH` with incompatible functions and scripts on your non-Apple machines.
 
-<!-- START doctoc generated TOC please keep comment here to allow auto update -->
-<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-## Table of Contents
+You may also find the [git-extra-commands](https://github.com/unixorn/git-extra-commands) collection useful, or my [zsh-quickstart-kit](https://github.com/unixorn/zsh-quickstart-kit)
 
-- [Included scripts](#included-scripts)
-- [Other Useful macOS tools](#other-useful-macos-tools)
-- [Installation](#installation)
-  - [Bash / not using a framework](#bash--not-using-a-framework)
-  - [Antigen](#antigen)
-  - [Oh-My-Zsh](#oh-my-zsh)
-  - [Zgenom](#zgenom)
-- [License](#license)
+## License
 
-<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+The Tumult collection is Apache 2.0 licensed. Some scripts in the `bin` directory have different licenses - if so, they have those other license statements embedded inline in their source.
 
 ## Included scripts
 
@@ -149,7 +156,3 @@ Antigen will handle cloning the plugin for you automatically the next time you s
 ### [Zgenom](https://github.com/jandamm/zgenom)
 
 Add `zgenom load unixorn/tumult.plugin.zsh` to your `.zshrc` file in the same function you're doing your other `zgenom load` calls in. Zgenom will handle automatically cloning the plugin for you the next time you do a `zgenom save`.
-
-## License
-
-The Tumult collection is Apache 2.0 licensed. Some scripts in the bin directory have different licenses - if so, they have those other license statements embedded inline in their source.
