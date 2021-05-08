@@ -24,7 +24,7 @@ Tumult will check to see if you're running on macOS and not add aliases or injec
   - [Bash / not using a framework](#bash--not-using-a-framework)
   - [Antigen](#antigen)
   - [Oh-My-Zsh](#oh-my-zsh)
-  - [Zgen](#zgen)
+  - [Zgenom](#zgenom)
 - [License](#license)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
