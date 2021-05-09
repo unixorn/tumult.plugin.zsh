@@ -63,6 +63,7 @@ if [[ "$(uname -s)" = "Darwin" ]]; then
   # sound
   alias stfu="osascript -e 'set volume output muted true'"
 
+  # Apple has some useful stuff in places outside $PATH, so add aliases.
   if [ -x '/System/Library/CoreServices/Applications/Network Utility.app/Contents/Resources/stroke' ]; then
     alias stroke='/System/Library/CoreServices/Applications/Network\ Utility.app/Contents/Resources/stroke'
   fi
@@ -90,21 +91,6 @@ if [[ "$(uname -s)" = "Darwin" ]]; then
     command -v shasum > /dev/null && \
     alias sha1sum=$(which shasum)
 
-  # Deal with staleness in macOS userland.
-  # Apple never seems to be very current with the versions of things in userland, so
-  # we're going to set up some aliases to force user-installed versions of programs to
-  # override the stale versions in /usr.
-
-  # MySQL
-  # Use homebrew versions if present
-  if [ -x /usr/local/bin/mysql/bin/mysql ]; then
-    alias mysql="/usr/local/mysql/bin/mysql"
-  fi
-
-  if [ -x /usr/local/bin/mysql/bin/mysqladmin ]; then
-    alias mysqladmin="/usr/local/mysql/bin/mysqladmin"
-  fi
-
   # Sue me, I like vim. Got tired of different *nix stuffing it in different
   # places, so go through the usual suspects and create an alias when we find
   # it.
@@ -128,7 +114,7 @@ if [[ "$(uname -s)" = "Darwin" ]]; then
     export EDITOR='/opt/local/bin/vim'
   fi
 
-  # Same for homebrew.
+  # If they put a vim build in /usr/local/bin, they want to use that.
   if [ -x /usr/local/bin/vim ]; then
     alias vim='/usr/local/bin/vim'
     alias vi="/usr/local/bin/vim"
@@ -146,23 +132,57 @@ if [[ "$(uname -s)" = "Darwin" ]]; then
     ioreg -n "AppleBluetoothHIDMouse" | grep -i "batterypercent" | sed 's/[^[:digit:]]//g'
   }
 
+  # Deal with staleness in macOS userland.
+  # Apple never seems to be very current with the versions of things in userland, so
+  # we're going to set up some aliases to force user-installed versions of programs to
+  # override the stale versions in /usr.
+
+  # MySQL
+  # Use local versions if present
+  if [ -x /usr/local/bin/mysql/bin/mysql ]; then
+    alias mysql="/usr/local/mysql/bin/mysql"
+  fi
+
+  if [ -x /usr/local/bin/mysql/bin/mysqladmin ]; then
+    alias mysqladmin="/usr/local/mysql/bin/mysqladmin"
+  fi
+
   if has brew; then
     # homebrew alias setup
     BREW_PREFIX=$(brew --prefix)
+
+    # We prefer to use the brew installed versions of things when
+    # they're present
     if [[ -x "$BREW_PREFIX/bin/memached"]]; then
+      alias memcached="${BREW_PREFIX}/bin/memcached"
       alias memcached-load="brew services start memcached"
       alias memcached-unload="brew services stop memcached"
     fi
 
+    if [[ -x "$BREW_PREFIX/bin/mysqladmin"]]; then
+      alias mysqladmin="${BREW_PREFIX}/bin/mysqladmin"
+    fi
+
     if [[ -x "$BREW_PREFIX/bin/mysql"]]; then
+      alias mysql="${BREW_PREFIX}/bin/mysql"
       alias mysql-load="brew services start mysql"
       alias mysql-unload="brew services stop mysql"
     fi
 
     if [[ -x "$BREW_PREFIX/bin/pg_ctl"]]; then
+      alias pg_ctl="${BREW_PREFIX}/bin/pg_ctl"
       alias postgres-load="brew services start postgresql"
       alias postgres-unload="brew services stop postgresql"
     fi
+
+    # Use brew vim when present
+    if [[ -x "${BREW_PREFIX}/bin/vim" ]]; then
+      alias vim='${BREW_PREFIX}/bin/vim'
+      alias vi="${BREW_PREFIX}/bin/vim"
+      export EDITOR="${BREW_PREFIX}/bin/vim"
+      export VISUAL="${EDITOR}"
+    fi
+
     unset BREW_PREFIX
   fi
 fi
