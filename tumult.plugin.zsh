@@ -30,8 +30,6 @@ if [[ "$(uname -s)" = "Darwin" ]]; then
   alias flushdns="dscacheutil -flushcache"
   alias flushds="dscacheutil -flushcache"
   alias kickdns="dscacheutil -flushcache"
-  alias mywireless="system_profiler SPAirPortDataType | awk -F\": \" '/Current Wireless Network/{print $2}'"
-  alias open_dot='dot -Tpng | open -f -a preview'
   alias top='TERM=vt100 top'
   alias reveal='open --reveal'
 
@@ -49,6 +47,7 @@ if [[ "$(uname -s)" = "Darwin" ]]; then
   alias cleanxmlclip='clean-xml-clip'
   alias killScreenSaver='kill-screensaver'
   alias killSS='kill-screensaver'
+  alias mywireless="wifi-name"
 
   # Sublime
   if [[ -x /usr/local/bin/subl ]]; then
