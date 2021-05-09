@@ -146,10 +146,6 @@ if [[ "$(uname -s)" = "Darwin" ]]; then
     ioreg -n "AppleBluetoothHIDMouse" | grep -i "batterypercent" | sed 's/[^[:digit:]]//g'
   }
 
-  manp() {
-    man -t $* | ps2pdf - - | open -f -a Preview
-  }
-
   if has brew; then
     # homebrew alias setup
     BREW_PREFIX=$(brew --prefix)

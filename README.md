@@ -95,6 +95,7 @@ The Tumult collection is Apache 2.0 licensed. Some scripts in the `bin` director
 | `mac-safesleep` | Set a Mac to use safesleep mode when sleeping |
 | `mac-sleep` | Set a Mac to use the default sleep mode when sleeping |
 | `macos-frontmost-app` | Shows what application is Frontmost. |
+| `manpreview` | Renders a `man` page to PDF and opens it in Preview.app. |
 | `markdown-open` | Converts a markdown file to html and opens it in your browser |
 | `menubar-dark` | Set the menubar to be white text on black background |
 | `menubar-light` | Set the menubar to the default black text on white background style |
