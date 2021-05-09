@@ -19,10 +19,16 @@
 # without polluting your Linux environment with functions and files that
 # will fail.
 
+
 if [[ "$(uname -s)" = "Darwin" ]]; then
   # Add our plugin's bin diretory to user's path
   PLUGIN_BIN="$(dirname $0)/bin"
   export PATH=${PATH}:${PLUGIN_BIN}
+
+  # Check if a command exists
+  has() {
+    which "$@" > /dev/null 2>&1
+  }
 
   alias -g @NDL='~/Downloads/*(.om[1])'
 
@@ -30,8 +36,6 @@ if [[ "$(uname -s)" = "Darwin" ]]; then
   alias flushdns="dscacheutil -flushcache"
   alias flushds="dscacheutil -flushcache"
   alias kickdns="dscacheutil -flushcache"
-  alias mywireless="system_profiler SPAirPortDataType | awk -F\": \" '/Current Wireless Network/{print $2}'"
-  alias open_dot='dot -Tpng | open -f -a preview'
   alias top='TERM=vt100 top'
   alias reveal='open --reveal'
 
@@ -49,19 +53,17 @@ if [[ "$(uname -s)" = "Darwin" ]]; then
   alias cleanxmlclip='clean-xml-clip'
   alias killScreenSaver='kill-screensaver'
   alias killSS='kill-screensaver'
+  alias mywireless="wifi-name"
 
   # Sublime
   if [[ -x /usr/local/bin/subl ]]; then
     alias s='/usr/local/bin/subl'
   fi
 
-  # Hide/show all desktop icons for presenting
-  alias show-desktop-icons="defaults write com.apple.finder CreateDesktop -bool true && killall Finder"
-  alias hide-desktop-icons="defaults write com.apple.finder CreateDesktop -bool false && killall Finder"
-
   # sound
   alias stfu="osascript -e 'set volume output muted true'"
 
+  # Apple has some useful stuff in places outside $PATH, so add aliases.
   if [ -x '/System/Library/CoreServices/Applications/Network Utility.app/Contents/Resources/stroke' ]; then
     alias stroke='/System/Library/CoreServices/Applications/Network\ Utility.app/Contents/Resources/stroke'
   fi
@@ -89,21 +91,6 @@ if [[ "$(uname -s)" = "Darwin" ]]; then
     command -v shasum > /dev/null && \
     alias sha1sum=$(which shasum)
 
-  # Deal with staleness in macOS userland.
-  # Apple never seems to be very current with the versions of things in userland, so
-  # we're going to set up some aliases to force user-installed versions of programs to
-  # override the stale versions in /usr.
-
-  # MySQL
-  # Use homebrew versions if present
-  if [ -x /usr/local/bin/mysql/bin/mysql ]; then
-    alias mysql="/usr/local/mysql/bin/mysql"
-  fi
-
-  if [ -x /usr/local/bin/mysql/bin/mysqladmin ]; then
-    alias mysqladmin="/usr/local/mysql/bin/mysqladmin"
-  fi
-
   # Sue me, I like vim. Got tired of different *nix stuffing it in different
   # places, so go through the usual suspects and create an alias when we find
   # it.
@@ -127,7 +114,7 @@ if [[ "$(uname -s)" = "Darwin" ]]; then
     export EDITOR='/opt/local/bin/vim'
   fi
 
-  # Same for homebrew.
+  # If they put a vim build in /usr/local/bin, they want to use that.
   if [ -x /usr/local/bin/vim ]; then
     alias vim='/usr/local/bin/vim'
     alias vi="/usr/local/bin/vim"
@@ -145,24 +132,57 @@ if [[ "$(uname -s)" = "Darwin" ]]; then
     ioreg -n "AppleBluetoothHIDMouse" | grep -i "batterypercent" | sed 's/[^[:digit:]]//g'
   }
 
-  manp() {
-    man -t $* | ps2pdf - - | open -f -a Preview
-  }
+  # Deal with staleness in macOS userland.
+  # Apple never seems to be very current with the versions of things in userland, so
+  # we're going to set up some aliases to force user-installed versions of programs to
+  # override the stale versions in /usr.
 
-  # homebrew stuff
-  if [ -f /usr/local/Cellar/memcached/1.4.24/homebrew.mxcl.memcached.plist ]; then
-    alias memcached-load="launchctl load -w /usr/local/Cellar/memcached/1.4.24/homebrew.mxcl.memcached.plist"
-    alias memcached-unload="launchctl unload -w /usr/local/Cellar/memcached/1.4.24/homebrew.mxcl.memcached.plist"
+  # MySQL
+  # Use local versions if present
+  if [ -x /usr/local/bin/mysql/bin/mysql ]; then
+    alias mysql="/usr/local/mysql/bin/mysql"
   fi
 
-  if [ -f /usr/local/Cellar/mysql/5.7.17/homebrew.mxcl.mysql.plist ]; then
-    alias mysql-load="launchctl load -w /usr/local/Cellar/mysql/5.7.17/homebrew.mxcl.mysql.plist"
-    alias mysql-unload="launchctl unload -w /usr/local/Cellar/mysql/5.7.17/homebrew.mxcl.mysql.plist"
+  if [ -x /usr/local/bin/mysql/bin/mysqladmin ]; then
+    alias mysqladmin="/usr/local/mysql/bin/mysqladmin"
   fi
 
-  if [ -f /usr/local/Cellar/postgresql/9.6.2/homebrew.mxcl.postgresql.plist ]; then
-    alias postgres-load="launchctl load -w /usr/local/Cellar/postgresql/9.6.2/homebrew.mxcl.postgresql.plist"
-    alias postgres-unload="launchctl unload -w /usr/local/Cellar/postgresql/9.6.2/homebrew.mxcl.postgresql.plist"
-  fi
+  if has brew; then
+    # homebrew alias setup
+    BREW_PREFIX=$(brew --prefix)
 
+    # We prefer to use the brew installed versions of things when
+    # they're present
+    if [[ -x "$BREW_PREFIX/bin/memached"]]; then
+      alias memcached="${BREW_PREFIX}/bin/memcached"
+      alias memcached-load="brew services start memcached"
+      alias memcached-unload="brew services stop memcached"
+    fi
+
+    if [[ -x "$BREW_PREFIX/bin/mysqladmin"]]; then
+      alias mysqladmin="${BREW_PREFIX}/bin/mysqladmin"
+    fi
+
+    if [[ -x "$BREW_PREFIX/bin/mysql"]]; then
+      alias mysql="${BREW_PREFIX}/bin/mysql"
+      alias mysql-load="brew services start mysql"
+      alias mysql-unload="brew services stop mysql"
+    fi
+
+    if [[ -x "$BREW_PREFIX/bin/pg_ctl"]]; then
+      alias pg_ctl="${BREW_PREFIX}/bin/pg_ctl"
+      alias postgres-load="brew services start postgresql"
+      alias postgres-unload="brew services stop postgresql"
+    fi
+
+    # Use brew vim when present
+    if [[ -x "${BREW_PREFIX}/bin/vim" ]]; then
+      alias vim='${BREW_PREFIX}/bin/vim'
+      alias vi="${BREW_PREFIX}/bin/vim"
+      export EDITOR="${BREW_PREFIX}/bin/vim"
+      export VISUAL="${EDITOR}"
+    fi
+
+    unset BREW_PREFIX
+  fi
 fi

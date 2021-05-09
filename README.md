@@ -76,6 +76,7 @@ The Tumult collection is Apache 2.0 licensed. Some scripts in the `bin` director
 | `get-iterm2-buffer` | Gets the current iterm2 window's scrollback contents |
 | `get-wifi-password` | Helper script to print the password for the wifi network you're connected to. |
 | `google` | Does a google search from the command line |
+| `hide-desktop-icons` | Hide desktop icons in Finder to have a clean screen for presentations |
 | `hide-dotfiles` | Hide dotfiles in Finder windows to return to Apple default behavior |
 | `icon-view` | Set the current directory to icon view in the Finder |
 | `imgcat` | Display an image directly in your terminal. Only works with iTerm 2 |
@@ -83,7 +84,7 @@ The Tumult collection is Apache 2.0 licensed. Some scripts in the `bin` director
 | `itunesctl` | Play/Pause iTunes from terminal. |
 | `keychainctl` | CRUD for secrets in your macOS keychain - from AriaFallah's [gist](https://gist.github.com/AriaFallah/fe7b651ba2652bd301334e011749e4b2/)|
 | `kick-afp` | Restart file sharing from the CLI. I got tired of having to remote desktop in to kick the fileserver via the GUI every time Apple's file sharing got wedged, now it can be fixed over `ssh` |
-| `kick-screensharing` | Sometimes screen sharing just hangs on my Mini running 10.11. This is not new to 10.11, it was exhibiting the same annoying behavior on 10.10 and 10.9. The mini is headless and it's a pain in the ass to plug it into the TV just long enough to restart screen sharing, so I wrote this so I can fix it over ssh. |
+| `kick-screensharing` | Sometimes screen sharing just hangs on my Mini running 10.11. This is not new to 10.11, it was exhibiting the same annoying behavior on 10.10 and 10.9. The mini is headless and it's a pain in the ass to plug it into the TV just long enough to restart screen sharing, so I wrote this so I can fix it over an `ssh` connection. |
 | `kill-screensaver` | Kill the screensaver when it locks up |
 | `kill-sophos-dead` | From a slack, but won't name names lest their employer find out they kill sophos. Kill Sophos' useless scanner when it gobbles up all your CPU. People wouldn't hate antivirus software so much on macOS if it restricted itself to using one CPU core. |
 | `list-view` | Set the current directory to column view in the Finder |
@@ -94,6 +95,7 @@ The Tumult collection is Apache 2.0 licensed. Some scripts in the `bin` director
 | `mac-safesleep` | Set a Mac to use safesleep mode when sleeping |
 | `mac-sleep` | Set a Mac to use the default sleep mode when sleeping |
 | `macos-frontmost-app` | Shows what application is Frontmost. |
+| `manpreview` | Renders a `man` page to PDF and opens it in Preview.app. |
 | `markdown-open` | Converts a markdown file to html and opens it in your browser |
 | `menubar-dark` | Set the menubar to be white text on black background |
 | `menubar-light` | Set the menubar to the default black text on white background style |
@@ -112,6 +114,7 @@ The Tumult collection is Apache 2.0 licensed. Some scripts in the `bin` director
 | `screen-resolution` | Display the screen resolution |
 | `set-macos-hostname` | Set the macOS name of your machine. macOS may be UNIX-based, but the Apple eccentricities mean that no, `sudo hostname newname` isn't enough if you want the new name to be visible on the network for things like File and Screen sharing. |
 | `set-mojave-disk-warning-threshold` | Mojave now pops up a warning when you're running low on disk space. Unfortunately the threshold they pick triggers a warning every couple of minutes on my MacBook Air. This script lets you set a different number of free gigabytes to warn at. |
+| `show-desktop-icons` | Display desktop icons in Finder |
 | `show-dotfiles` | Display dotfiles in Finder windows |
 | `speedup-apple-mail` | Speeds up Mail.app by vaccuuming the indexes - Originally from [http://www.hawkwings.net/2007/03/03/scripts-to-automate-the-mailapp-envelope-speed-trick/](http://www.hawkwings.net/2007/03/03/scripts-to-automate-the-mailapp-envelope-speed-trick/) |
 | `time-machine-log-viewer` | Dump the Time Machine logs |

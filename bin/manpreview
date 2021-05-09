@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+#
+# Open a man page in Preview.app
+#
+# Copyright 2021, Joe Block <jpb@unixorn.net>
+
+set -o pipefail
+if [[ -n "$DEBUG" ]]; then
+  set -x
+fi
+
+fail() {
+  printf '%s\n' "$1" >&2  ## Send message to stderr. Exclude >&2 if you don't want it that way.
+  exit "${2-1}"  ## Return a code specified by $2 or 1 by default.
+}
+
+# Check if a command exists
+has() {
+  which "$@" > /dev/null 2>&1
+}
+
+if [[ "$(uname -s)" != 'Darwin' ]]; then
+  fail 'Sorry, this script only works on macOS'
+fi
+
+if has ps2pdf; then
+  # shellcheck disable=SC2068
+  man -t $@ | ps2pdf - - | open -f -a Preview
+else
+  # shellcheck disable=SC2016
+  fail 'No ps2pdf in your $PATH, failing.'
+fi
