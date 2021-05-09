@@ -19,10 +19,16 @@
 # without polluting your Linux environment with functions and files that
 # will fail.
 
+
 if [[ "$(uname -s)" = "Darwin" ]]; then
   # Add our plugin's bin diretory to user's path
   PLUGIN_BIN="$(dirname $0)/bin"
   export PATH=${PATH}:${PLUGIN_BIN}
+
+  # Check if a command exists
+  has() {
+    which "$@" > /dev/null 2>&1
+  }
 
   alias -g @NDL='~/Downloads/*(.om[1])'
 
@@ -144,20 +150,23 @@ if [[ "$(uname -s)" = "Darwin" ]]; then
     man -t $* | ps2pdf - - | open -f -a Preview
   }
 
-  # homebrew stuff
-  if [ -f /usr/local/Cellar/memcached/1.4.24/homebrew.mxcl.memcached.plist ]; then
-    alias memcached-load="launchctl load -w /usr/local/Cellar/memcached/1.4.24/homebrew.mxcl.memcached.plist"
-    alias memcached-unload="launchctl unload -w /usr/local/Cellar/memcached/1.4.24/homebrew.mxcl.memcached.plist"
-  fi
+  if has brew; then
+    # homebrew alias setup
+    BREW_PREFIX=$(brew --prefix)
+    if [[ -x "$BREW_PREFIX/bin/memached"]]; then
+      alias memcached-load="brew services start memcached"
+      alias memcached-unload="brew services stop memcached"
+    fi
 
-  if [ -f /usr/local/Cellar/mysql/5.7.17/homebrew.mxcl.mysql.plist ]; then
-    alias mysql-load="launchctl load -w /usr/local/Cellar/mysql/5.7.17/homebrew.mxcl.mysql.plist"
-    alias mysql-unload="launchctl unload -w /usr/local/Cellar/mysql/5.7.17/homebrew.mxcl.mysql.plist"
-  fi
+    if [[ -x "$BREW_PREFIX/bin/mysql"]]; then
+      alias mysql-load="brew services start mysql"
+      alias mysql-unload="brew services stop mysql"
+    fi
 
-  if [ -f /usr/local/Cellar/postgresql/9.6.2/homebrew.mxcl.postgresql.plist ]; then
-    alias postgres-load="launchctl load -w /usr/local/Cellar/postgresql/9.6.2/homebrew.mxcl.postgresql.plist"
-    alias postgres-unload="launchctl unload -w /usr/local/Cellar/postgresql/9.6.2/homebrew.mxcl.postgresql.plist"
+    if [[ -x "$BREW_PREFIX/bin/pg_ctl"]]; then
+      alias postgres-load="brew services start postgresql"
+      alias postgres-unload="brew services stop postgresql"
+    fi
+    unset BREW_PREFIX
   fi
-
 fi
