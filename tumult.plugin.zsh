@@ -54,10 +54,6 @@ if [[ "$(uname -s)" = "Darwin" ]]; then
     alias s='/usr/local/bin/subl'
   fi
 
-  # Hide/show all desktop icons for presenting
-  alias show-desktop-icons="defaults write com.apple.finder CreateDesktop -bool true && killall Finder"
-  alias hide-desktop-icons="defaults write com.apple.finder CreateDesktop -bool false && killall Finder"
-
   # sound
   alias stfu="osascript -e 'set volume output muted true'"
 
