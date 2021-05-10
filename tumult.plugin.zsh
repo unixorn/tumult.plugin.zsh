@@ -153,23 +153,23 @@ if [[ "$(uname -s)" = "Darwin" ]]; then
 
     # We prefer to use the brew installed versions of things when
     # they're present
-    if [[ -x "$BREW_PREFIX/bin/memached"]]; then
+    if [[ -x "$BREW_PREFIX/bin/memached" ]]; then
       alias memcached="${BREW_PREFIX}/bin/memcached"
       alias memcached-load="brew services start memcached"
       alias memcached-unload="brew services stop memcached"
     fi
 
-    if [[ -x "$BREW_PREFIX/bin/mysqladmin"]]; then
+    if [[ -x "$BREW_PREFIX/bin/mysqladmin" ]]; then
       alias mysqladmin="${BREW_PREFIX}/bin/mysqladmin"
     fi
 
-    if [[ -x "$BREW_PREFIX/bin/mysql"]]; then
+    if [[ -x "$BREW_PREFIX/bin/mysql" ]]; then
       alias mysql="${BREW_PREFIX}/bin/mysql"
       alias mysql-load="brew services start mysql"
       alias mysql-unload="brew services stop mysql"
     fi
 
-    if [[ -x "$BREW_PREFIX/bin/pg_ctl"]]; then
+    if [[ -x "$BREW_PREFIX/bin/pg_ctl" ]]; then
       alias pg_ctl="${BREW_PREFIX}/bin/pg_ctl"
       alias postgres-load="brew services start postgresql"
       alias postgres-unload="brew services stop postgresql"
