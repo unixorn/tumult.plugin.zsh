@@ -60,9 +60,6 @@ if [[ "$(uname -s)" = "Darwin" ]]; then
     alias s='/usr/local/bin/subl'
   fi
 
-  # sound
-  alias stfu="osascript -e 'set volume output muted true'"
-
   # Apple has some useful stuff in places outside $PATH, so add aliases.
   if [ -x '/System/Library/CoreServices/Applications/Network Utility.app/Contents/Resources/stroke' ]; then
     alias stroke='/System/Library/CoreServices/Applications/Network\ Utility.app/Contents/Resources/stroke'
