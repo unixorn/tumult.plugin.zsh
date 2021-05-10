@@ -101,6 +101,7 @@ The Tumult collection is Apache 2.0 licensed. Some scripts in the `bin` director
 | `menubar-light` | Set the menubar to the default black text on white background style |
 | `mkdmg` | Makes a .dmg file from a directory |
 | `mkicns` | Creates an .icns file from an image file |
+| `mute` | Mutes sound |
 | `naptime` | Put the machine to sleep |
 | `nitenite` | Make a Mac go to sleep |
 | `pbcurl` | `curl` the address in the clipboard. Originally from Ryan Tomayko's [dotfiles](https://github.com/rtomayko) |
@@ -117,11 +118,13 @@ The Tumult collection is Apache 2.0 licensed. Some scripts in the `bin` director
 | `show-desktop-icons` | Display desktop icons in Finder |
 | `show-dotfiles` | Display dotfiles in Finder windows |
 | `speedup-apple-mail` | Speeds up Mail.app by vaccuuming the indexes - Originally from [http://www.hawkwings.net/2007/03/03/scripts-to-automate-the-mailapp-envelope-speed-trick/](http://www.hawkwings.net/2007/03/03/scripts-to-automate-the-mailapp-envelope-speed-trick/) |
+| `stfu` | Mutes sound |
 | `time-machine-log-viewer` | Dump the Time Machine logs |
 | `time-machine-throttle` | Restore default Time Machine throttle setting |
 | `time-machine-unthrottle` | Disable throttling Time Machine backups - I am having issues with very slow Time Machine backups to an SMB share. No guarantees that this will not cause _other_ subtle issues. |
 | `toggle-finder-show-dotfiles` | Toggle whether Finder shows dotfiles |
 | `unfuck-captive-portal` | Cope when macOs fails to render the captive portal page for joining a WIFI network by directly opening Apple's captive portal detection page with Safari. |
+| `unmute` | Unmutes sound |
 | `unquarantine` | Unquarantine a file |
 | `volume` | Get/set the system volume |
 | `wifi-name` | Returns the name of the WIFI network you're connected to |
