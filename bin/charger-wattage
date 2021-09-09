@@ -37,5 +37,6 @@ fi
 if has pmset; then
   charger-wattage
 else
+  # shellcheck disable=SC2016
   fail 'Cannot find pmset in your $PATH'
 fi
