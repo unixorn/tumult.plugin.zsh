@@ -1,0 +1,64 @@
+#!/usr/bin/env bash
+#
+# Display a dialog and return the user's input
+#
+# Copyright 2021, Joe Block <jpb@unixorn.net>
+# License: Apache 2
+
+set -o pipefail
+if [[ -n "$DEBUG" ]]; then
+  set -x
+fi
+
+function debug() {
+  if [[ -n "$DEBUG" ]]; then
+    echo "$@"
+  fi
+}
+
+function fail() {
+  printf '%s\n' "$1" >&2  ## Send message to stderr. Exclude >&2 if you don't want it that way.
+  exit "${2-1}"  ## Return a code specified by $2 or 1 by default.
+}
+
+function has() {
+  # Check if a command is in $PATH
+  which "$@" > /dev/null 2>&1
+}
+
+check-deps() {
+  if [[ "$(uname -s)" != 'Darwin' ]]; then
+    echo 'Sorry, this script only works on macOS'
+    exit 1
+  fi
+
+  if ! has launchctl; then
+    fail "Can't find launchctl in your PATH"
+  fi
+  
+  if ! has osascript; then
+    fail "Can't find osascript in your PATH"
+  fi
+}
+
+ask-dialog() { # $1: message $2: default text
+	message=${1:-"Message"}
+	defaultvalue=${2:-"default value"}
+	user=$(consoleUser)
+  if [[ "$user" != "" ]]; then
+    uid=$(id -u "$user")
+	
+    launchctl asuser "$uid" /usr/bin/osascript <<-EndOfScript
+			text returned of ¬
+				(display dialog "$message" ¬
+					default answer "$defaultvalue" ¬
+					buttons {"OK"} ¬
+					default button "OK")
+			EndOfScript
+  else
+    exit 1
+  fi
+}
+
+check-deps
+ask-dialog "$@"
