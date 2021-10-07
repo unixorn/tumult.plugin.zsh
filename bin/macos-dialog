@@ -26,6 +26,10 @@ function has() {
   which "$@" > /dev/null 2>&1
 }
 
+consoleUser() {
+	echo "show State:/Users/ConsoleUser" | scutil | awk '/Name :/ && ! /loginwindow/ { print $3 }'
+}
+
 check-deps() {
   if [[ "$(uname -s)" != 'Darwin' ]]; then
     echo 'Sorry, this script only works on macOS'

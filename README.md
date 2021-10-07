@@ -91,11 +91,11 @@ The Tumult collection is Apache 2.0 licensed. Some scripts in the `bin` director
 | `list-view` | Set the current directory to column view in the Finder |
 | `lockscreen` | Lock the screen |
 | `mac-alert` | Display a GUI alert with `osascript` |
-| `mac-dialog` | Display a GUI dialog with `osascript` and return the user's input |
 | `mac-hibernate` | Set a Mac to use hibernate mode when sleeping |
 | `mac-notification` | Display a notification using the macOs notification manager with `osascript` |
 | `mac-safesleep` | Set a Mac to use safesleep mode when sleeping |
 | `mac-sleep` | Set a Mac to use the default sleep mode when sleeping |
+| `macos-dialog` | Display a GUI dialog with `osascript` and return the user's input |
 | `macos-frontmost-app` | Shows what application is Frontmost. |
 | `manpreview` | Renders a `man` page to PDF and opens it in Preview.app. |
 | `markdown-open` | Converts a markdown file to html and opens it in your browser |
