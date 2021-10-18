@@ -114,6 +114,7 @@ The Tumult collection is Apache 2.0 licensed. Some scripts in the `bin` director
 | `pledit` | Convert a plist to XML, run `${EDITOR}` on it, then convert it back. |
 | `pubkey` | Quick script to load an ssh public key onto your clipboard by name without you having to specify the full path to it. |
 | `quicklook` | Triggers quicklook on files so you can see what they are. |
+| `restart-audio` | This fixes the "no sound" issue that happens occasionally by restarting `coreaudiod` |
 | `safari` | Force opening an URL with Safari |
 | `screen-resolution` | Display the screen resolution |
 | `set-macos-hostname` | Set the macOS name of your machine. macOS may be UNIX-based, but the Apple eccentricities mean that no, `sudo hostname newname` isn't enough if you want the new name to be visible on the network for things like File and Screen sharing. |
