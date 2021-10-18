@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+#
+# Original source: https://github.com/caarlos0/dotfiles/blob/master/bin/restart-audio
+#
+# Kills coreaudiod on macOS.
+#
+# This fixes the "no sound" issue that happens occasionally.
+
+if [[ "$(uname -s)" != 'Darwin' ]]; then
+  echo 'Sorry, this script only works on macOS'
+  exit 1
+fi
+
+exec sudo pkill -9 -f coreaudio
