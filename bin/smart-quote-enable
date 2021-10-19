@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+#
+# Enable smart quotes
+#
+# Copyright 2021, Joe Block <jpb@unixorn.net>
+
+exec defaults write NSGlobalDomain NSAutomaticPeriodSubstitutionEnabled -bool true
+
