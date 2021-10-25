@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+#
+# Disable autocorrect
+#
+# Copyright 2021, Joe Block <jpb@unixorn.net>
+
+exec defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false

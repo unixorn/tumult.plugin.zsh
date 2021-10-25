@@ -41,6 +41,8 @@ The Tumult collection is Apache 2.0 licensed. Some scripts in the `bin` director
 | Script | Description |
 | ------ | ----------- |
 | `720p` | Resets an application's window to 720p (1280x720) for better screencasting. Doesn't work with apps that don't support window resizing in their AppleScript dictionary. Copied from Derrick Bailey's [blog](http://lostechies.com/derickbailey/2012/09/08/screencasting-tip-resize-your-app-to-720p-1280x720-in-osx/) |
+| `autocorrect-disable` | Disable macOS trying to autocorrect your typing. |
+| `autocorrect-enable` | Re-enable macOS trying to autocorrect your typing. |
 | `battery-percentage` | Show the percentage of battery charge |
 | `battery-prompt` | Prints battery status as a string suitable for embedding in a prompt. |
 | `battery-time` | Show the estimated battery life. |
