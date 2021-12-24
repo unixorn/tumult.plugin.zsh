@@ -174,7 +174,7 @@ if [[ "$(uname -s)" = "Darwin" ]]; then
 
     # Use brew vim when present
     if [[ -x "${BREW_PREFIX}/bin/vim" ]]; then
-      alias vim='${BREW_PREFIX}/bin/vim'
+      alias vim="${BREW_PREFIX}/bin/vim"
       alias vi="${BREW_PREFIX}/bin/vim"
       export EDITOR="${BREW_PREFIX}/bin/vim"
       export VISUAL="${EDITOR}"
