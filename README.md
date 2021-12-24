@@ -49,7 +49,7 @@ The Tumult collection is Apache 2.0 licensed. Some scripts in the `bin` director
 | `change-wallpaper` | If you have your desktop wallpaper set to rotate through a folder of images at intervals, this will force an immediate switch |
 | `charger-wattage` | Shows the wattage of your charger. Useful for detecting bad USB-C charge cables |
 | `chrome-tabs` | Outputs the URLs for all your open Chrome tabs so you can snapshot them |
-| `chrome` | Force opening an URL with Chrome |
+| `chrome` | Force opening a URL with Chrome |
 | `clean-clipboard` | Converts contents of clipboard to plain text. |
 | `clean-file-context-menu` | Zaps extra entries from the file context menu. |
 | `clean-xml-clip` | Clean up the XML on the clipboard |
@@ -71,14 +71,14 @@ The Tumult collection is Apache 2.0 licensed. Some scripts in the `bin` director
 | `enable-startup-chime` | Re-enable the boot chime |
 | `evernote` | Create a new Evernote note from stdin or a file |
 | `finder-path` | Show the path to the frontmost finder window |
-| `finder-selection` | Show the paths to all items selected in the Finder, quoted so it copes with spaces in your directory or file names |
-| `firefox` | Force opening an URL with Firefox |
+| `finder-selection` | Show the paths to all items selected in the Finder, quoted so it copes with spaces in your directory or filenames |
+| `firefox` | Force opening a URL with Firefox |
 | `fix-airplay` | Kick `coreaudiod` when AirPlay stops responding |
 | `focusmode-disable` | Turn off single-app mode |
 | `focusmode-enable` | Turn on single-app mode |
 | `get-iterm2-buffer` | Gets the current iterm2 window's scrollback contents |
-| `get-wifi-password` | Helper script to print the password for the wifi network you're connected to. |
-| `google` | Does a google search from the command line |
+| `get-wifi-password` | Helper script to print the password for the Wi-Fi network you're connected to. |
+| `google` | Does a google search from the command-line |
 | `hide-desktop-icons` | Hide desktop icons in Finder to have a clean screen for presentations |
 | `hide-dotfiles` | Hide dotfiles in Finder windows to return to Apple default behavior |
 | `icon-view` | Set the current directory to icon view in the Finder |
@@ -94,14 +94,14 @@ The Tumult collection is Apache 2.0 licensed. Some scripts in the `bin` director
 | `lockscreen` | Lock the screen |
 | `mac-alert` | Display a GUI alert with `osascript` |
 | `mac-hibernate` | Set a Mac to use hibernate mode when sleeping |
-| `mac-notification` | Display a notification using the macOs notification manager with `osascript` |
+| `mac-notification` | Display a notification using the macOS notification manager with `osascript` |
 | `mac-safesleep` | Set a Mac to use safesleep mode when sleeping |
 | `mac-sleep` | Set a Mac to use the default sleep mode when sleeping |
 | `macos-consoleuser` | Show user logged into the GUI |
 | `macos-dialog` | Display a GUI dialog with `osascript` and return the user's input |
 | `macos-frontmost-app` | Shows what application is Frontmost. |
 | `manpreview` | Renders a `man` page to PDF and opens it in Preview.app. |
-| `markdown-open` | Converts a markdown file to html and opens it in your browser |
+| `markdown-open` | Converts a Markdown file to HTML and opens it in your browser |
 | `menubar-dark` | Set the menubar to be white text on black background |
 | `menubar-light` | Set the menubar to the default black text on white background style |
 | `mkdmg` | Makes a .dmg file from a directory |
@@ -117,7 +117,7 @@ The Tumult collection is Apache 2.0 licensed. Some scripts in the `bin` director
 | `pubkey` | Quick script to load an ssh public key onto your clipboard by name without you having to specify the full path to it. |
 | `quicklook` | Triggers quicklook on files so you can see what they are. |
 | `restart-audio` | This fixes the "no sound" issue that happens occasionally by restarting `coreaudiod` |
-| `safari` | Force opening an URL with Safari |
+| `safari` | Force opening a URL with Safari |
 | `screen-resolution` | Display the screen resolution |
 | `set-macos-hostname` | Set the macOS name of your machine. macOS may be UNIX-based, but the Apple eccentricities mean that no, `sudo hostname newname` isn't enough if you want the new name to be visible on the network for things like File and Screen sharing. |
 | `set-mojave-disk-warning-threshold` | Mojave now pops up a warning when you're running low on disk space. Unfortunately the threshold they pick triggers a warning every couple of minutes on my MacBook Air. This script lets you set a different number of free gigabytes to warn at. |
@@ -131,19 +131,19 @@ The Tumult collection is Apache 2.0 licensed. Some scripts in the `bin` director
 | `time-machine-throttle` | Restore default Time Machine throttle setting |
 | `time-machine-unthrottle` | Disable throttling Time Machine backups - I am having issues with very slow Time Machine backups to an SMB share. No guarantees that this will not cause _other_ subtle issues. |
 | `toggle-finder-show-dotfiles` | Toggle whether Finder shows dotfiles |
-| `unfuck-captive-portal` | Cope when macOs fails to render the captive portal page for joining a WIFI network by directly opening Apple's captive portal detection page with Safari. |
+| `unfuck-captive-portal` | Cope when macOS fails to render the captive portal page for joining a Wi-Fi network by directly opening Apple's captive portal detection page with Safari. |
 | `unmute` | Unmutes sound |
 | `unquarantine` | Unquarantine a file |
 | `volume` | Get/set the system volume |
-| `wifi-name` | Returns the name of the WIFI network you're connected to |
-| `wifi` | Usage: `wifi on` or `wifi off` - toggles your wifi |
+| `wifi-name` | Returns the name of the Wi-Fi network you're connected to |
+| `wifi` | Usage: `wifi on` or `wifi off` - toggles your Wi-Fi power |
 
 ## Other Useful macOS tools
 
 - [apple-touchbar](https://github.com/zsh-users/zsh-apple-touchbar) - ZSH plugin that adds support for the MacBook Pro's touchbar to iTerm2.
-- [awesome-osx-command-line](https://github.com/herrbischoff/awesome-osx-command-line) documents many ways to manipulate macOS settings and applications from the command line.
+- [awesome-osx-command-line](https://github.com/herrbischoff/awesome-osx-command-line) documents many ways to manipulate macOS settings and applications from the command-line.
 - [bash-snippets](https://github.com/unixorn/Bash-Snippets) - `brew`-installable set of handy command-line tools.
-- [desktoppr](https://github.com/scriptingosx/desktoppr) - A command line tool which can read and set the desktop picture.
+- [desktoppr](https://github.com/scriptingosx/desktoppr) - A command-line tool which can read and set the desktop picture.
 - [Platypus](https://github.com/sveinbjornt/Platypus) - Allows you to wrap a script inside a Mac GUI wrapper.
 - [sekey](https://github.com/ntrippar/sekey) - Allows you to use Touch ID / Secure Enclave for SSH Authentication.
 
