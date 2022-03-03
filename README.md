@@ -53,7 +53,7 @@ The Tumult collection is Apache 2.0 licensed. Some scripts in the `bin` director
 | `clean-clipboard` | Converts contents of clipboard to plain text. |
 | `clean-file-context-menu` | Zaps extra entries from the file context menu. |
 | `clean-xml-clip` | Clean up the XML on the clipboard |
-| `clear-macos-font-cache` | Clears the macOS font cache, originally from [awesome-osx-command-line](https://github.com/herrbischoff/awesome-osx-command-line/blob/master/functions.md#app-icons) |
+| `clear-macos-font-cache` | Clears the macOS font cache, originally from [awesome-osx-command-line](https://git.herrbischoff.com/awesome-macos-command-line/about/#clear-font-cache-for-current-user) |
 | `column-view` | Set the current directory to column view in the Finder |
 | `diceware-password` | Generate a random but memorable passphrase using the Diceware Passphrase Algorithm. See [http://world.std.com/~reinhold/diceware.html](http://world.std.com/~reinhold/diceware.html) |
 | `disable-bouncing-dock-icons` | Disable icons bouncing in your Dock |
@@ -141,7 +141,7 @@ The Tumult collection is Apache 2.0 licensed. Some scripts in the `bin` director
 ## Other Useful macOS tools
 
 - [apple-touchbar](https://github.com/zsh-users/zsh-apple-touchbar) - ZSH plugin that adds support for the MacBook Pro's touchbar to iTerm2.
-- [awesome-osx-command-line](https://github.com/herrbischoff/awesome-osx-command-line) documents many ways to manipulate macOS settings and applications from the command-line.
+- [awesome-osx-command-line](https://git.herrbischoff.com/awesome-macos-command-line/about/) documents many ways to manipulate macOS settings and applications from the command-line.
 - [bash-snippets](https://github.com/unixorn/Bash-Snippets) - `brew`-installable set of handy command-line tools.
 - [desktoppr](https://github.com/scriptingosx/desktoppr) - A command-line tool which can read and set the desktop picture.
 - [Platypus](https://github.com/sveinbjornt/Platypus) - Allows you to wrap a script inside a Mac GUI wrapper.
