@@ -23,6 +23,7 @@
 <!--- If you're unsure about any of these, don't hesitate to ask. I'm happy to help! -->
 
 - [ ] All new and existing tests pass.
+- [ ] I have signed off my commits. You can use `git commit --amend --no-edit --signoff` to amend an existing commit, and you can find more details about signing off commits on the DCO GitHub action page [here](https://probot.github.io/apps/dco/)
 - [ ] Any scripts added use `#!/usr/bin/env interpreter` instead of direct paths (`#!/bin/sh` is an allowed exception)
 - [ ] Scripts are marked executable
 - [ ] I have added a credit line to README.md for the script
