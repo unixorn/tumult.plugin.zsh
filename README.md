@@ -3,7 +3,7 @@
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![Build Status](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2Funixorn%2Ftumult.plugin.zsh%2Fbadge%3Fref%3Dmain&style=plastic)](https://actions-badge.atrox.dev/unixorn/tumult.plugin.zsh/goto?ref=main)
 [![Code Climate](https://codeclimate.com/github/unixorn/tumult.plugin.zsh/badges/gpa.svg)](https://codeclimate.com/github/unixorn/tumult.plugin.zsh)
-[![GitHub stars](https://img.shields.io/github/stars/unixorn/bigriver-tools.svg)](https://github.com/unixorn/bigriver-tools/stargazers)
+[![GitHub stars](https://img.shields.io/github/stars/unixorn/tumult.plugin.zsh.svg)](https://github.com/unixorn/tumult.plugin.zsh/stargazers)
 [![Issue Count](https://codeclimate.com/github/unixorn/tumult.plugin.zsh/badges/issue_count.svg)](https://codeclimate.com/github/unixorn/tumult.plugin.zsh)
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
