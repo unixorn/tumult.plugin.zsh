@@ -119,6 +119,7 @@ The Tumult collection is Apache 2.0 licensed. Some scripts in the `bin` director
 | `restart-audio` | This fixes the "no sound" issue that happens occasionally by restarting `coreaudiod` |
 | `safari` | Force opening a URL with Safari |
 | `screen-resolution` | Display the screen resolution |
+| `set-cursor-size` | Set the macOS cursor's size |
 | `set-macos-hostname` | Set the macOS name of your machine. macOS may be UNIX-based, but the Apple eccentricities mean that no, `sudo hostname newname` isn't enough if you want the new name to be visible on the network for things like File and Screen sharing. |
 | `set-mojave-disk-warning-threshold` | Mojave now pops up a warning when you're running low on disk space. Unfortunately the threshold they pick triggers a warning every couple of minutes on my MacBook Air. This script lets you set a different number of free gigabytes to warn at. |
 | `show-desktop-icons` | Display desktop icons in Finder |
