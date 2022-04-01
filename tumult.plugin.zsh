@@ -1,4 +1,4 @@
-# Copyright 2015-2020 Joseph Block <jpb@unixorn.net>
+# Copyright 2015-2022 Joseph Block <jpb@unixorn.net>
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -54,11 +54,6 @@ if [[ "$(uname -s)" = "Darwin" ]]; then
   alias killScreenSaver='kill-screensaver'
   alias killSS='kill-screensaver'
   alias mywireless="wifi-name"
-
-  # Sublime
-  if [[ -x /usr/local/bin/subl ]]; then
-    alias s='/usr/local/bin/subl'
-  fi
 
   # Apple has some useful stuff in places outside $PATH, so add aliases.
   if [ -x '/System/Library/CoreServices/Applications/Network Utility.app/Contents/Resources/stroke' ]; then
