@@ -7,6 +7,7 @@ if [[ "$(uname -s)" != 'Darwin' ]]; then
   exit 1
 fi
 
+# shellcheck disable=SC2071
 if [[ $# > 0 ]]; then
   echo -n "$@" | pbcopy
 else

@@ -32,6 +32,7 @@ if [[ "$(uname -s)" != 'Darwin' ]]; then
 fi
 
 if [ $# != 2 ]; then
+  # shellcheck disable=SC2086
   echo "usage: $(basename $0) VolumeName SourceDirectory"
   exit 0
 fi

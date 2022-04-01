@@ -3,6 +3,7 @@
 #/ Usage: pbsed [<options>] <pattern>
 #/ Run sed(1) on the contents of the pboard and put the result back
 #/ on the pboard. All sed options and arguments are supported.
+# shellcheck disable=SC2002
 set -e
 
 if [[ "$(uname -s)" != 'Darwin' ]]; then
@@ -12,7 +13,7 @@ fi
 
 # print help/usage with no pattern/args
 test $# -eq 0 -o "$1" = "--help" && {
-  cat $0 | grep '^#/' | cut -c4-
+  cat "$0" | grep '^#/' | cut -c4-
   exit 0
 }
 

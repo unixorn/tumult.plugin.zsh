@@ -8,12 +8,13 @@ if [[ "$(uname -s)" != 'Darwin' ]]; then
   exit 1
 fi
 
+# shellcheck disable=SC2199
 if [[ -z "$@" ]]; then
   echo "Input file missing"
   exit 1
 else
   filename=${1%.*}
-  mkdir $filename.iconset
+  mkdir "$filename.iconset"
   sips -z 16 16   "$1" --out "$filename.iconset/icon_16x16.png"
   sips -z 32 32   "$1" --out "$filename.iconset/icon_16x16@2x.png"
   sips -z 32 32   "$1" --out "$filename.iconset/icon_32x32.png"
