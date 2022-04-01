@@ -8,8 +8,8 @@
 
 <!--- What types of changes does your submission introduce? Put an `x` in all the boxes that apply: -->
 
-- [ ] Add/update a helper script
-- [ ] A link to an external resource like a blog post or video
+- [ ] Adds/updates a helper script
+- [ ] Adds/updates a link to an external resource like a blog post or video
 - [ ] Text change (fix typos, update formatting)
 - [ ] Test changes
 
@@ -26,7 +26,7 @@
 - [ ] I have signed off my commits. You can use `git commit --amend --no-edit --signoff` to amend an existing commit, and you can find more details about signing off commits on the DCO GitHub action page [here](https://probot.github.io/apps/dco/)
 - [ ] Any scripts added use `#!/usr/bin/env interpreter` instead of direct paths (`#!/bin/sh` is an allowed exception)
 - [ ] Scripts are marked executable
-- [ ] I have added a credit line to README.md for the script
+- [ ] I have added/updated a credit line to README.md for any scripts added or updated in this PR
 - [ ] If there was no author credit in a script added in this PR, I have added one.
 - [ ] I have confirmed that the link(s) in my PR are valid.
 - [ ] I have read the **CONTRIBUTING** document.
