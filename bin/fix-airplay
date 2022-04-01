@@ -16,4 +16,5 @@ if [[ "$(whoami)" != 'root' ]]; then
   exit 1
 fi
 
-kill $(ps -ax | grep '/usr/sbin/coreaudiod' | awk '{print $1}')
+# shellcheck disable=SC2009
+exec kill "$(ps -ax | grep '/usr/sbin/coreaudiod' | awk '{print $1}')"

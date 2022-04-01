@@ -19,5 +19,5 @@ elif [ "$sshStatus" == "Off" ]; then
   systemsetup -f -setremotelogin on
   printf "%s" "Enabled SSH!"
 else
-  printf "Error, SSH Status was: $sshStatus"
+  printf "Error, SSH Status was: %s" "$sshStatus"
 fi

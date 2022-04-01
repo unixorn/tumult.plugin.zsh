@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 #
 # Based on http://www.zdziarski.com/blog/?p=2738
 
@@ -8,32 +8,36 @@ if [[ "$(uname -s)" != 'Darwin' ]]; then
 fi
 
 INTERFACE=en0
+# shellcheck disable=SC2086
 PLUGIN_LIB="$(dirname $0)/../lib"
 
 OUI="${PLUGIN_LIB}/oui.txt"
-OUI_LEN=$(wc -l ${OUI} | awk '{print $1;}')
-if [ ! -f ${OUI} ]; then
+OUI_LEN=$(wc -l "${OUI}" | awk '{print $1;}')
+if [ ! -f "${OUI}" ]; then
     echo "WTF: ${OUI}"
 fi
 
-while [ true ]; do
-    STATUS=`ifconfig ${INTERFACE} | grep status: | awk '{print $2}'`
+while true; do
+    STATUS=$(ifconfig ${INTERFACE} | grep status: | awk '{print $2}')
     echo "STATUS: $STATUS"
     if [ "$STATUS" = "inactive" ]; then
+        # shellcheck disable=SC2004
         R=$(((RANDOM % ${OUI_LEN})+1))
-        PREFIX=`head -$R $OUI | tail -1`
+        # shellcheck disable=SC2086
+        PREFIX="$(head -$R $OUI | tail -1)"
         echo "PREFIX: ${PREFIX}"
         CMD="sudo ifconfig ${INTERFACE} ether ${PREFIX}:"
-        for i in `seq 1 6`; do
+        for i in $(seq 1 6); do
             R=$(((RANDOM % 15)+1))
-            C=`echo "obase=16; $R" | bc`
+            C=$(echo "obase=16; $R" | bc)
             CMD="$CMD$C"
-            if [ $((i % 2)) = 0 ] && [ $i != 6 ]; then
+            if [ $((i % 2)) = 0 ] && [ "$i" != 6 ]; then
                 CMD="$CMD:"
             fi
         done
-        RESULT=`$CMD`
+        RESULT=$($CMD)
         echo "cmd: $CMD"
+        echo "result: $RESULT"
     fi
     sleep 30
 done
