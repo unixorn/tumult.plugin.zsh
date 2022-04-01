@@ -16,7 +16,7 @@ function fail() {
   exit "${2-1}"  ## Return exit code $2 or 1 if unset.
 }
 
-if [[ "$(uname -s)" = "Darwin" ]]; then
+if [[ "$(uname -s)" != "Darwin" ]]; then
   fail "Sorry, this script only supports macOS."
 fi
 
