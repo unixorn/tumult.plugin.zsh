@@ -91,7 +91,7 @@ The Tumult collection is Apache 2.0 licensed. Some scripts in the `bin` director
 | `kill-screensaver` | Kill the screensaver when it locks up |
 | `kill-sophos-dead` | From a slack, but won't name names lest their employer find out they kill sophos. Kill Sophos' useless scanner when it gobbles up all your CPU. People wouldn't hate antivirus software so much on macOS if it restricted itself to using one CPU core. |
 | `list-view` | Set the current directory to column view in the Finder |
-| `lockscreen` | Lock the screen |
+| `lockscreen` | Start the screen saver - this only locks if your System Preferences have been set to lock the screensaver |
 | `mac-alert` | Display a GUI alert with `osascript` |
 | `mac-hibernate` | Set a Mac to use hibernate mode when sleeping |
 | `mac-notification` | Display a notification using the macOS notification manager with `osascript` |

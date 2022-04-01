@@ -1,8 +1,40 @@
 #!/usr/bin/env bash
 
-if [ "$(uname -a | grep -ci DARWIN)" -eq 1 ]; then
-  exec /System/Library/CoreServices/"Menu Extras"/User.menu/Contents/Resources/CGSession -suspend
+set -o pipefail
+if [[ -n "$DEBUG" ]]; then
+  set -x
+fi
+
+function debug() {
+  if [[ -n "$DEBUG" ]]; then
+    echo "$@"
+  fi
+}
+
+function fail() {
+  printf '%s\\n' "$1" >&2  ## Send message to stderr. Exclude >&2 if you don't want it that way.
+  exit "${2-1}"  ## Return exit code $2 or 1 if unset.
+}
+
+if [[ "$(uname -s)" = "Darwin" ]]; then
+  fail "Sorry, this script only supports macOS."
+fi
+
+CORE_ENGINE='/System/Library/CoreServices/ScreenSaverEngine.app'
+FRAME_ENGINE='/System/Library/Frameworks/ScreenSaver.framework/Versions/A/Resources/ScreenSaverEngine.app'
+SCREENSAVER_ENGINE="xyzzy$$"
+
+if [[ -x "$FRAME_ENGINE" ]]; then
+  SCREENSAVER_ENGINE="$FRAME_ENGINE"
+fi
+if [[ -x "$CORE_ENGINE" ]]; then
+  SCREENSAVER_ENGINE="$CORE_ENGINE"
+fi
+
+if [[ -x "$SCREENSAVER_ENGINE" ]]; then
+  open "$SCREENSAVER_ENGINE"
 else
-  echo "This only works on macOS, sorry"
-  exit 1
+  # We can't find the screensaver app, resort to Applescript, though it could break in future revs of macOS
+  debug "Can't find ScreenSaverEngine.app, resorting to Applescript"
+  exec osascript -e 'tell application \"System Events\" to keystroke \"q\" using {command down,control down}'
 fi
