@@ -1,5 +1,5 @@
 #!/bin/bash
-# Copyright 2015 Joseph Block <jpb@apesseekingknowledge.net>
+# Copyright 2015,2022 Joseph Block <jpb@apesseekingknowledge.net>
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -19,4 +19,4 @@ if [[ "$(uname -s)" != 'Darwin' ]]; then
 fi
 
 # Print system's estimate of battery time remaining
-pmset -g batt | egrep "([0-9]+\%).*" -o --colour=auto | cut -f3 -d';'
+pmset -g batt | grep -E "([0-9]+\%).*" -o --colour=auto | cut -f3 -d';'
