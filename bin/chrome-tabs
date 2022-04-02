@@ -12,6 +12,7 @@ ts () {
 }
 
 chrome_tabs () {
+  # shellcheck disable=SC2046
   for win in $(seq 0 $(osascript -e 'tell application "Chrome" to get count every window'))
   do
     for tab in $(seq 0 $(osascript -e "tell application \"Chrome\" to get count every tab of window ${win}"))

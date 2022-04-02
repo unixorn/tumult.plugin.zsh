@@ -1,8 +1,11 @@
 #!/bin/bash
-# https://github.com/rtomayko/dotfiles
+#
+#/ Original source: https://github.com/rtomayko/dotfiles
+#
 #/ Usage: pbsed [<options>] <pattern>
 #/ Run sed(1) on the contents of the pboard and put the result back
 #/ on the pboard. All sed options and arguments are supported.
+# shellcheck disable=SC2002
 set -e
 
 if [[ "$(uname -s)" != 'Darwin' ]]; then
@@ -12,7 +15,7 @@ fi
 
 # print help/usage with no pattern/args
 test $# -eq 0 -o "$1" = "--help" && {
-  cat $0 | grep '^#/' | cut -c4-
+  grep '^#/' < "$0" | cut -c4-
   exit 0
 }
 
