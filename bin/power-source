@@ -1,0 +1,82 @@
+#!/usr/bin/env bash
+#
+# Copyright 2022, Joe Block <jpb@unixorn.net>
+#
+# Show whether we're on battery or wall power
+
+set -o pipefail
+if [[ -n "$DEBUG" ]]; then
+  set -x
+fi
+
+function debug() {
+  if [[ -n "$DEBUG" ]]; then
+    echo "$@"
+  fi
+}
+
+function fail() {
+  printf '%s\\n' "$1" >&2  ## Send message to stderr. Exclude >&2 if you don't want it that way.
+  exit "${2-1}"  ## Return a code specified by $2 or 1 by default.
+}
+
+function has() {
+  # Check if a command is in $PATH
+  which "$@" > /dev/null 2>&1
+}
+
+function charge-percentage() {
+  pmset -g batt | awk '/%/ {print $3}' | sed 's/;//g'
+}
+
+function power-state() {
+  # shellcheck disable=SC2143
+  if [[ "$(ioreg -c AppleSmartBattery | grep '"ExternalConnected" = Yes')" ]]; then
+    echo "Charger"
+  else
+    echo "Battery"
+  fi
+}
+
+function json_output() {
+  cat<<END_JSON
+{
+  "power": "$(power-state)",
+  "charge": "$(charge-percentage)"
+}
+END_JSON
+}
+
+function emoji_output() {
+  if [[ $(pmset -g ac) == *"No adapter attached."* ]]
+  then
+    echo "$BATTERY_ICON"
+  else
+    echo "$CHARGER_ICON"
+  fi
+}
+
+if [[ "$(uname -s)" != "Darwin" ]]; then
+  fail "Not on macOS"
+fi
+
+if ! has ioreg; then
+  fail "Could not find ioreg in your PATH"
+fi
+
+# Make the emoji easy to override
+BATTERY_ICON=${BATTERY_ICON:-"🔋"}
+CHARGER_ICON=${CHARGER_ICON:-"🔌"}
+
+case "$1" in
+  '--json')
+    json_output
+    ;;
+  '--emoji')
+    emoji_output
+    ;;
+  *)
+    echo "power: $(power-state)"
+    echo "charge: $(charge-percentage)"
+    ;;
+esac
