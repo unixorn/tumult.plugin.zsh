@@ -29,27 +29,20 @@ function charge-percentage() {
   pmset -g batt | awk '/%/ {print $3}' | sed 's/;//g'
 }
 
-if [[ "$(uname -s)" != "Darwin" ]]; then
-  fail "Not on macOS"
-fi
-
-# shellcheck disable=SC2143
-if [[ "$(ioreg -c AppleSmartBattery | grep '"ExternalConnected" = Yes')" ]]; then
-  power="Charger"
-else
-  power="Battery"
-fi
-
-if ! has ioreg; then
-  fail "Could not find ioreg in your PATH"
-fi
+function power-state() {
+  # shellcheck disable=SC2143
+  if [[ "$(ioreg -c AppleSmartBattery | grep '"ExternalConnected" = Yes')" ]]; then
+    echo "Charger"
+  else
+    echo "Battery"
+  fi
+}
 
 function json_output() {
-  charge=$(charge-percentage)
   cat<<END_JSON
 {
-  "power": "$power",
-  "charge": "$charge"
+  "power": "$(power-state)",
+  "charge": "$(charge-percentage)"
 }
 END_JSON
 }
@@ -57,12 +50,23 @@ END_JSON
 function emoji_output() {
   if [[ $(pmset -g ac) == *"No adapter attached."* ]]
   then
-    echo '🔋'
+    echo "$BATTERY_ICON"
   else
-    echo '🔌'
+    echo "$CHARGER_ICON"
   fi
-
 }
+
+if [[ "$(uname -s)" != "Darwin" ]]; then
+  fail "Not on macOS"
+fi
+
+if ! has ioreg; then
+  fail "Could not find ioreg in your PATH"
+fi
+
+# Make the emoji easy to override
+BATTERY_ICON=${BATTERY_ICON:-"🔋"}
+CHARGER_ICON=${CHARGER_ICON:-"🔌"}
 
 case "$1" in
   '--json')
@@ -72,7 +76,7 @@ case "$1" in
     emoji_output
     ;;
   *)
-    echo "power: $power"
+    echo "power: $(power-state)"
     echo "charge: $(charge-percentage)"
     ;;
 esac
