@@ -1,0 +1,78 @@
+#!/usr/bin/env bash
+#
+# Copyright 2022, Joe Block <jpb@unixorn.net>
+#
+# Show whether we're on battery or wall power
+
+set -o pipefail
+if [[ -n "$DEBUG" ]]; then
+  set -x
+fi
+
+function debug() {
+  if [[ -n "$DEBUG" ]]; then
+    echo "$@"
+  fi
+}
+
+function fail() {
+  printf '%s\\n' "$1" >&2  ## Send message to stderr. Exclude >&2 if you don't want it that way.
+  exit "${2-1}"  ## Return a code specified by $2 or 1 by default.
+}
+
+function has() {
+  # Check if a command is in $PATH
+  which "$@" > /dev/null 2>&1
+}
+
+function charge-percentage() {
+  pmset -g batt | awk '/%/ {print $3}' | sed 's/;//g'
+}
+
+if [[ "$(uname -s)" != "Darwin" ]]; then
+  fail "Not on macOS"
+fi
+
+# shellcheck disable=SC2143
+if [[ "$(ioreg -c AppleSmartBattery | grep '"ExternalConnected" = Yes')" ]]; then
+  power="Charger"
+else
+  power="Battery"
+fi
+
+if ! has ioreg; then
+  fail "Could not find ioreg in your PATH"
+fi
+
+function json_output() {
+  charge=$(charge-percentage)
+  cat<<END_JSON
+{
+  "power": "$power",
+  "charge": "$charge"
+}
+END_JSON
+}
+
+function emoji_output() {
+  if [[ $(pmset -g ac) == *"No adapter attached."* ]]
+  then
+    echo '🔋'
+  else
+    echo '🔌'
+  fi
+
+}
+
+case "$1" in
+  '--json')
+    json_output
+    ;;
+  '--emoji')
+    emoji_output
+    ;;
+  *)
+    echo "power: $power"
+    echo "charge: $(charge-percentage)"
+    ;;
+esac
