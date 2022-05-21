@@ -109,6 +109,7 @@ The Tumult collection is Apache 2.0 licensed. Some scripts in the `bin` director
 | `mute` | Mutes sound |
 | `naptime` | Put the machine to sleep |
 | `nitenite` | Make a Mac go to sleep |
+| `pbclean-ansi` | Clean ansi codes out of the clipboard |
 | `pbcurl` | `curl` the address in the clipboard. Originally from Ryan Tomayko's [dotfiles](https://github.com/rtomayko) |
 | `pbindent` | Indent the contents of the clipboard 4 spaces. With -o, write result to standard output instead of to the clipboard. Originally from Ryan Tomayko's [dotfiles](https://github.com/rtomayko) |
 | `pbsed` | Run `sed`(1) on the contents of the clipboard and put the result back on the clipboard. All `sed` options and arguments are supported. Originally from Ryan Tomayko's [dotfiles](https://github.com/rtomayko) |

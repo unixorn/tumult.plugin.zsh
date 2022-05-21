@@ -7,6 +7,7 @@
 #/ on the pboard. All sed options and arguments are supported.
 # shellcheck disable=SC2002
 set -e
+set -o pipefail
 
 if [[ "$(uname -s)" != 'Darwin' ]]; then
   echo 'Sorry, this script only works on macOS'
@@ -21,3 +22,4 @@ test $# -eq 0 -o "$1" = "--help" && {
 
 # pipe pboard through sed and then back again
 pbpaste | sed "$@" | pbcopy
+exit $?

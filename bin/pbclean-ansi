@@ -1,8 +1,5 @@
 #!/bin/bash
 #
-# Copyright 2022 Joe Block <jpb@unixorn.net>
-# License: Apache 2
-
 set -o pipefail
 
 if [[ "$(uname -s)" != 'Darwin' ]]; then
@@ -10,5 +7,5 @@ if [[ "$(uname -s)" != 'Darwin' ]]; then
   exit 1
 fi
 
-pbpaste | perl -pe 's/\r\n|\r/\n/g' | pbcopy
+pbpaste | perl -pe 's/\e\[[0-9;]*m(?:\e\[K)?//g' | pbcopy
 exit $?
