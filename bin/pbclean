@@ -1,5 +1,9 @@
 #!/bin/bash
 #
+# Copyright 2022 Joe Block <jpb@unixorn.net>
+# License: Apache 2
+
+set -o pipefail
 
 if [[ "$(uname -s)" != 'Darwin' ]]; then
   echo 'Sorry, this script only works on macOS'
@@ -7,3 +11,4 @@ if [[ "$(uname -s)" != 'Darwin' ]]; then
 fi
 
 pbpaste | perl -pe 's/\r\n|\r/\n/g' | pbcopy
+exit $?
