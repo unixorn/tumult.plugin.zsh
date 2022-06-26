@@ -1,5 +1,8 @@
 #!/bin/bash
 #
+# Copyright 2022 Joe Block <jpb@unixorn.net>
+# License: Apache 2
+
 set -o pipefail
 
 if [[ "$(uname -s)" != 'Darwin' ]]; then
