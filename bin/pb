@@ -1,0 +1,9 @@
+#!/usr/bin/env python3
+#
+# Author: Joe Block <jpb@unixorn.net>
+# License: Apache 2.0
+
+from gitlike_commands import subcommand_driver
+
+if __name__ == '__main__':
+    subcommand_driver()
