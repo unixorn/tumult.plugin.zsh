@@ -78,6 +78,10 @@ if [[ "$(uname -s)" = "Darwin" ]]; then
     alias airport='/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport'
   fi
 
+  if has FileMerge; then
+    alias filemerge='open -a FileMerge'
+  fi
+
   if [[ ! -f /var/db/locate.database ]]; then
     if [[ has launchctl ]]; then
       if [[ -f /System/Library/LaunchDaemons/com.apple.locate.plist ]]; then
