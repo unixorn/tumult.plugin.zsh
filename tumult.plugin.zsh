@@ -78,6 +78,20 @@ if [[ "$(uname -s)" = "Darwin" ]]; then
     alias airport='/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport'
   fi
 
+  if [[ ! -f /var/db/locate.database ]]; then
+    if [[ has launchctl ]]; then
+      if [[ -f /System/Library/LaunchDaemons/com.apple.locate.plist ]]; then
+        alias updatedb='sudo launchctl load -w /System/Library/LaunchDaemons/com.apple.locate.plist'
+      fi
+    else
+      alias updatedb='sudo updatedb'
+    fi
+  else
+    if [[ -x /usr/libexec/locate.updatedb ]]; then
+      alias updatedb='sudo /usr/libexec/locate.updatedb'
+    fi
+  fi
+
   # Deal with some things macOS userland is missing
 
   # Canonical hex dump; some systems have this symlinked
