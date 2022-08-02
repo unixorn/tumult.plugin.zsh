@@ -30,6 +30,20 @@ if [[ "$(uname -s)" = "Darwin" ]]; then
     which "$@" > /dev/null 2>&1
   }
 
+  if has brew; then
+      if has groovy; then
+          export GROOVY_HOME="$(brew --prefix groovy)/libexec"
+      fi
+
+      if has go; then
+          path=($path "$(brew --prefix go)/bin")
+      fi
+
+      if has npm; then
+          path=($path /usr/local/share/npm/bin)
+      fi
+  fi
+
   alias -g @NDL='~/Downloads/*(.om[1])'
 
   alias eject="diskutil eject"
