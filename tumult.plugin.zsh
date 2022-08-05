@@ -83,7 +83,7 @@ if [[ "$(uname -s)" = "Darwin" ]]; then
   fi
 
   if [[ ! -f /var/db/locate.database ]]; then
-    if [[ has launchctl ]]; then
+    if has launchctl; then
       if [[ -f /System/Library/LaunchDaemons/com.apple.locate.plist ]]; then
         alias updatedb='sudo launchctl load -w /System/Library/LaunchDaemons/com.apple.locate.plist'
       fi
