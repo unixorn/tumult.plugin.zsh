@@ -1,0 +1,99 @@
+#!/usr/bin/env bash
+#
+# screencap-stream
+#
+# Captures a stream of PNGs to a directory. If we find ffmpeg, we then render them to .mp4
+#
+# Copyright 2022, Joe Block <jpb@unixorn.net>
+
+set -o pipefail
+if [[ -n "$DEBUG_RAW_COMMANDS" ]]; then
+  set -x
+fi
+
+function debug() {
+  if [[ -n "$DEBUG" ]]; then
+    echo "$@"
+  fi
+}
+
+function fail() {
+  printf '%s\n' "$1" >&2  ## Send message to stderr. Exclude >&2 if you don't want it that way.
+  exit "${2-1}"  ## Return a code specified by $2 or 1 by default.
+}
+
+function has() {
+  # Check if a command is in $PATH
+  which "$@" > /dev/null 2>&1
+}
+
+# on_exit and add_on_exit from http://www.linuxjournal.com/content/use-bash-trap-statement-cleanup-temporary-files
+
+# Usage:
+#   add_on_exit rm -f /tmp/foo
+#   add_on_exit echo "I am exiting"
+#   tempfile=$(mktemp)
+#   add_on_exit rm -f "$tempfile"
+
+function on_exit()
+{
+    for i in "${on_exit_items[@]}"
+    do
+        eval "$i"
+    done
+}
+
+function add_on_exit()
+{
+    local n=${#on_exit_items[*]}
+    on_exit_items[$n]="$*"
+    if [[ $n -eq 0 ]]; then
+        trap on_exit EXIT
+    fi
+}
+
+function makemovie()
+{
+  echo "Creating movie from frames in $target_d"
+  echo "You set the interval between frame captures to $interval, setting movie rate to ${hertz}hz"
+  cd "$target_d" || fail "Couldn't change to $target_d"
+  ffmpeg -pattern_type glob -framerate "$hertz" \
+    -i "*.png" \
+    -c:v libx264 \
+    -r 30 \
+    -pix_fmt yuv420p \
+    -movflags +faststart \
+    screencap.mp4
+}
+
+if has ffmpeg; then
+  echo "Found ffmpeg, will make a movie after screen frames are captured."
+  add_on_exit makemovie
+fi
+
+if ! has screencapture; then
+  fail "Cannot find 'screencapture' in your PATH."
+fi
+
+if [[ $# -ne 2 ]];then
+  fail "You must specify a directory to store the screencaps in and the interval between captures"
+fi
+
+target_d="$1"
+interval="$2"
+raw="scale=0; 1 / $interval / 4" # Was too fast until I halved the speed as a fudge factor
+hertz=$(bc <<< "$raw")
+
+debug "target_d: $target_d"
+debug "interval: $interval"
+debug "hertz: $hertz"
+
+if [[ ! -d "$target_d" ]]; then
+  fail "$target_d is not a directory"
+fi
+
+while :; do
+  echo "📸 $(date +%H:%M:%S)"
+  screencapture -x "$target_d/$(date +%s).png"
+  sleep "$interval"
+done
