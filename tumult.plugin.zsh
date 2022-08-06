@@ -21,7 +21,7 @@
 
 
 if [[ "$(uname -s)" = "Darwin" ]]; then
-  # Add our plugin's bin diretory to user's path
+  # Add our plugin's bin directory to user's path
   PLUGIN_BIN="$(dirname $0)/bin"
   export PATH=${PATH}:${PLUGIN_BIN}
 
@@ -61,7 +61,7 @@ if [[ "$(uname -s)" = "Darwin" ]]; then
   alias gpaste="pbpaste | perl -pe 's/\r\n|\r/\n/g'"
 
   # Add DS_Store to files ignored during completion
-  fignore=(DS_Store $fignore)
+  fignore=(DS_Store "${fignore}")
 
   # Aliases for things renamed as they were extracted into scripts
   alias cleanxmlclip='clean-xml-clip'
@@ -115,37 +115,40 @@ if [[ "$(uname -s)" = "Darwin" ]]; then
     command -v shasum > /dev/null && \
     alias sha1sum=$(which shasum)
 
-  # Sue me, I like vim. Got tired of different *nix stuffing it in different
-  # places, so go through the usual suspects and create an alias when we find
-  # it.
-  if [ -x /bin/vim ]; then
-    alias vi="/bin/vim"
-    alias vim="/bin/vim"
-    export EDITOR='/bin/vim'
-  fi
+  if [[ -z "$EDITOR" ]]; then
+    # Sue me, I like vim. Got tired of different *nix stuffing it in different
+    # places, so go through the usual suspects and create an alias when we find
+    # it.
+    if [ -x /bin/vim ]; then
+      alias vi="/bin/vim"
+      alias vim="/bin/vim"
+      export EDITOR='/bin/vim'
+    fi
 
-  if [ -x /usr/bin/vim ]; then
-    alias vi="/usr/bin/vim"
-    alias vim="/usr/bin/vim"
-    export EDITOR='/usr/bin/vim'
-  fi
+    if [ -x /usr/bin/vim ]; then
+      alias vi="/usr/bin/vim"
+      alias vim="/usr/bin/vim"
+      export EDITOR='/usr/bin/vim'
+    fi
 
-  # If they installed with macports, it is definitely more current than the stock
-  # Apple vim
-  if [ -x /opt/local/bin/vim ]; then
-    alias vim='/opt/local/bin/vim'
-    alias vi="/opt/local/bin/vim"
-    export EDITOR='/opt/local/bin/vim'
-  fi
+    # If they installed with macports, it is definitely more current than the stock
+    # Apple vim
+    if [ -x /opt/local/bin/vim ]; then
+      alias vim='/opt/local/bin/vim'
+      alias vi="/opt/local/bin/vim"
+      export EDITOR='/opt/local/bin/vim'
+    fi
 
-  # If they put a vim build in /usr/local/bin, they want to use that.
-  if [ -x /usr/local/bin/vim ]; then
-    alias vim='/usr/local/bin/vim'
-    alias vi="/usr/local/bin/vim"
-    export EDITOR="/usr/local/bin/vim"
+    # If they put a vim build in /usr/local/bin, they want to use that.
+    if [ -x /usr/local/bin/vim ]; then
+      alias vim='/usr/local/bin/vim'
+      alias vi="/usr/local/bin/vim"
+      export EDITOR="/usr/local/bin/vim"
+    fi
   fi
-
-  export VISUAL=${EDITOR}
+  if [[ -z "$VISUAL" ]]; then
+    export VISUAL=${EDITOR}
+  fi
 
   # Old-school OS9 and early Mac text files had a different line ending than
   # *nix, deal with converting back and forth.
@@ -199,12 +202,16 @@ if [[ "$(uname -s)" = "Darwin" ]]; then
       alias postgres-unload="brew services stop postgresql"
     fi
 
-    # Use brew vim when present
-    if [[ -x "${BREW_PREFIX}/bin/vim" ]]; then
-      alias vim="${BREW_PREFIX}/bin/vim"
-      alias vi="${BREW_PREFIX}/bin/vim"
-      export EDITOR="${BREW_PREFIX}/bin/vim"
-      export VISUAL="${EDITOR}"
+    # Use brew vim when present since it gets updated more frequently
+    if [[ -z "$EDITOR" ]]; then
+      if [[ -x "${BREW_PREFIX}/bin/vim" ]]; then
+        alias vim="${BREW_PREFIX}/bin/vim"
+        alias vi="${BREW_PREFIX}/bin/vim"
+        export EDITOR="${BREW_PREFIX}/bin/vim"
+        if [[ -z "$VISUAL" ]]; then
+          export VISUAL="${EDITOR}"
+        fi
+      fi
     fi
 
     unset BREW_PREFIX
