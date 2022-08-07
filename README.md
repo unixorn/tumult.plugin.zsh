@@ -81,6 +81,7 @@ The Tumult collection is Apache 2.0 licensed. Some scripts in the `bin` director
 | `google` | Does a google search from the command-line |
 | `hide-desktop-icons` | Hide desktop icons in Finder to have a clean screen for presentations |
 | `hide-dotfiles` | Hide dotfiles in Finder windows to return to Apple default behavior |
+| `hide-file` | Use `chflags` to mark a file as hidden |
 | `icon-view` | Set the current directory to icon view in the Finder |
 | `imgcat` | Display an image directly in your terminal. Only works with iTerm 2 |
 | `iterm` | Open a new `iTerm 2` session with the argument given |
@@ -136,6 +137,7 @@ The Tumult collection is Apache 2.0 licensed. Some scripts in the `bin` director
 | `time-machine-unthrottle` | Disable throttling Time Machine backups - I am having issues with very slow Time Machine backups to an SMB share. No guarantees that this will not cause _other_ subtle issues. |
 | `toggle-finder-show-dotfiles` | Toggle whether Finder shows dotfiles |
 | `unfuck-captive-portal` | Cope when macOS fails to render the captive portal page for joining a Wi-Fi network by directly opening Apple's captive portal detection page with Safari. |
+| `unhide-file` | Use `chflags` to restore a file's visibility |
 | `unmute` | Unmutes sound |
 | `unquarantine` | Unquarantine a file |
 | `volume` | Get/set the system volume |
