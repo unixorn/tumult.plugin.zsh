@@ -37,63 +37,164 @@ function has() {
 
 function on_exit()
 {
-    for i in "${on_exit_items[@]}"
-    do
-        eval "$i"
-    done
+  for i in "${on_exit_items[@]}"
+  do
+      eval "$i"
+  done
 }
 
 function add_on_exit()
 {
-    local n=${#on_exit_items[*]}
-    on_exit_items[$n]="$*"
-    if [[ $n -eq 0 ]]; then
-        trap on_exit EXIT
+  local n=${#on_exit_items[*]}
+  on_exit_items[$n]="$*"
+  if [[ $n -eq 0 ]]; then
+    trap on_exit EXIT
+  fi
+}
+
+function retain_frames()
+{
+  debug "Retaining frames"
+  if [[ $keep_frames == 'true' ]]; then
+    if [[ -d "$target_d" ]]; then
+      rsync "${SCRATCH_D}"/*.png "$target_d"
+    else
+      echo "$target_d is not a directory, skipping frame retention"
     fi
+  fi
+}
+
+function scrub_scratch() {
+  debug "Nuking scratch directory ${SCRATCH_D}"
+  if [[ -n "$DEBUG" ]]; then
+    rm -frv "${SCRATCH_D}"
+  else
+    rm -fr "${SCRATCH_D}"
+  fi
 }
 
 function makemovie()
 {
-  echo "Creating movie from frames in $target_d"
+  if [[ -n "$E_NO_POST" ]]; then
+    echo "$E_NO_POST"
+    exit 1
+  fi
+  echo "Creating movie from frames in $SCRATCH_D"
   echo "You set the interval between frame captures to $interval, setting movie rate to ${hertz}hz"
-  cd "$target_d" || fail "Couldn't change to $target_d"
+  retain_frames
+  echo "Stitching frames into an mp4..."
   ffmpeg -pattern_type glob -framerate "$hertz" \
-    -i "*.png" \
+    -i "${SCRATCH_D}/*.png" \
     -c:v libx264 \
     -r 30 \
     -pix_fmt yuv420p \
     -movflags +faststart \
-    screencap.mp4
+    "$moviename"
 }
 
-if has ffmpeg; then
-  echo "Found ffmpeg, will make a movie after screen frames are captured."
-  add_on_exit makemovie
+function usage() {
+  myname=$(basename "$0")
+  echo "Usage:"
+  echo "$myname takes the following options:"
+  echo "    -i interval in seconds between frame captures. Fractions are acceptable."
+  echo "    -k Keep captured frames as snapshots after processing"
+  echo "    -o output movie name"
+  echo "    -t target directory (only used if keepframes is set)"
+}
+
+# Set up a working scratch directory
+SCRATCH_D=$(mktemp -d)
+
+if [[ ! "$SCRATCH_D" || ! -d "$SCRATCH_D" ]]; then
+  fail "Could not create temp dir"
 fi
 
 if ! has screencapture; then
   fail "Cannot find 'screencapture' in your PATH."
 fi
 
-if [[ $# -ne 2 ]];then
-  fail "You must specify a directory to store the screencaps in and the interval between captures"
+# Parse CLI options
+# shellcheck disable=SC2048,SC2086
+OPTS=$(getopt kt:i:o: $*)
+# shellcheck disable=SC2181
+if [[ $? -ne 0 ]]; then
+  usage
+  exit 1
 fi
+# shellcheck disable=SC2086
+set -- $OPTS
 
-target_d="$1"
-interval="$2"
+# Set reasonable default values
+keep_frames=false
+interval=0.05
+moviename="$(pwd)/screencap.mp4"
+
+if has ffmpeg; then
+  echo "Found ffmpeg, will make a movie after screen frames are captured."
+  add_on_exit makemovie
+else
+  echo "No ffmpeg found in PATH, forcing frame retention"
+  keep_frames=true
+  add_on_exit retain_frames
+fi
+add_on_exit scrub_scratch
+
+while :; do
+  case "$1" in
+    -i)
+      shift
+      interval=$1
+      debug "Set interval to $interval"
+      shift
+      ;;
+    -k)
+      keep_frames=true
+      debug "Set keep_frames to $keep_frames"
+      shift
+      ;;
+    -o)
+      shift
+      moviename=$1
+      debug "Set moviename to $moviename"
+      shift
+      ;;
+    -t)
+      shift
+      target_d=$1
+      debug "Set target_d to $target_d"
+      shift
+      ;;
+    --) shift;
+      break
+      ;;
+  esac
+done
+
 raw="scale=0; 1 / $interval / 4" # Was too fast until I halved the speed as a fudge factor
 hertz=$(bc <<< "$raw")
 
-debug "target_d: $target_d"
-debug "interval: $interval"
 debug "hertz: $hertz"
+debug "interval: $interval"
+debug "keep_frames: $keep_frames"
+debug "moviename: $moviename"
+debug "target_d: $target_d"
 
-if [[ ! -d "$target_d" ]]; then
-  fail "$target_d is not a directory"
+if [[ $keep_frames == 'true' ]]; then
+  debug "Keepframes is set, checking if $target_d is a directory"
+  if [[ ! -d "$target_d" ]]; then
+    E_NO_POST="$target_d is not a directory"
+    exit 1
+  fi
+fi
+
+if [[ -f "$moviename" ]]; then
+  E_NO_POST="$moviename already exists, exiting."
+  exit 1
 fi
 
 while :; do
-  echo "📸 $(date +%H:%M:%S)"
-  screencapture -x "$target_d/$(date +%s).png"
+  fname="${SCRATCH_D}/$(date +%s).png"
+  echo "📸 $(date +%H:%M:%S) $fname"
+  screencapture -x "$fname"
   sleep "$interval"
 done

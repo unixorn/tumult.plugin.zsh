@@ -1,10 +1,11 @@
+---
 name: Check links in README.md
 
 on:
   push:
-    branches: [ '*' ]
+    branches: ['*']
   pull_request:
-    branches: [ '*' ]
+    branches: ['*']
 
 jobs:
   build:
@@ -12,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v2
     - uses: docker://dkhamsing/awesome_bot:latest
       with:
-        args: /github/workspace/README.md --allow-dupe --request-delay 1 --allow-redirect --white-list http://www.hawkwings.net/2007/03/03/scripts-to-automate-the-mailapp-envelope-speed-trick,http://lostechies.com/derickbailey/2012/09/08/screencasting-tip-resize-your-app-to-720p-1280x720-in-osx/,https://img.shields.io
+        args: /github/workspace/README.md --allow-timeout --allow-dupe --request-delay 1 --allow-redirect --white-list http://www.hawkwings.net/2007/03/03/scripts-to-automate-the-mailapp-envelope-speed-trick,http://lostechies.com/derickbailey/2012/09/08/screencasting-tip-resize-your-app-to-720p-1280x720-in-osx/,https://img.shields.io
