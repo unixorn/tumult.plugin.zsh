@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+#
+# I can never remember that it's chflags
+#
+# Copyright 2022, Joe Block <jpb@unixorn.net>
+
+# shellcheck disable=SC2068
+exec chflags unhidden $@
