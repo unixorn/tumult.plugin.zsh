@@ -1,0 +1,107 @@
+#!/usr/bin/env zsh
+# # macos-scripts/entitlements/dump-entitlements
+
+# dump-entitlements
+#
+# Original source: https://github.com/0xmachos/macos-scripts/tree/master/entitlements
+
+set -uo pipefail
+# -o pipefail force pipelines to fail on first non-zero status code
+# -u prevent using undefined variables
+
+IFS=$'\n\t'
+# Set Internal Field Separator to newlines and tabs
+# This makes bash consider newlines and tabs as separating words
+# See: http://redsymbol.net/articles/unofficial-bash-strict-mode/
+
+
+function usage {
+  echo
+  echo "  Find all binaries on disk, dump their entitlements, uniquely sort the entitlements"
+  echo "  Usage: ./dump-entitlements {find | dump | sort}"
+  echo
+
+  echo "  find  Find all binaries on disk and dump them to ${BINARIES_FILENAME}"
+  echo "  dump  Process ${BINARIES_FILENAME} and dump the entitlements for each binary to ${ENTITLEMENTS_FILENAME}"
+  echo "  sort  Uniquely sort ${ENTITLEMENTS_FILENAME} to ${SORTED_ENTITLEMENTS_FILENAME}"
+  echo
+
+  exit 0
+}
+
+
+### Utility Functions ###
+# ctrl_c
+
+function ctrl_c {
+  echo -e "\\n[❌] ${USER} has chosen to quit!"
+  exit 1
+}
+
+### END Utility Functions ###
+
+
+function find_binaries {
+  # find_binaries
+
+  sudo --prompt="[⚠️ ] sudo required to search everywhere" -v
+
+  sudo find / -type f -exec file {} \; -print | grep 'Mach-O' | awk -F ':' '{print $1}' > "${BINARIES_FILENAME}"
+}
+
+
+function dump_entitlements {
+  # dump_entitlements
+
+  while read binary; do
+    /usr/bin/codesign --display --entitlements - "${binary}" 2>&1 > "${ENTITLEMENTS_FILENAME}"
+  done < "${BINARIES_FILENAME}"
+}
+
+
+function sort_entitlements {
+  # sort_entitlements
+
+  awk '{print $2}' "${ENTITLEMENTS_FILENAME}" | grep com.apple | sort -u > "${SORTED_ENTITLEMENTS_FILENAME}"
+}
+
+
+function main {
+
+  trap ctrl_c SIGINT
+  # Detect and react to the user hitting CTRL + C
+
+  declare -r ARG=${1:-"usage"}
+  declare -r DATE=$(date +"%d-%m-%Y")
+  declare -r BINARIES_FILENAME="Mach-O.txt-${DATE}"
+  declare -r ENTITLEMENTS_FILENAME="entitlements-${DATE}.txt"
+  declare -r SORTED_ENTITLEMENTS_FILENAME="sorted-entitlements-${DATE}.txt"
+
+  case "${ARG}" in
+
+    usage|help|-h|--help|🤷‍♂️|🤷‍♀️|"¯\_(ツ)_/¯")
+      usage
+      ;;
+
+    find|-f|--find)
+      echo "[⚠️ ] This takes a looong time to run"
+      echo "Will dump list of binaries to ${BINARIES_FILENAME}"
+      sleep 3
+      find_binaries
+      ;;
+
+    dump|-d|--dump)
+      dump_entitlements
+      ;;
+
+    sort|-s|--sort)
+      sort_entitlements
+      ;;
+
+    *)
+      usage
+      ;;
+  esac
+}
+
+main "$@"

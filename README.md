@@ -63,6 +63,7 @@ The Tumult collection is Apache 2.0 licensed. Some scripts in the `bin` director
 | `disable-startup-chime` | Disable the boot chime |
 | `disturb` | Re-enable notifications in Notification Center |
 | `do-not-disturb` | Stifle notifications in Notification Center |
+| `dump-entitlements` | Dumps the [entitlements](https://developer.apple.com/documentation/bundleresources/entitlements) a given macOS binary has assigned to it |
 | `eject-all` | Eject all removable disks |
 | `enable-bouncing-dock-icons` | Enable icons bouncing in your Dock |
 | `enable-ftp-server` | Enable the ftp server on a Mac |
