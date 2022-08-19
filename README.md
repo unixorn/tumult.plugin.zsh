@@ -46,6 +46,7 @@ The Tumult collection is Apache 2.0 licensed. Some scripts in the `bin` director
 | `battery-percentage` | Show the percentage of battery charge |
 | `battery-prompt` | Prints battery status as a string suitable for embedding in a prompt. |
 | `battery-time` | Show the estimated battery life. |
+| `bundle-id` | Print the bundle id of a given application |
 | `change-wallpaper` | If you have your desktop wallpaper set to rotate through a folder of images at intervals, this will force an immediate switch |
 | `charger-wattage` | Shows the wattage of your charger. Useful for detecting bad USB-C charge cables |
 | `chrome-tabs` | Outputs the URLs for all your open Chrome tabs so you can snapshot them |
