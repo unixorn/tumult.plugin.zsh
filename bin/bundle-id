@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+#
+# Print the bundle ID of an application
+#
+# Copyright 2022, Joe Block <jpb@unixorn.net>
+if [[ "$(uname -s)" != 'Darwin' ]]; then
+  echo 'Sorry, this script only works on macOS'
+  exit 1
+fi
+
+exec osascript -e "id of app \"$1\""
