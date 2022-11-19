@@ -151,6 +151,7 @@ The Tumult collection is Apache 2.0 licensed. Some scripts in the `bin` director
 - [apple-touchbar](https://github.com/zsh-users/zsh-apple-touchbar) - ZSH plugin that adds support for the MacBook Pro's touchbar to iTerm2.
 - [awesome-osx-command-line](https://git.herrbischoff.com/awesome-macos-command-line/about/) documents many ways to manipulate macOS settings and applications from the command-line.
 - [bash-snippets](https://github.com/unixorn/Bash-Snippets) - `brew`-installable set of handy command-line tools.
+- [complete-mac](https://github.com/vitkabele/complete-mac) - Adds ZSH tab completions for `ioreg`, `lsmp`, `scselect`, `system_profiler` and `tmutil` commands.
 - [desktoppr](https://github.com/scriptingosx/desktoppr) - A command-line tool which can read and set the desktop picture.
 - [Platypus](https://github.com/sveinbjornt/Platypus) - Allows you to wrap a script inside a Mac GUI wrapper.
 - [sekey](https://github.com/ntrippar/sekey) - Allows you to use Touch ID / Secure Enclave for SSH Authentication.
