@@ -63,6 +63,7 @@ The Tumult collection is Apache 2.0 licensed. Some scripts in the `bin` director
 | `disable-ssh-server` | Disable the ssh server on a Mac |
 | `disable-startup-chime` | Disable the boot chime |
 | `disturb` | Re-enable notifications in Notification Center |
+| `dns-resolvers` | macOS doesn't respect `/etc/resolve.conf`, add a helper to print what it's actually using |
 | `do-not-disturb` | Stifle notifications in Notification Center |
 | `dump-entitlements` | Dumps the [entitlements](https://developer.apple.com/documentation/bundleresources/entitlements) a given macOS binary has assigned to it |
 | `eject-all` | Eject all removable disks |
