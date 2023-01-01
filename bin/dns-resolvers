@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+#
+# Show DNS resolver information
+#
+# Copyright 2022, Joe Block <jpb@unixorn.net>
+
+set -o pipefail
+
+case $(uname) in
+  Darwin)
+    exec scutil --dns | awk '/^(DNS|resolver|  (search|nameserver|domain))/'
+    ;;
+  Linux)
+    exec cat /etc/resolv.conf
+    ;;
+esac
