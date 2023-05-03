@@ -1,0 +1,2 @@
+# We don't run as a daemon so we don't need a healthcheck in our Dockerfile
+DS026
