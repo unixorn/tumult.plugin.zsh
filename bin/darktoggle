@@ -1,0 +1,21 @@
+#!/bin/zsh
+#
+# Toggle Dark Mode (macOS only)
+function fail() {
+  printf '%s\n' "$1" >&2  ## Send message to stderr. Exclude >&2 if you don't want it that way.
+  exit "${2-1}"  ## Return a code specified by $2 or 1 by default.
+}
+
+if [[ "$(uname -s)" = "Darwin" ]]; then
+  read -d '' darktoggle << EOR
+tell application "System Events"
+        tell appearance preferences
+                set dark mode to not dark mode
+        end tell
+end tell
+EOR
+echo $darktoggle | osascript
+else
+  myname=$(basename "$0")
+  fail "darktoggle only works on macOS"
+fi
