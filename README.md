@@ -56,6 +56,7 @@ The Tumult collection is Apache 2.0 licensed. Some scripts in the `bin` director
 | `clean-xml-clip` | Clean up the XML on the clipboard |
 | `clear-macos-font-cache` | Clears the macOS font cache, originally from [awesome-osx-command-line](https://git.herrbischoff.com/awesome-macos-command-line/about/#clear-font-cache-for-current-user) |
 | `column-view` | Set the current directory to column view in the Finder |
+| `darktoggle` | Flip between dark and light mode |
 | `diceware-password` | Generate a random but memorable passphrase using the Diceware Passphrase Algorithm. See [http://world.std.com/~reinhold/diceware.html](http://world.std.com/~reinhold/diceware.html) |
 | `disable-bouncing-dock-icons` | Disable icons bouncing in your Dock |
 | `disable-ftp-server` | Disable the ftp server on a Mac |
@@ -63,6 +64,7 @@ The Tumult collection is Apache 2.0 licensed. Some scripts in the `bin` director
 | `disable-ssh-server` | Disable the ssh server on a Mac |
 | `disable-startup-chime` | Disable the boot chime |
 | `disturb` | Re-enable notifications in Notification Center |
+| `dns-resolvers` | macOS doesn't respect `/etc/resolve.conf`, add a helper to print what it's actually using |
 | `do-not-disturb` | Stifle notifications in Notification Center |
 | `dump-entitlements` | Dumps the [entitlements](https://developer.apple.com/documentation/bundleresources/entitlements) a given macOS binary has assigned to it |
 | `eject-all` | Eject all removable disks |
@@ -86,6 +88,7 @@ The Tumult collection is Apache 2.0 licensed. Some scripts in the `bin` director
 | `hide-file` | Use `chflags` to mark a file as hidden |
 | `icon-view` | Set the current directory to icon view in the Finder |
 | `imgcat` | Display an image directly in your terminal. Only works with iTerm 2 |
+| `interface-style` | Show whether interface is set to dark or light mode |
 | `iterm` | Open a new `iTerm 2` session with the argument given |
 | `itunesctl` | Play/Pause iTunes from terminal. |
 | `keychainctl` | CRUD for secrets in your macOS keychain - from AriaFallah's [gist](https://gist.github.com/AriaFallah/fe7b651ba2652bd301334e011749e4b2/)|
