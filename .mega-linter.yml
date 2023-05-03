@@ -1,0 +1,31 @@
+---
+# Configuration file for MegaLinter
+# See all available variables at https://megalinter.io/configuration/ and in linters documentation
+
+VALIDATE_ALL_CODEBASE: false
+
+SPELL_MISSPELL_DISABLE_ERRORS: true
+
+DISABLE_LINTERS:
+  - SPELL_CSPELL
+  - MARKDOWN_MARKDOWN_LINK_CHECK
+  - REPOSITORY_CHECKOV
+  - PYTHON_MYPY
+  - PYTHON_PYRIGHT
+  - MAKEFILE_CHECKMAKE
+
+PYTHON_PYLINT_PRE_COMMANDS:
+  # Help pylint understand pydantic models
+  - command: pip install pylint-pydantic
+    venv: pylint
+    continue_if_failed: false
+
+PYTHON_PYLINT_ARGUMENTS:
+  # Disable import checks because it needs all the Python dependencies installed in the linter
+  # https://github.com/oxsecurity/megalinter/issues/2030
+  - "--disable=E0401,E0611"
+  # Help pylint understand pydantic models
+  - "--load-plugins=pylint_pydantic"
+
+# Exclude test files from linting since they make use of the `assert` statement that bandit does not like
+PYTHON_BANDIT_FILTER_REGEX_EXCLUDE: test_
