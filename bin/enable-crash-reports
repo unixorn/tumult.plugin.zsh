@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+#
+# Enable crash reports
+#
+# Copyright 2023, Joe Block <jpb@unixorn.net>
+
+exec defaults write com.apple.CrashReporterDialogType crashreport
