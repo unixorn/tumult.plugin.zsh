@@ -1,0 +1,79 @@
+#!/usr/bin/env bash
+#
+# Set interval between software update checks
+#
+# Copyright 2023, Joe Block <jpb@unixorn.net>
+
+DEFAULT_UPDATE_INTERVAL=7
+
+set -o pipefail
+if [[ -n "$DEBUG" ]]; then
+  # shellcheck disable=SC2086
+  if [[ "$(echo $DEBUG | tr '[:upper:]' '[:lower:]')" == "verbose" ]]; then
+    set -x
+  fi
+fi
+
+function debug() {
+  if [[ -n "$DEBUG" ]]; then
+    echo "$@"
+  fi
+}
+
+function echo-stderr() {
+  echo "$@" 1>&2  ## Send message to stderr.
+}
+
+function fail() {
+  printf '%s\n' "$1" >&2  ## Send message to stderr. Exclude >&2 if you don't want it that way.
+  exit "${2-1}"  ## Return a code specified by $2 or 1 by default.
+}
+
+function has() {
+  # Check if a command is in $PATH
+  which "$@" > /dev/null 2>&1
+}
+
+function check-dependencies() {
+  debug "Checking dependencies..."
+  for p in 'defaults'
+  do
+    if ! has $p; then
+      fail "Can't find $p in your $PATH"
+    else
+      debug "- Found $p"
+    fi
+  done
+}
+
+function my-name() {
+  echo $(basename "$0")
+}
+
+function usage() {
+  echo "Usage: $(my-name) INTEGER_DAYS"
+  echo
+  echo "If days are not specified, $(my-name) will reset the check interval to ${DEFAULT_UPDATE_INTERVAL}"
+}
+
+if [[ "$(uname -s)" != 'Darwin' ]]; then
+  fail 'Sorry, this script only works on macOS'
+fi
+
+check-dependencies
+
+if [[ $# != 1 ]]; then
+  echo-stderr "Days unspecified or improperly specified"
+  INTERVAL=$DEFAULT_UPDATE_INTERVAL
+else
+  # Confirm it's a number
+  if [[ $1 =~ ^[0-9]+$ ]]; then
+    INTERVAL=$1
+  else
+    echo "You specified ${1} - it is not a number, using default of ${DEFAULT_UPDATE_INTERVAL}"
+    INTERVAL="$DEFAULT_UPDATE_INTERVAL"
+  fi
+fi
+
+echo "Setting software update check interval to $INTERVAL days"
+exec defaults write com.apple.SoftwareUpdate ScheduleFrequency -int "$INTERVAL"

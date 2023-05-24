@@ -59,6 +59,7 @@ The Tumult collection is Apache 2.0 licensed. Some scripts in the `bin` director
 | `darktoggle` | Flip between dark and light mode |
 | `diceware-password` | Generate a random but memorable passphrase using the Diceware Passphrase Algorithm. See [http://world.std.com/~reinhold/diceware.html](http://world.std.com/~reinhold/diceware.html) |
 | `disable-bouncing-dock-icons` | Disable icons bouncing in your Dock |
+| `disable-crash-reports` | Keep macOS from asking if you want to submit a crash report |
 | `disable-ftp-server` | Disable the ftp server on a Mac |
 | `disable-network-ds-store-files` | Disable writing `.DS_Store` files to network shares|
 | `disable-ssh-server` | Disable the ssh server on a Mac |
@@ -69,6 +70,7 @@ The Tumult collection is Apache 2.0 licensed. Some scripts in the `bin` director
 | `dump-entitlements` | Dumps the [entitlements](https://developer.apple.com/documentation/bundleresources/entitlements) a given macOS binary has assigned to it |
 | `eject-all` | Eject all removable disks |
 | `enable-bouncing-dock-icons` | Enable icons bouncing in your Dock |
+| `enable-crash-reports` | Re-enable crash report dialogs |
 | `enable-ftp-server` | Enable the ftp server on a Mac |
 | `enable-network-ds-store-files` | Enable writing `.DS_Store` files to network shares (the default behavior) |
 | `enable-ssh-server` | Enable the ssh server on a Mac |
@@ -131,6 +133,7 @@ The Tumult collection is Apache 2.0 licensed. Some scripts in the `bin` director
 | `set-cursor-size` | Set the macOS cursor's size |
 | `set-macos-hostname` | Set the macOS name of your machine. macOS may be UNIX-based, but the Apple eccentricities mean that no, `sudo hostname newname` isn't enough if you want the new name to be visible on the network for things like File and Screen sharing. |
 | `set-mojave-disk-warning-threshold` | Mojave now pops up a warning when you're running low on disk space. Unfortunately the threshold they pick triggers a warning every couple of minutes on my MacBook Air. This script lets you set a different number of free gigabytes to warn at. |
+| `set-software-update-interval` | Set the interval between software update checks. The current default as of Ventura is 7 days. |
 | `show-desktop-icons` | Display desktop icons in Finder |
 | `show-dotfiles` | Display dotfiles in Finder windows |
 | `smart-quote-disable` | Disable smart quote substitution |
