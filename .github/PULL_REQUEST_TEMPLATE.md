@@ -15,7 +15,7 @@
 
 ## Copyright Assignment
 
-- [ ] This document is covered by the [Apache License](https://github.com/unixorn/tumult.plugin.zsh/blob/master/LICENSE), and I agree to contribute this PR under the terms of that license.
+- [ ] This repository is covered by the [Apache License](https://github.com/unixorn/tumult.plugin.zsh/blob/master/LICENSE), and I agree to contribute this PR under the terms of that license.
 
 ## Checklist
 
