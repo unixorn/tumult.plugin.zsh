@@ -4,6 +4,11 @@
 
 KEYCHAIN=${KEYCHAIN:-"secrets.keychain"}
 
+if [[ "$(uname -s)" != 'Darwin' ]]; then
+  echo 'Sorry, this script only works on macOS'
+  exit 1
+fi
+
 main () {
   if [[ -z "$1" ]]; then
     print_usage

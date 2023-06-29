@@ -9,5 +9,10 @@ if [[ -n "$DEBUG" ]]; then
   set -x
 fi
 
+if [[ "$(uname -s)" != 'Darwin' ]]; then
+  echo 'Sorry, this script only works on macOS'
+  exit 1
+fi
+
 # shellcheck disable=SC2048,SC2086
 (( $# > 0 )) && qlmanage -p $* &>/dev/null &

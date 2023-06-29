@@ -4,5 +4,10 @@
 #
 # Copyright 2023, Joe Block <jpb@unixorn.net>
 
+if [[ "$(uname -s)" != 'Darwin' ]]; then
+  echo 'Sorry, this script only works on macOS'
+  exit 1
+fi
+
 echo "You can re-enable crash reports with 'enable-crash-reports'"
 exec defaults write com.apple.CrashReporterDialogType none
