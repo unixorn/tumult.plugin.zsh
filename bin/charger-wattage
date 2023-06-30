@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 #
-# Script skeleton
+# Show the wattage of your charger
 #
-# Copyright 2021, Your Name <yourname@yourdomain.com>
+# Copyright 2021, Joe Block <jpb@unixorn.net>
 
 set -o pipefail
 if [[ -n "$DEBUG" ]]; then

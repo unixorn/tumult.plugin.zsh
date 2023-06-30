@@ -6,6 +6,11 @@
 
 set -o pipefail
 
+if [[ "$(uname -s)" != 'Darwin' ]]; then
+  echo 'Sorry, this script only works on macOS'
+  exit 1
+fi
+
 usage() {
   echo "Usage:"
   # shellcheck disable=SC2086

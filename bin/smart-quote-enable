@@ -4,5 +4,9 @@
 #
 # Copyright 2021, Joe Block <jpb@unixorn.net>
 
-exec defaults write NSGlobalDomain NSAutomaticPeriodSubstitutionEnabled -bool true
+if [[ "$(uname -s)" != 'Darwin' ]]; then
+  echo 'Sorry, this script only works on macOS'
+  exit 1
+fi
 
+exec defaults write NSGlobalDomain NSAutomaticPeriodSubstitutionEnabled -bool true

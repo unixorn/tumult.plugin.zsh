@@ -4,4 +4,9 @@
 #
 # Copyright 2020, Joe Block <jpb@unixorn.net>
 
+if [[ "$(uname -s)" != 'Darwin' ]]; then
+  echo 'Sorry, this script only works on macOS'
+  exit 1
+fi
+
 exec defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool FALSE

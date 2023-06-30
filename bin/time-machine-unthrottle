@@ -4,4 +4,9 @@
 #
 # Copyright 2021, Joe Block <jpb@unixorn.ne>
 
+if [[ "$(uname -s)" != 'Darwin' ]]; then
+  echo 'Sorry, this script only works on macOS'
+  exit 1
+fi
+
 exec sudo sysctl debug.lowpri_throttle_enabled=0

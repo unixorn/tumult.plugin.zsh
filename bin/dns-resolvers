@@ -8,7 +8,8 @@ set -o pipefail
 
 case $(uname) in
   Darwin)
-    exec scutil --dns | awk '/^(DNS|resolver|  (search|nameserver|domain))/'
+    scutil --dns | awk '/^(DNS|resolver|  (search|nameserver|domain))/'
+    exit $?
     ;;
   Linux)
     exec cat /etc/resolv.conf

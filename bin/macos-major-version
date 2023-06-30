@@ -6,5 +6,9 @@
 # every major rev or so. Add a helper to standardize detecting the rev
 
 set -o pipefail
+if [[ "$(uname -s)" != 'Darwin' ]]; then
+  echo 'Sorry, this script only works on macOS'
+  exit 1
+fi
 
 sw_vers -productVersion | awk -F '.' '{print $1 "." $2}'

@@ -21,7 +21,7 @@ if [[ "$(uname -s)" != 'Darwin' ]]; then
   exit 1
 fi
 
-osascript <<EOT
+exec osascript <<EOT
   set cwd to do shell script "pwd"
   tell application "Finder"
     if (${1-1} <= (count Finder windows)) then

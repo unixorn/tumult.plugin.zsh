@@ -2,6 +2,11 @@
 #
 # https://github.com/rtomayko/dotfiles/blob/rtomayko/bin/markdown-open
 
+if [[ "$(uname -s)" != 'Darwin' ]]; then
+  echo 'Sorry, this script only works on macOS'
+  exit 1
+fi
+
 function debug() {
   echo "$@" 1>&2
 }
