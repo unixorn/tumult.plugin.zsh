@@ -7,12 +7,11 @@
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 ## Table of Contents
 
-- [Contributing to tumult](#contributing-to-tumult)
-  - [Contribution Guidelines](#contribution-guidelines)
-  - [To add a helper script](#to-add-a-helper-script)
-  - [To remove a script](#to-remove-a-script)
-  - [Scripts are preferred over aliases and functions](#scripts-are-preferred-over-aliases-and-functions)
-  - [Update the ReadMe with your contribution](#update-the-readme-with-your-contribution)
+- [Contribution Guidelines](#contribution-guidelines)
+- [To add a helper script](#to-add-a-helper-script)
+- [To remove a script](#to-remove-a-script)
+- [Scripts are preferred over aliases and functions](#scripts-are-preferred-over-aliases-and-functions)
+- [Update the ReadMe with your contribution](#update-the-readme-with-your-contribution)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 

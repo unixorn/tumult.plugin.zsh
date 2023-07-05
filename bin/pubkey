@@ -24,7 +24,7 @@ else
 fi
 
 if [[ ! -r "$keyname" ]]; then
-  fail "Can't read $keyname" 
+  fail "Can't read $keyname"
 fi
 
 pbcopy < "$keyname"
