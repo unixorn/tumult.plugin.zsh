@@ -39,7 +39,7 @@ check-deps() {
   if ! has launchctl; then
     fail "Can't find launchctl in your PATH"
   fi
-  
+
   if ! has osascript; then
     fail "Can't find osascript in your PATH"
   fi
@@ -51,7 +51,7 @@ ask-dialog() { # $1: message $2: default text
 	user=$(consoleUser)
   if [[ "$user" != "" ]]; then
     uid=$(id -u "$user")
-	
+
     launchctl asuser "$uid" /usr/bin/osascript <<-EndOfScript
 			text returned of ¬
 				(display dialog "$message" ¬

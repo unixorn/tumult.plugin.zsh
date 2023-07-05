@@ -1,4 +1,5 @@
 #!/bin/bash
+# Copyright 2018 Joe Block <jpb@unixorn.net>
 
 if [[ "$(uname -s)" != 'Darwin' ]]; then
   echo 'Sorry, this script only works on macOS'
