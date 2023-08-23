@@ -18,6 +18,7 @@
 ## Contribution Guidelines
 
 Please only add scripts that have a license attached. I'd prefer to avoid the gray area of unlicensed code.
+
 ## To add a helper script
 
 Submit a pull request. Please use `#!/usr/bin/env interpreter` instead of a direct path to the interpreter, this makes it easier for people to use more recent versions since the ones packaged macOS are usually  stale.
