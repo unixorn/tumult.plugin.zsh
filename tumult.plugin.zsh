@@ -22,8 +22,8 @@
 
 if [[ "$(uname -s)" = "Darwin" ]]; then
   # Add our plugin's bin directory to user's path
-  PLUGIN_BIN="$(dirname $0)/bin"
-  export PATH=${PATH}:${PLUGIN_BIN}
+  path+=("${0:h}/bin")
+
 
   # Check if a command exists
   has() {
