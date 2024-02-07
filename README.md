@@ -75,7 +75,6 @@ The Tumult collection is Apache 2.0 licensed. Some scripts in the `bin` director
 | `enable-network-ds-store-files` | Enable writing `.DS_Store` files to network shares (the default behavior) |
 | `enable-ssh-server` | Enable the ssh server on a Mac |
 | `enable-startup-chime` | Re-enable the boot chime |
-| `evernote` | Create a new Evernote note from stdin or a file |
 | `finder-path` | Show the path to the frontmost finder window |
 | `finder-selection` | Show the paths to all items selected in the Finder, quoted so it copes with spaces in your directory or filenames |
 | `firefox` | Force opening a URL with Firefox |
