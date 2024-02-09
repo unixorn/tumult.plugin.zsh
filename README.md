@@ -15,7 +15,7 @@
 - [Included scripts](#included-scripts)
 - [Other Useful macOS tools](#other-useful-macos-tools)
 - [Installation](#installation)
-  - [Bash / not using a framework](#bash--not-using-a-framework)
+  - [Other shells / not using a framework](#other-shells--not-using-a-framework)
   - [Antigen](#antigen)
   - [Oh-My-Zsh](#oh-my-zsh)
   - [Zgenom](#zgenom)
@@ -62,7 +62,7 @@ The Tumult collection is Apache 2.0 licensed. Some scripts in the `bin` director
 | `disable-crash-reports` | Keep macOS from asking if you want to submit a crash report |
 | `disable-ftp-server` | Disable the ftp server on a Mac |
 | `disable-network-ds-store-files` | Disable writing `.DS_Store` files to network shares|
-| `disable-ssh-server` | Disable the ssh server on a Mac |
+| `disable-ssh-server` | Disable the `sshd` server on a Mac |
 | `disable-startup-chime` | Disable the boot chime |
 | `disturb` | Re-enable notifications in Notification Center |
 | `dns-resolvers` | macOS doesn't respect `/etc/resolve.conf`, add a helper to print what it's actually using |
@@ -73,10 +73,9 @@ The Tumult collection is Apache 2.0 licensed. Some scripts in the `bin` director
 | `enable-crash-reports` | Re-enable crash report dialogs |
 | `enable-ftp-server` | Enable the ftp server on a Mac |
 | `enable-network-ds-store-files` | Enable writing `.DS_Store` files to network shares (the default behavior) |
-| `enable-ssh-server` | Enable the ssh server on a Mac |
+| `enable-ssh-server` | Enable the `ssh` server on a Mac |
 | `enable-startup-chime` | Re-enable the boot chime |
-| `evernote` | Create a new Evernote note from stdin or a file |
-| `finder-path` | Show the path to the frontmost finder window |
+| `finder-path` | Show the path to the frontmost Finder window |
 | `finder-selection` | Show the paths to all items selected in the Finder, quoted so it copes with spaces in your directory or filenames |
 | `firefox` | Force opening a URL with Firefox |
 | `fix-airplay` | Kick `coreaudiod` when AirPlay stops responding |
@@ -86,7 +85,7 @@ The Tumult collection is Apache 2.0 licensed. Some scripts in the `bin` director
 | `get-wifi-password` | Helper script to print the password for the Wi-Fi network you're connected to. |
 | `google` | Does a google search from the command-line |
 | `hide-desktop-icons` | Hide desktop icons in Finder to have a clean screen for presentations |
-| `hide-dotfiles` | Hide dotfiles in Finder windows to return to Apple default behavior |
+| `hide-dotfiles` | Hide dotfiles in Finder windows to return to Apple's default behavior |
 | `hide-file` | Use `chflags` to mark a file as hidden |
 | `icon-view` | Set the current directory to icon view in the Finder |
 | `imgcat` | Display an image directly in your terminal. Only works with iTerm 2 |
@@ -107,24 +106,24 @@ The Tumult collection is Apache 2.0 licensed. Some scripts in the `bin` director
 | `mac-sleep` | Set a Mac to use the default sleep mode when sleeping |
 | `macos-consoleuser` | Show user logged into the GUI |
 | `macos-dialog` | Display a GUI dialog with `osascript` and return the user's input |
-| `macos-frontmost-app` | Shows what application is Frontmost. |
+| `macos-frontmost-app` | Shows what application is frontmost in the GUI. |
 | `manpreview` | Renders a `man` page to PDF and opens it in Preview.app. |
 | `markdown-open` | Converts a Markdown file to HTML and opens it in your browser |
 | `menubar-dark` | Set the menubar to be white text on black background |
 | `menubar-light` | Set the menubar to the default black text on white background style |
-| `mkdmg` | Makes a .dmg file from a directory |
-| `mkicns` | Creates an .icns file from an image file |
+| `mkdmg` | Makes a `.dmg` file from a directory |
+| `mkicns` | Creates an `.icns` file from an image file |
 | `mute` | Mutes sound |
 | `naptime` | Put the machine to sleep |
 | `nitenite` | Make a Mac go to sleep |
 | `pb-clean-ansi` | Clean ansi codes out of the clipboard |
 | `pb-curl` | `curl` the address in the clipboard. Originally from Ryan Tomayko's [dotfiles](https://github.com/rtomayko) |
-| `pb-indent` | Indent the contents of the clipboard 4 spaces. With -o, write result to standard output instead of to the clipboard. Originally from Ryan Tomayko's [dotfiles](https://github.com/rtomayko) |
+| `pb-indent` | Indent the contents of the clipboard 4 spaces. With `-o`, write result to standard output instead of to the clipboard. Originally from Ryan Tomayko's [dotfiles](https://github.com/rtomayko) |
 | `pb-sed` | Run `sed`(1) on the contents of the clipboard and put the result back on the clipboard. All `sed` options and arguments are supported. Originally from Ryan Tomayko's [dotfiles](https://github.com/rtomayko) |
 | `pb-sort` | Sorts the contents of the clipboard |
 | `pledit` | Convert a plist to XML, run `${EDITOR}` on it, then convert it back. |
 | `power-source` | Reports if laptop is running on battery or charger power. Has `--emoji` and `--json` options. |
-| `pubkey` | Quick script to load an ssh public key onto your clipboard by name without you having to specify the full path to it. |
+| `pubkey` | Quick script to load an `ssh` public key onto your clipboard by name without you having to specify the full path to it. |
 | `quicklook` | Triggers quicklook on files so you can see what they are. |
 | `restart-audio` | This fixes the "no sound" issue that happens occasionally by restarting `coreaudiod` |
 | `safari` | Force opening a URL with Safari |
@@ -143,7 +142,7 @@ The Tumult collection is Apache 2.0 licensed. Some scripts in the `bin` director
 | `time-machine-log-viewer` | Dump the Time Machine logs |
 | `time-machine-throttle` | Restore default Time Machine throttle setting |
 | `time-machine-unthrottle` | Disable throttling Time Machine backups - I am having issues with very slow Time Machine backups to an SMB share. No guarantees that this will not cause _other_ subtle issues. |
-| `toggle-finder-show-dotfiles` | Toggle whether Finder shows dotfiles |
+| `toggle-finder-show-dotfiles` | Toggle whether the Finder shows dotfiles |
 | `unfuck-captive-portal` | Cope when macOS fails to render the captive portal page for joining a Wi-Fi network by directly opening Apple's captive portal detection page with Safari. |
 | `unhide-file` | Use `chflags` to restore a file's visibility |
 | `unmute` | Unmutes sound |
@@ -166,9 +165,9 @@ The Tumult collection is Apache 2.0 licensed. Some scripts in the `bin` director
 
 Tumult is packaged as a ZSH plugin to make it easier to use if you're already using a ZSH framework. If you don't already use a framework, I recommend [Zgenom](https://github.com/jandamm/zgenom), because it is wicked fast and also supports using [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh)'s internal plugins.
 
-### Bash / not using a framework
+### Other shells / not using a framework
 
-If you're using `bash`, or aren't using a framework, you can install it by cloning this repository and adding its bin directory to your `$PATH`.
+If you're using other shells like `bash` or `fish`, or aren't using a framework with `zsh`, you can install it by cloning this repository and adding its `bin` directory to your `$PATH`.
 
 ### [Antigen](https://github.com/zsh-users/antigen)
 
