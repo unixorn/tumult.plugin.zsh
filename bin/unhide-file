@@ -5,4 +5,4 @@
 # Copyright 2022, Joe Block <jpb@unixorn.net>
 
 # shellcheck disable=SC2068
-exec chflags unhidden $@
+exec chflags nohidden $@
