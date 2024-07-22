@@ -1,0 +1,80 @@
+#!/usr/bin/env bash
+#
+# Reindex a drive with spotlight
+#
+# Copyright 2024, Joe Block <jpb@unixorn.net>
+
+set -o pipefail
+if [[ -n "$DEBUG" ]]; then
+  # shellcheck disable=SC2086
+  if [[ "$(echo $DEBUG | tr '[:upper:]' '[:lower:]')" == "verbose" ]]; then
+    set -x
+  fi
+fi
+
+function debug() {
+  if [[ -n "$DEBUG" ]]; then
+    echo "$@"
+  fi
+}
+
+function echo-stderr() {
+  echo "$@" 1>&2  ## Send message to stderr.
+}
+
+function fail() {
+  printf '%s\n' "$1" >&2  ## Send message to stderr. Exclude >&2 if you don't want it that way.
+  exit "${2-1}"  ## Return a code specified by $2 or 1 by default.
+}
+
+function has() {
+  # Check if a command is in $PATH
+  which "$@" > /dev/null 2>&1
+}
+
+function check-dependencies() {
+  debug "Checking dependencies..."
+  # shellcheck disable=SC2041
+  # Placeholders for whatever programs you really need
+  for p in 'mdutil'
+  do
+    if ! has $p; then
+      fail "Can't find $p in your $PATH"
+    else
+      debug "- Found $p"
+    fi
+  done
+}
+
+function my-name() {
+  basename "$0"
+}
+
+function usage() {
+  echo "Usage: $(my-name) Volume"
+  echo "I can never remember what command (mdutil) reindexes a drive, so $(my-name) rebuilds or creates a spotlight index for Volume"
+  exit 0
+}
+
+function path-exists() {
+  local file="${1}"
+  [[ -s "${file}" ]] || fail "$1 is not valid"
+  [[ -d "${file}" ]] && return
+  [[ -f "${file}" ]] && return
+  fail "$1 is not a directory or file"
+}
+
+check-dependencies
+if [[ $1 == '-h' ]];then
+  usage
+fi
+if [[ $# == 1 ]]; then
+  echo "Got a volume"
+  volume='/'
+else
+  echo "no args"
+  volume=$1
+  shift
+fi
+echo_stderr "Index rebuilding has to be done as root. You will be asked to enter your password by sudo"
+exec sudo mdutil -E $volume $@
