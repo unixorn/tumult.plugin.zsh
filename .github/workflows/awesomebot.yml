@@ -2,6 +2,7 @@
 name: Check links in README.md
 
 on:
+  schedule: [{cron: "0 1 * * *"}]
   push:
     branches: ['*']
   pull_request:
