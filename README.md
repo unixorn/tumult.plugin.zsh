@@ -138,6 +138,7 @@ The Tumult collection is Apache 2.0 licensed. Some scripts in the `bin` director
 | `smart-quote-disable` | Disable smart quote substitution |
 | `smart-quote-enable` | Enable smart quote substitution |
 | `speedup-apple-mail` | Speeds up Mail.app by vaccuuming the indexes - Originally from [http://www.hawkwings.net/2007/03/03/scripts-to-automate-the-mailapp-envelope-speed-trick/](http://www.hawkwings.net/2007/03/03/scripts-to-automate-the-mailapp-envelope-speed-trick/) |
+| `spotlight-reindex` | Rebuilds/creates the spotlight index for a disk. Defaults to rebuilding the index for `/` |
 | `stfu` | Mutes sound |
 | `time-machine-log-viewer` | Dump the Time Machine logs |
 | `time-machine-throttle` | Restore default Time Machine throttle setting |
