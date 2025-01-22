@@ -2,7 +2,8 @@
 #
 # Show dotfiles in Finder
 #
-# Copyright 2021, Joe Block <jpb@unixorn.net>
+# Copyright 2021-2024, Joe Block <jpb@unixorn.net>
+#
 # License: Apache 2
 
 set -o pipefail
@@ -10,6 +11,14 @@ set -o pipefail
 if [[ -n "$DEBUG" ]]; then
   set -x
 fi
+
+function check-dependency() {
+  if ! (builtin command -V "$1" >/dev/null 2>&1); then
+      error "missing dependency: can't find $1 in your PATH"
+      exit 1
+  fi
+}
+check-dependency defaults
 
 if [[ "$(uname -s)" != 'Darwin' ]]; then
   echo 'Sorry, this script only works on macOS'

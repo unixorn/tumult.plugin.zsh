@@ -22,5 +22,14 @@ if [[ $# -eq 0 ]]; then
   exit 0
 fi
 
+function check-dependency() {
+    if ! (builtin command -V "$1" >/dev/null 2>&1); then
+        error "missing dependency: can't find $1"
+        exit 1
+    fi
+}
+
+check-dependency /System/Library/Automator/Combine\ PDF\ Pages.action/Contents/Resources/join.py
+
 # shellcheck disable=SC2068
 /System/Library/Automator/Combine\ PDF\ Pages.action/Contents/Resources/join.py $@

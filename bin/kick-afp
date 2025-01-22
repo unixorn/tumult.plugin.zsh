@@ -2,11 +2,22 @@
 #
 # I got tired of having to restart file sharing on my home server through
 # the GUI
+#
+# Copyright 2015-2024 Joe Block <jpb@unixorn.net>
+# License: Apache 2.0
 
 if [[ "$(uname -s)" != 'Darwin' ]]; then
   echo 'Sorry, this script only works on macOS'
   exit 1
 fi
+
+function check-dependency() {
+  if ! (builtin command -V "$1" >/dev/null 2>&1); then
+      error "missing dependency: can't find $1 in your PATH"
+      exit 1
+  fi
+}
+check-dependency launchctl
 
 sudo launchctl unload /System/Library/LaunchDaemons/com.apple.AppleFileServer.plist
 sudo launchctl load /System/Library/LaunchDaemons/com.apple.AppleFileServer.plist

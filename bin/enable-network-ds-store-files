@@ -2,11 +2,19 @@
 #
 # Enable writing .DS_Store to network shares
 #
-# Copyright 2020, Joe Block <jpb@unixorn.net>
+# Copyright 2020-2024, Joe Block <jpb@unixorn.net>
 
 if [[ "$(uname -s)" != 'Darwin' ]]; then
   echo 'Sorry, this script only works on macOS'
   exit 1
 fi
+
+function check-dependency() {
+  if ! (builtin command -V "$1" >/dev/null 2>&1); then
+      error "missing dependency: can't find $1 in your PATH"
+      exit 1
+  fi
+}
+check-dependency defaults
 
 exec defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool FALSE
