@@ -4,14 +4,35 @@
 #
 # set-cursor-size: A command line utility that controls macOS pointer size.
 
+function echo-stderr() {
+  echo "$@" 1>&2  ## Send message to stderr.
+}
+
 function fail() {
   printf '%s\\n' "$1" >&2  ## Send message to stderr. Exclude >&2 if you don't want it that way.
   exit "${2-1}"  ## Return a code specified by $2 or 1 by default.
 }
 
-function has() {
-  # Check if a command is in $PATH
-  which "$@" > /dev/null 2>&1
+function check-dependencies() {
+  debug "Checking dependencies..."
+  # shellcheck disable=SC2041
+  # Placeholders for whatever programs you really need
+  for dep in "$@"
+  do
+    if ! has "$dep"; then
+      fail "Can't find $dep in your $PATH"
+    else
+      debug "- Found $dep"
+    fi
+  done
+}
+
+function only-run-on() {
+  if [[ "$(uname -s | tr '[:upper:]' '[:lower:]')" != "$(echo $1 | tr '[:upper:]' '[:lower:]')" ]]; then
+    fail "This script only runs on $1, this machine is running $(uname -s)"
+  else
+    debug "OS ($(uname -s)) is valid..."
+  fi
 }
 
 function usage() {
@@ -23,10 +44,8 @@ EOF
 }
 
 # Ensure that this script is running on macOS
-if [ "$(uname)" != "Darwin" ]; then
-  fail "This script can run only on macOS."
-  exit 1;
-fi
+only-run-on darwin
+check-dependencies osascript
 
 VALUE="$1"
 
@@ -40,7 +59,7 @@ elif [ 1 -eq $(echo "$VALUE > 4.0" | bc -l) ] || [ 1 -eq $(echo "$VALUE < 1.0" |
 fi
 
 # Based on https://apple.stackexchange.com/questions/298550/how-to-increase-cursor-size-programmatically
-osascript -l JavaScript << EOF
+exec osascript -l JavaScript << EOF
 function cursor_size() {
     const isRunningSystemPreferences = Application('System Preferences').running();
     Application('System Preferences').panes.byId('com.apple.preference.universalaccess').anchors.byName('Seeing_Cursor').reveal()
