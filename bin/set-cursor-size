@@ -5,11 +5,11 @@
 # set-cursor-size: A command line utility that controls macOS pointer size.
 
 function echo-stderr() {
-  echo "$@" 1>&2  ## Send message to stderr.
+  printf '%s\\n' "$1" >&2  ## Send message to stderr. Exclude >&2 if you don't want it that way.
 }
 
 function fail() {
-  printf '%s\\n' "$1" >&2  ## Send message to stderr. Exclude >&2 if you don't want it that way.
+  echo-stderr "$1"
   exit "${2-1}"  ## Return a code specified by $2 or 1 by default.
 }
 
@@ -28,6 +28,7 @@ function check-dependencies() {
 }
 
 function only-run-on() {
+  # shellcheck disable=SC2086
   if [[ "$(uname -s | tr '[:upper:]' '[:lower:]')" != "$(echo $1 | tr '[:upper:]' '[:lower:]')" ]]; then
     fail "This script only runs on $1, this machine is running $(uname -s)"
   else
@@ -49,10 +50,10 @@ check-dependencies osascript
 
 VALUE="$1"
 
+# shellcheck disable=SC2046
 if [[ -z "$VALUE" ]]; then
   usage;
   exit 1;
-# shellcheck disable=SC2046
 elif [ 1 -eq $(echo "$VALUE > 4.0" | bc -l) ] || [ 1 -eq $(echo "$VALUE < 1.0" | bc -l) ]; then
   usage;
   exit 1;

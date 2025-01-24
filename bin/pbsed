@@ -9,6 +9,7 @@
 set -e
 set -o pipefail
 
+# shellcheck disable=SC2317
 function echo-stderr() {
   echo "$@" 1>&2  ## Send message to stderr.
 }
@@ -20,6 +21,7 @@ function fail() {
 
 
 function only-run-on() {
+  # shellcheck disable=SC2086
   if [[ "$(uname -s | tr '[:upper:]' '[:lower:]')" != "$(echo $1 | tr '[:upper:]' '[:lower:]')" ]]; then
     fail "This script only runs on $1, this machine is running $(uname -s)"
   else

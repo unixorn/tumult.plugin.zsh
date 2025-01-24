@@ -79,4 +79,4 @@ else
 fi
 
 echo_stderr "Index rebuilding has to be done as root. You will be asked to enter your password by sudo"
-exec sudo mdutil -E $volume $@
+exec sudo mdutil -E "$volume" "$@"

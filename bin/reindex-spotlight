@@ -24,6 +24,7 @@ function check-dependencies() {
 }
 
 function only-run-on() {
+  # shellcheck disable=SC2086
   if [[ "$(uname -s | tr '[:upper:]' '[:lower:]')" != "$(echo $1 | tr '[:upper:]' '[:lower:]')" ]]; then
     fail "This script only runs on $1, this machine is running $(uname -s)"
   else

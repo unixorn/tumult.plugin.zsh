@@ -36,6 +36,7 @@ echo '~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~'
 exit
 fi
 
+# shellcheck disable=SC2268
 if [ "x-x" = x"$1" ]; then
     EXIT="; exit"; shift;
 fi
