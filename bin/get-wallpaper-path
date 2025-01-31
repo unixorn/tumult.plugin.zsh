@@ -1,10 +1,18 @@
 #!/usr/bin/env bash
-# Copyright 2017 Joe Block <jpb@unixorn.net>
+# Copyright 2017-2024 Joe Block <jpb@unixorn.net>
 
 if [[ "$(uname -s)" != 'Darwin' ]]; then
   echo 'Sorry, this script only works on macOS'
   exit 1
 fi
+
+function check-dependency() {
+  if ! (builtin command -V "$1" >/dev/null 2>&1); then
+      error "missing dependency: can't find $1 in your PATH"
+      exit 1
+  fi
+}
+check-dependency osascript
 
 exec osascript -e 'tell application "Finder"
 	set wall to desktop picture as alias

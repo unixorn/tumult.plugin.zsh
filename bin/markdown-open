@@ -18,7 +18,9 @@ if [ -z "$f" ] || [ "$f" = "-" ] ; then
   trap 'rm -f $f' 0
 fi
 
+# shellcheck disable=SC2086
 bn=$(basename $f | sed 's:^\(.*\)\.txt$:\1:')
+# shellcheck disable=SC2086
 html_file="$(dirname $f)/$bn.html"
 cat <<EOF > "$html_file"
 <html>

@@ -46,10 +46,14 @@ if [[ "$(uname -s)" = "Darwin" ]]; then
 
   alias -g @NDL='~/Downloads/*(.om[1])'
 
-  alias eject="diskutil eject"
-  alias flushdns="dscacheutil -flushcache"
-  alias flushds="dscacheutil -flushcache"
-  alias kickdns="dscacheutil -flushcache"
+  if has diskutil; then
+    alias eject="diskutil eject"
+  fi
+  if has dscacheutil; then
+    alias flushdns="dscacheutil -flushcache"
+    alias flushds="dscacheutil -flushcache"
+    alias kickdns="dscacheutil -flushcache"
+  fi
   alias top='TERM=vt100 top'
   alias reveal='open --reveal'
 

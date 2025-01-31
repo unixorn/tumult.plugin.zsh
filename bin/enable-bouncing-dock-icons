@@ -2,14 +2,26 @@
 #
 # Enable bouncing dock icons
 #
-# Copyright 2020, Joe Block
+# Copyright 2020-2025, Joe Block
 
 set -o pipefail
 
-if [[ "$(uname -s)" != 'Darwin' ]]; then
-  echo 'Sorry, this script only works on macOS'
-  exit 1
-fi
+function only-run-on() {
+  if [[ "$(uname -s)" != "$1" ]]; then
+    echo "This script only runs on $1"
+    exit 1
+  fi
+}
+
+function check-dependency() {
+  if ! (builtin command -V "$1" >/dev/null 2>&1); then
+      error "missing dependency: can't find $1 in your PATH"
+      exit 1
+  fi
+}
+
+only-run-on Darwin
+check-dependency defaults
 
 defaults write com.apple.dock no-bouncing -bool FALSE
 killall Dock

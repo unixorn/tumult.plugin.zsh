@@ -8,8 +8,24 @@ function fail() {
   exit "${2-1}"  ## Return a code specified by $2 or 1 by default.
 }
 
-if [[ "$(uname -s)" = "Darwin" ]]; then
-  read -d '' darktoggle << EOR
+function only-run-on() {
+  if [[ "$(uname -s)" != "$1" ]]; then
+    echo "This script only runs on $1"
+    exit 1
+  fi
+}
+
+function check-dependency() {
+  if ! (builtin command -V "$1" >/dev/null 2>&1); then
+      error "missing dependency: can't find $1 in your PATH"
+      exit 1
+  fi
+}
+
+only-run-on Darwin
+check-dependency osascript
+
+read -d '' darktoggle << EOR
 tell application "System Events"
         tell appearance preferences
                 set dark mode to not dark mode
@@ -17,7 +33,3 @@ tell application "System Events"
 end tell
 EOR
 echo $darktoggle | osascript
-else
-  myname=$(basename "$0")
-  fail "darktoggle only works on macOS"
-fi

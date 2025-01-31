@@ -8,10 +8,24 @@
 
 set -o pipefail
 
-if [[ "$(uname -s)" != 'Darwin' ]]; then
-  echo 'Sorry, this script only works on macOS'
-  exit 1
-fi
+function only-run-on() {
+  if [[ "$(uname -s)" != "$1" ]]; then
+    echo "This script only runs on $1"
+    exit 1
+  fi
+}
+
+function check-dependency() {
+  if ! (builtin command -V "$1" >/dev/null 2>&1); then
+    echo "missing dependency: can't find $1 in your PATH"
+    exit 1
+  fi
+}
+
+only-run-on Darwin
+check-dependency pbcopy
+check-dependency pbpaste
+check-dependency sed
 
 writer='pbcopy'
 # shellcheck disable=SC2086

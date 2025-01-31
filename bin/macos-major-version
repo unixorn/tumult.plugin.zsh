@@ -1,14 +1,26 @@
 #!/usr/bin/env bash
 #
-# Copyright 2020, Joe Block <jpb@unixorn.net>
+# Copyright 2020-2025, Joe Block <jpb@unixorn.net>
 #
 # macOS has a habit of changing the way it does some of its non-posixy things
 # every major rev or so. Add a helper to standardize detecting the rev
 
 set -o pipefail
-if [[ "$(uname -s)" != 'Darwin' ]]; then
-  echo 'Sorry, this script only works on macOS'
-  exit 1
-fi
 
+function only-run-on() {
+  if [[ "$(uname -s)" != "$1" ]]; then
+    echo "This script only runs on $1"
+    exit 1
+  fi
+}
+
+function check-dependency() {
+  if ! (builtin command -V "$1" >/dev/null 2>&1); then
+      error "missing dependency: can't find $1 in your PATH"
+      exit 1
+  fi
+}
+
+only-run-on Darwin
+check-dependency sw_vers
 sw_vers -productVersion | awk -F '.' '{print $1 "." $2}'
