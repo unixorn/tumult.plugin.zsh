@@ -2,7 +2,7 @@
 #
 # Display a notification on macOs
 #
-# Copyright 2021, Joe Block <jpb@unixorn.net>
+# Copyright 2021-2025, Joe Block <jpb@unixorn.net>
 
 set -o pipefail
 
@@ -15,34 +15,55 @@ usage(){
   echo "   $(basename $0) notificationTitle subTitle soundName text"
 }
 
-if [[ "$(uname -s)" = "Darwin" ]]; then
-  if [[ $# -eq 1 ]]; then
-    message_command="display notification \"$1\""
-    exec osascript -e "$message_command"
-  fi
+function echo-stderr() {
+  printf '%s\n' "$1" >&2  ## Send message to stderr. Exclude >&2 if you don't want it that way.
+}
 
-  if [[ $# -eq 2 ]]; then
-    message_command="display notification \"$2\" with title  \"$1\""
-    exec osascript -e "$message_command"
-  fi
+function fail() {
+  echo-stderr "$1"
+  exit "${2-1}"  ## Return a code specified by $2 or 1 by default.
+}
 
-  if [[ $# -eq 3 ]]; then
-    message_command="display notification \"$3\" with title  \"$1\" subtitle  \"$2\""
-    echo "message_command: $message_command"
-    exec osascript -e "$message_command"
+function check-dependency() {
+  if ! (builtin command -V "$1" >/dev/null 2>&1); then
+    fail "Missing dependency: can't find $1 in your PATH"
   fi
+}
 
-  if [[ $# -eq 4 ]]; then
-    message_command="display notification \"$4\" with title  \"$1\" subtitle  \"$2\" sound name  \"$3\""
-    echo "message_command: $message_command"
-    exec osascript -e "$message_command"
+function only-run-on() {
+  # shellcheck disable=SC2086
+  if [[ "$(uname -s | tr '[:upper:]' '[:lower:]')" != "$(echo $1 | tr '[:upper:]' '[:lower:]')" ]]; then
+    fail "This script only runs on $1, this machine is running $(uname -s)"
+  else
+    debug "OS ($(uname -s)) is valid..."
   fi
+}
+
+only-run-on darwin
+check-dependency osascript
+
+if [[ $# -eq 1 ]]; then
+  message_command="display notification \"$1\""
+  exec osascript -e "$message_command"
+fi
+
+if [[ $# -eq 2 ]]; then
+  message_command="display notification \"$2\" with title  \"$1\""
+  exec osascript -e "$message_command"
+fi
+
+if [[ $# -eq 3 ]]; then
+  message_command="display notification \"$3\" with title  \"$1\" subtitle  \"$2\""
+  echo "message_command: $message_command"
+  exec osascript -e "$message_command"
+fi
+
+if [[ $# -eq 4 ]]; then
+  message_command="display notification \"$4\" with title  \"$1\" subtitle  \"$2\" sound name  \"$3\""
+  echo "message_command: $message_command"
+  exec osascript -e "$message_command"
+fi
 
 # shellcheck disable=SC2068
-  usage $@
-  exit 1
-else
-  # shellcheck disable=SC2086
-  echo "$(basename $0) only works on macOs"
-  exit 1
-fi
+usage $@
+exit 1

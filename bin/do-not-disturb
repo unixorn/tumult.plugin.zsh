@@ -2,20 +2,41 @@
 #
 # Stifle notifications
 #
-# Copyright 2017, Joe Block <jpb@unixorn.net>
-
+# Copyright 2017-2025, Joe Block <jpb@unixorn.net>
+#
+# License: Apache 2.0
+#
 # Turn off Apple notifications.
 #
 # Based on an answer by Jacques Rioux  on discussions.apple.com.
 #
 # https://discussions.apple.com/thread/7520296?start=0&tstart=0
 
-if [[ "$(uname -s)" != 'Darwin' ]]; then
-  echo 'Sorry, this script only works on macOS'
-  exit 1
-fi
+function echo-stderr() {
+  printf '%s\n' "$1" >&2  ## Send message to stderr. Exclude >&2 if you don't want it that way.
+}
+
+function fail() {
+  echo-stderr "$1"
+  exit "${2-1}"  ## Return a code specified by $2 or 1 by default.
+}
+
+function check-dependency() {
+  if ! (builtin command -V "$1" >/dev/null 2>&1); then
+    fail "Missing dependency: can't find $1 in your PATH"
+  fi
+}
+
+function only-run-on() {
+  if [[ "$(uname -s)" != "$1" ]]; then
+    fail "This script only runs on $1"
+  fi
+}
+
+only-run-on Darwin
+check-dependency defaults
 
 now=$(date -u "+%Y-%m-%dT%TZ")
 defaults -currentHost write com.apple.notificationcenterui doNotDisturb -bool TRUE
 defaults -currentHost write com.apple.notificationcenterui doNotDisturbDate -date "$now"
-osascript -e 'quit application "Notification Center"'
+exec osascript -e 'quit application "Notification Center"'

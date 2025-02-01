@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# Copyright 2015 Joseph Block <jpb@apesseekingknowledge.net>
+# Copyright 2015-2025 Joseph Block <jpb@apesseekingknowledge.net>
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -14,14 +14,36 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-if [[ "$(uname -s)" != 'Darwin' ]]; then
-  echo 'Sorry, this script only works on macOS'
-  exit 1
-fi
+function echo-stderr() {
+  printf '%s\n' "$1" >&2  ## Send message to stderr. Exclude >&2 if you don't want it that way.
+}
+
+function fail() {
+  echo-stderr "$1"
+  exit "${2-1}"  ## Return a code specified by $2 or 1 by default.
+}
+
+function check-dependency() {
+  if ! (builtin command -V "$1" >/dev/null 2>&1); then
+    fail "Missing dependency: can't find $1 in your PATH"
+  fi
+}
+
+function only-run-on() {
+  # shellcheck disable=SC2086
+  if [[ "$(uname -s | tr '[:upper:]' '[:lower:]')" != "$(echo $1 | tr '[:upper:]' '[:lower:]')" ]]; then
+    fail "This script only runs on $1, this machine is running $(uname -s)"
+  else
+    debug "OS ($(uname -s)) is valid..."
+  fi
+}
+
+only-run-on darwin
+check-dependency osascript
 
 # Print the path to the frontmost Finder window
 
-osascript <<EOT
+exec osascript <<EOT
   tell application "Finder"
     if (${1-1} <= (count Finder windows)) then
       get POSIX path of (target of window ${1-1} as alias)

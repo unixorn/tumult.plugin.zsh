@@ -14,10 +14,26 @@ IFS=$'\n\t'
 # This makes bash consider newlines and tabs as separating words
 # See: http://redsymbol.net/articles/unofficial-bash-strict-mode/
 
-if [[ "$(uname -s)" != 'Darwin' ]]; then
-  echo 'Sorry, this script only works on macOS'
-  exit 1
-fi
+function echo-stderr() {
+  printf '%s\n' "$1" >&2  ## Send message to stderr. Exclude >&2 if you don't want it that way.
+}
+
+function fail() {
+  echo-stderr "$1"
+  exit "${2-1}"  ## Return a code specified by $2 or 1 by default.
+}
+
+function check-dependency() {
+  if ! (builtin command -V "$1" >/dev/null 2>&1); then
+    fail "Missing dependency: can't find $1 in your PATH"
+  fi
+}
+
+function only-run-on() {
+  if [[ "$(uname -s)" != "$1" ]]; then
+    fail "This script only runs on $1"
+  fi
+}
 
 function usage {
   echo
@@ -33,7 +49,6 @@ function usage {
   exit 0
 }
 
-
 ### Utility Functions ###
 # ctrl_c
 
@@ -44,31 +59,26 @@ function ctrl_c {
 
 ### END Utility Functions ###
 
-
 function find_binaries {
   # find_binaries
 
   sudo --prompt="[⚠️ ] sudo required to search everywhere" -v
-
   sudo find / -type f -exec file {} \; -print | grep 'Mach-O' | awk -F ':' '{print $1}' > "${BINARIES_FILENAME}"
 }
-
 
 function dump_entitlements {
   # dump_entitlements
 
   while read binary; do
-    /usr/bin/codesign --display --entitlements - "${binary}" 2>&1 > "${ENTITLEMENTS_FILENAME}"
+    codesign --display --entitlements - "${binary}" 2>&1 > "${ENTITLEMENTS_FILENAME}"
   done < "${BINARIES_FILENAME}"
 }
-
 
 function sort_entitlements {
   # sort_entitlements
 
   awk '{print $2}' "${ENTITLEMENTS_FILENAME}" | grep com.apple | sort -u > "${SORTED_ENTITLEMENTS_FILENAME}"
 }
-
 
 function main {
 
@@ -107,5 +117,8 @@ function main {
       ;;
   esac
 }
+
+only-run-on Darwin
+check-dependency codesign
 
 main "$@"

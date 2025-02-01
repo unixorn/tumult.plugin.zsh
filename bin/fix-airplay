@@ -2,19 +2,39 @@
 #
 # Airplay sometimes craps out, add helper to kick it
 #
-# Copyright 2016, Joe Block <jpb@unixorn.net>
+# Copyright 2016-2025, Joe Block <jpb@unixorn.net>
 
 set -o pipefail
 
-if [[ "$(uname -s)" != 'Darwin' ]]; then
-  echo 'Sorry, this script only works on macOS'
-  exit 1
-fi
+function echo-stderr() {
+  printf '%s\n' "$1" >&2  ## Send message to stderr. Exclude >&2 if you don't want it that way.
+}
+
+function fail() {
+  echo-stderr "$1"
+  exit "${2-1}"  ## Return a code specified by $2 or 1 by default.
+}
+
+function check-dependency() {
+  if ! (builtin command -V "$1" >/dev/null 2>&1); then
+    fail "Missing dependency: can't find $1 in your PATH"
+  fi
+}
+
+function only-run-on() {
+  # shellcheck disable=SC2086
+  if [[ "$(uname -s | tr '[:upper:]' '[:lower:]')" != "$(echo $1 | tr '[:upper:]' '[:lower:]')" ]]; then
+    fail "This script only runs on $1, this machine is running $(uname -s)"
+  else
+    debug "OS ($(uname -s)) is valid..."
+  fi
+}
 
 if [[ "$(whoami)" != 'root' ]]; then
-  echo 'This script must be run by root or with sudo'
-  exit 1
+  fail 'This script must be run by root or with sudo'
 fi
+
+only-run-on darwin
 
 # shellcheck disable=SC2009
 exec kill "$(ps -ax | grep '/usr/sbin/coreaudiod' | awk '{print $1}')"
