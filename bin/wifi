@@ -3,8 +3,7 @@
 # Toggle wifi on and off from the command line
 # `wifi on` to turn wifi on, and `wifi off` to turn it off
 #
-# Copyright 2021-2025, Joe Block <jpb@unixorn.net>
-#
+# Copyright 2021, Joe Block <jpb@unixorn.net>
 # License: Apache 2
 
 set -o pipefail
@@ -20,4 +19,3 @@ fi
 
 # shellcheck disable=SC2046,SC2068
 networksetup -setairportpower $(networksetup -listallhardwareports | grep -A 2 'Hardware Port: Wi-Fi' | grep 'Device:' | awk '{print $2}') $@
-exit $?

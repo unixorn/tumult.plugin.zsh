@@ -2,15 +2,7 @@
 #
 # I can never remember that it's chflags
 #
-# Copyright 2022-2024, Joe Block <jpb@unixorn.net>
+# Copyright 2022, Joe Block <jpb@unixorn.net>
 
 # shellcheck disable=SC2068
-function check-dependency() {
-  if ! (builtin command -V "$1" >/dev/null 2>&1); then
-    error "missing dependency: can't find $1 in your PATH"
-    exit 1
-  fi
-}
-check-dependency chflags
-
 exec chflags hidden $@

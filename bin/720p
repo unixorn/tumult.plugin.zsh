@@ -21,14 +21,6 @@ if [ "$(uname -a | grep -ci DARWIN)" != 1 ]; then
   exit 1
 fi
 
-function check-dependency() {
-    if ! (builtin command -V "$1" >/dev/null 2>&1); then
-        error "missing dependency: can't find $1"
-        exit 1
-    fi
-}
-check-dependency osascript
-
 echo "Setting $1 bounds to 720p"
 
 # 720p is 1280x720.

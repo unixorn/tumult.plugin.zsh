@@ -2,10 +2,10 @@
 #
 # Zap .DS_Store files in a directory tree
 #
-# Copyright 2020-2025, Joe Block <jpb@unixorn.net>
+# Copyright 2020, Joe Block <jpb@unixorn.net>
 
 set -o pipefail
 
 if [ -d "${1}" ]; then
-  exec find "${1}" -type f -name '.DS_Store' -delete -ls
+  find "${1}" -type f -name '.DS_Store' -delete -ls
 fi

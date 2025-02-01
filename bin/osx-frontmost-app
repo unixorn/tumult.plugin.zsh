@@ -2,15 +2,10 @@
 #
 # Originally from oh-my-zsh's osx.plugin.zsh by Sorin Ionescu <sorin.ionescu@gmail.com>
 # MIT License
-
-function only-run-on() {
-  if [[ "$(uname -s)" != "$1" ]]; then
-    echo "This script only runs on $1"
-    exit 1
-  fi
-}
-
-only-run-on Darwin
+if [[ "$(uname -s)" != 'Darwin' ]]; then
+  echo 'Sorry, this script only works on macOS'
+  exit 1
+fi
 
 the_app=$(
 osascript 2>/dev/null <<EOF

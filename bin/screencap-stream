@@ -46,7 +46,6 @@ function on_exit()
 function add_on_exit()
 {
   local n=${#on_exit_items[*]}
-  # shellcheck disable=SC2004
   on_exit_items[$n]="$*"
   if [[ $n -eq 0 ]]; then
     trap on_exit EXIT

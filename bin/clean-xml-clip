@@ -2,7 +2,7 @@
 #
 # Clean up the XML in the clipboard
 #
-# Copyright 2017-2025, Joe Block <jpb@unixorn.net>
+# Copyright 2017, Joe Block <jpb@unixorn.net>
 
 set -o pipefail
 
@@ -11,15 +11,15 @@ if [[ "$(uname -s)" != 'Darwin' ]]; then
   exit 1
 fi
 
-function check-dependency() {
-  if ! (builtin command -V "$1" >/dev/null 2>&1); then
-      error "missing dependency: can't find $1 in your PATH"
-      exit 13
-  fi
+function has() {
+  # Check if a command is in $PATH
+  which "$@" > /dev/null 2>&1
 }
 
-check-dependency pbpaste
-check-dependency tidy
+if ! has tidy; then
+  echo 'tidy not found in $PATH!'
+  exit 13
+fi
 
 pbpaste | tidy -xml -wrap 0 | pbcopy
 exit $?

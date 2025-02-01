@@ -2,17 +2,9 @@
 #
 # Enable the SSH server on macOS and configure it to start every boot
 #
-# Copyright 2016-2024, Joe Block <jpb@ApesSeekingKnowledge.net>
+# Copyright 2016, Joe Block <jpb@ApesSeekingKnowledge.net>
 
 set -o pipefail
-
-function check-dependency() {
-  if ! (builtin command -V "$1" >/dev/null 2>&1); then
-      error "missing dependency: can't find $1 in your PATH"
-      exit 1
-  fi
-}
-check-dependency launchctl
 
 if [[ "$(uname -s)" = 'Darwin' ]]; then
   exec sudo -s launchctl load -w /System/Library/LaunchDaemons/ssh.plist

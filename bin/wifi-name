@@ -1,5 +1,5 @@
 #!/bin/bash
-# Copyright 2015-2025 Joseph Block <jpb@unixorn.net>
+# Copyright 2015 Joseph Block <jpb@apesseekingknowledge.net>
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -13,12 +13,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-set -o pipefail
-
 if [[ "$(uname -s)" != 'Darwin' ]]; then
   echo 'Sorry, this script only works on macOS'
   exit 1
 fi
 
 /System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport -I | awk '/ SSID/ {print substr($0, index($0, $2))}'
-exit $?
