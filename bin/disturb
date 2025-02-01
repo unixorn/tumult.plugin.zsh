@@ -2,33 +2,19 @@
 #
 # Re-enable notifications
 #
-# Copyright 2017-2024, Joe Block <jpb@unixorn.net>
+# Copyright 2017, Joe Block <jpb@unixorn.net>
 
 set -o pipefail
 
-function only-run-on() {
-  if [[ "$(uname -s)" != "$1" ]]; then
-    echo "This script only runs on $1"
-    exit 1
-  fi
-}
-
+if [[ "$(uname -s)" != 'Darwin' ]]; then
+  echo 'Sorry, this script only works on macOS'
+  exit 1
+fi
 
 #
 # Based on an answer by Jacques Rioux  on discussions.apple.com.
 #
 # https://discussions.apple.com/thread/7520296?start=0&tstart=0
-
-function check-dependency() {
-  if ! (builtin command -V "$1" >/dev/null 2>&1); then
-      error "missing dependency: can't find $1 in your PATH"
-      exit 1
-  fi
-}
-
-only-run-on Darwin
-check-dependency osascript
-check-dependency defaults
 
 defaults -currentHost write com.apple.notificationcenterui doNotDisturb -bool FALSE
 defaults -currentHost delete com.apple.notificationcenterui doNotDisturbDate

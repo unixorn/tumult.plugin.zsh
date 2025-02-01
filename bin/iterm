@@ -36,7 +36,6 @@ echo '~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~'
 exit
 fi
 
-# shellcheck disable=SC2268
 if [ "x-x" = x"$1" ]; then
     EXIT="; exit"; shift;
 fi
@@ -51,14 +50,6 @@ fi
 COMMAND="cd $WD"
 TITLE="$1"
 COLOR="$2"
-
-function check-dependency() {
-  if ! (builtin command -V "$1" >/dev/null 2>&1); then
-      error "missing dependency: can't find $1 in your PATH"
-      exit 1
-  fi
-}
-check-dependency osascript
 
 echo "Launching iTerm with COMMAND: $COMMAND TITLE: $TITLE COLOR: $COLOR $EXIT"
 

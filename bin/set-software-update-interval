@@ -36,7 +36,6 @@ function has() {
 
 function check-dependencies() {
   debug "Checking dependencies..."
-  # shellcheck disable=SC2041
   for p in 'defaults'
   do
     if ! has $p; then
@@ -48,7 +47,7 @@ function check-dependencies() {
 }
 
 function my-name() {
-  basename "$0"
+  echo $(basename "$0")
 }
 
 function usage() {

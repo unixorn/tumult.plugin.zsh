@@ -2,7 +2,7 @@
 #
 # Read whether macOS is set to light or dark UI
 #
-# Copyright 2022-2024, Joe Block <jpb@unixorn.net>
+# Copyright 2022, Joe Block <jpb@unixorn.net>
 
 set -o pipefail
 if [[ -n "$DEBUG" ]]; then
@@ -39,14 +39,6 @@ function interface-style() {
     echo "Light"
   fi
 }
-
-function check-dependency() {
-  if ! (builtin command -V "$1" >/dev/null 2>&1); then
-      error "missing dependency: can't find $1 in your PATH"
-      exit 1
-  fi
-}
-check-dependency defaults
 
 if [[ "$(uname -s)" != 'Darwin' ]]; then
   echo 'Sorry, this script only works on macOS'

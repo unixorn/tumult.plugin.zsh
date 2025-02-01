@@ -14,12 +14,10 @@ IFS=$'\n\t'
 # This makes bash consider newlines and tabs as separating words
 # See: http://redsymbol.net/articles/unofficial-bash-strict-mode/
 
-function only-run-on() {
-  if [[ "$(uname -s)" != "$1" ]]; then
-    echo "This script only runs on $1"
-    exit 1
-  fi
-}
+if [[ "$(uname -s)" != 'Darwin' ]]; then
+  echo 'Sorry, this script only works on macOS'
+  exit 1
+fi
 
 function usage {
   echo
@@ -35,6 +33,7 @@ function usage {
   exit 0
 }
 
+
 ### Utility Functions ###
 # ctrl_c
 
@@ -44,6 +43,7 @@ function ctrl_c {
 }
 
 ### END Utility Functions ###
+
 
 function find_binaries {
   # find_binaries
@@ -58,7 +58,7 @@ function dump_entitlements {
   # dump_entitlements
 
   while read binary; do
-    codesign --display --entitlements - "${binary}" 2>&1 > "${ENTITLEMENTS_FILENAME}"
+    /usr/bin/codesign --display --entitlements - "${binary}" 2>&1 > "${ENTITLEMENTS_FILENAME}"
   done < "${BINARIES_FILENAME}"
 }
 
@@ -107,15 +107,5 @@ function main {
       ;;
   esac
 }
-
-function check-dependency() {
-  if ! (builtin command -V "$1" >/dev/null 2>&1); then
-      error "missing dependency: can't find $1 in your PATH"
-      exit 1
-  fi
-}
-
-only-run-on Darwin
-check-dependency codesign
 
 main "$@"

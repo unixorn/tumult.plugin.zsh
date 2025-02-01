@@ -1,15 +1,10 @@
 #!/bin/bash
 #
-# Copyright 2016-2025 Joe Block <jpb@unixorn.net>
-#
 # Sleep the machine
 
-function only-run-on() {
-  if [[ "$(uname -s)" != "$1" ]]; then
-    echo "This script only runs on $1"
-    exit 1
-  fi
-}
+if [[ "$(uname -s)" != 'Darwin' ]]; then
+  echo 'Sorry, this script only works on macOS'
+  exit 1
+fi
 
-only-run-on Darwin
 exec sudo shutdown -s now

@@ -9,25 +9,10 @@
 set -e
 set -o pipefail
 
-# shellcheck disable=SC2317
-function echo-stderr() {
-  echo "$@" 1>&2  ## Send message to stderr.
-}
-
-function fail() {
-  printf '%s\\n' "$1" >&2  ## Send message to stderr. Exclude >&2 if you don't want it that way.
-  exit "${2-1}"  ## Return a code specified by $2 or 1 by default.
-}
-
-
-function only-run-on() {
-  # shellcheck disable=SC2086
-  if [[ "$(uname -s | tr '[:upper:]' '[:lower:]')" != "$(echo $1 | tr '[:upper:]' '[:lower:]')" ]]; then
-    fail "This script only runs on $1, this machine is running $(uname -s)"
-  else
-    debug "OS ($(uname -s)) is valid..."
-  fi
-}
+if [[ "$(uname -s)" != 'Darwin' ]]; then
+  echo 'Sorry, this script only works on macOS'
+  exit 1
+fi
 
 # print help/usage with no pattern/args
 test $# -eq 0 -o "$1" = "--help" && {
@@ -36,6 +21,5 @@ test $# -eq 0 -o "$1" = "--help" && {
 }
 
 # pipe pboard through sed and then back again
-only-run-on darwin
 pbpaste | sed "$@" | pbcopy
 exit $?

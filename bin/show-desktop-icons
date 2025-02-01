@@ -2,7 +2,7 @@
 #
 # Show desktop icons in Finder
 #
-# Copyright 2021-2025, Joe Block <jpb@unixorn.net>
+# Copyright 2021, Joe Block <jpb@unixorn.net>
 # License: Apache 2
 
 set -o pipefail
@@ -17,4 +17,3 @@ if [[ "$(uname -s)" != 'Darwin' ]]; then
 fi
 
 defaults write com.apple.finder CreateDesktop -bool true && killall Finder
-exit $?

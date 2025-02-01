@@ -2,25 +2,13 @@
 #
 # Disable the SSH server on macOS
 #
-# Copyright 2016-2025, Joe Block <jpb@ApesSeekingKnowledge.net>
+# Copyright 2016, Joe Block <jpb@ApesSeekingKnowledge.net>
 
 set -o pipefail
 
-function check-dependency() {
-  if ! (builtin command -V "$1" >/dev/null 2>&1); then
-      error "missing dependency: can't find $1 in your PATH"
-      exit 1
-  fi
-}
-check-dependency launchctl
-
-function only-run-on() {
-  if [[ "$(uname -s)" != "$1" ]]; then
-    echo "This script only runs on $1"
-    exit 1
-  fi
-}
-
-only-run-on Darwin
-
-exec sudo -s launchctl unload -w /System/Library/LaunchDaemons/ssh.plist
+if [[ "$(uname -s)" = 'Darwin' ]]; then
+  exec sudo -s launchctl unload -w /System/Library/LaunchDaemons/ssh.plist
+else
+  echo 'This only works on macOS'
+  exit 1
+fi

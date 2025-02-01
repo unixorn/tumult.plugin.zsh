@@ -16,14 +16,6 @@ function fail() {
   exit "${2-1}"  ## Return exit code $2 or 1 if unset.
 }
 
-function check-dependency() {
-  if ! (builtin command -V "$1" >/dev/null 2>&1); then
-      error "missing dependency: can't find $1 in your PATH"
-      exit 1
-  fi
-}
-check-dependency osascript
-
 if [[ "$(uname -s)" != "Darwin" ]]; then
   fail "Sorry, this script only supports macOS."
 fi
