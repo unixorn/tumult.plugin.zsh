@@ -1,13 +1,15 @@
 #!/usr/bin/env bash
 #
 # Toggle whether Finder shows hidden files
+#
+# Copyright 2016-2025 Joe Block <jpb@unixorn.net>
 
 if [[ "$(uname -s)" != 'Darwin' ]]; then
   echo 'Sorry, this script only works on macOS'
   exit 1
 fi
 
-if [ ! -z "$1" ]; then
+if [ -n "$1" ]; then
   show_dotfiles=$1
 else
   DOTFILE_STATE=$(defaults read com.apple.finder AppleShowAllFiles)
@@ -18,5 +20,5 @@ else
   fi
 fi
 
-defaults write com.apple.finder AppleShowAllFiles $show_dotfiles
+defaults write com.apple.finder AppleShowAllFiles "$show_dotfiles"
 killall Finder

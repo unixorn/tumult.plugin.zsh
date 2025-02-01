@@ -2,7 +2,7 @@
 #
 # Reindex a drive with spotlight
 #
-# Copyright 2024, Joe Block <jpb@unixorn.net>
+# Copyright 2024-2025, Joe Block <jpb@unixorn.net>
 
 set -o pipefail
 if [[ -n "$DEBUG" ]]; then
@@ -65,6 +65,7 @@ function path-exists() {
 }
 
 check-dependencies
+
 if [[ $1 == '-h' ]];then
   usage
 fi
@@ -76,5 +77,6 @@ else
   volume=$1
   shift
 fi
+
 echo_stderr "Index rebuilding has to be done as root. You will be asked to enter your password by sudo"
-exec sudo mdutil -E $volume $@
+exec sudo mdutil -E "$volume" "$@"

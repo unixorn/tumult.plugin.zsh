@@ -1,8 +1,22 @@
 #!/bin/bash
+#
+# Copyright 2016-2025 Joe Block <jpb@unixorn.net>
 
-if [[ "$(uname -s)" = 'Darwin' ]]; then
-  exec osascript -e 'set volume output muted true'
-else
-  echo "$0 only supported on macOS"
-  exit 1
-fi
+function only-run-on() {
+  if [[ "$(uname -s)" != "$1" ]]; then
+    echo "This script only runs on $1"
+    exit 1
+  fi
+}
+
+function check-dependency() {
+  if ! (builtin command -V "$1" >/dev/null 2>&1); then
+      echo "missing dependency: can't find $1 in your PATH"
+      exit 1
+  fi
+}
+
+only-run-on Darwin
+check-dependency osascript
+
+exec osascript -e 'set volume output muted true'

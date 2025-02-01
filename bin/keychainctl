@@ -9,6 +9,15 @@ if [[ "$(uname -s)" != 'Darwin' ]]; then
   exit 1
 fi
 
+function check-dependency() {
+  if ! (builtin command -V "$1" >/dev/null 2>&1); then
+      error "missing dependency: can't find $1 in your PATH"
+      exit 1
+  fi
+}
+check-dependency security
+
+
 main () {
   if [[ -z "$1" ]]; then
     print_usage

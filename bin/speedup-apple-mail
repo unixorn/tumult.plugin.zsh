@@ -1,5 +1,7 @@
 #!/bin/bash
 #
+# Copyright 2016-2025 Joe Block <jpb@unixorn.net>
+#
 # Clean up Mail's SQL indices
 
 if [[ "$(uname -s)" != 'Darwin' ]]; then
@@ -7,7 +9,7 @@ if [[ "$(uname -s)" != 'Darwin' ]]; then
   exit 1
 fi
 
-osascript <<EOT
+exec osascript <<EOT
 (*
 Speed up Mail.app by vacuuming the Envelope Index
 Code from: http://www.hawkwings.net/2007/03/03/scripts-to-automate-the-mailapp-envelope-speed-trick/
