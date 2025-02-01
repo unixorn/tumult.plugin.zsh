@@ -67,7 +67,7 @@ The Tumult collection is Apache 2.0 licensed. Some scripts in the `bin` director
 | `disturb` | Re-enable notifications in Notification Center |
 | `dns-resolvers` | macOS doesn't respect `/etc/resolve.conf`, add a helper to print what it's actually using |
 | `do-not-disturb` | Stifle notifications in Notification Center |
-| `dump-entitlements` | Dumps the [entitlements](https://developer.apple.com/documentation/bundleresources/entitlements) a given macOS binary has assigned to it |
+| `dump-entitlements` | Dumps the [entitlements](https://developer.apple.com/library/archive/documentation/Miscellaneous/Reference/EntitlementKeyReference/Chapters/AboutEntitlements.html) a given macOS binary has assigned to it |
 | `eject-all` | Eject all removable disks |
 | `enable-bouncing-dock-icons` | Enable icons bouncing in your Dock |
 | `enable-crash-reports` | Re-enable crash report dialogs |
