@@ -4,6 +4,26 @@
 
 set -o pipefail
 
+function echo-stderr() {
+  printf '%s\n' "$1" >&2  ## Send message to stderr. Exclude >&2 if you don't want it that way.
+}
+
+function fail() {
+  echo-stderr "$1"
+  exit "${2-1}"  ## Return a code specified by $2 or 1 by default.
+}
+
+function only-run-on() {
+  # shellcheck disable=SC2086
+  if [[ "$(uname -s | tr '[:upper:]' '[:lower:]')" != "$(echo $1 | tr '[:upper:]' '[:lower:]')" ]]; then
+    fail "This script only runs on   $1, this machine is running $(uname -s)"
+  else
+    debug "OS ($(uname -s)) is valid..."
+  fi
+}
+
+only-run-on darwin
+
 # tmux requires unrecognized OSC sequences to be wrapped with DCS tmux;
 # <sequence> ST, and for all ESCs in <sequence> to be replaced with ESC ESC. It
 # only accepts ESC backslash for ST. We use TERM instead of TMUX because TERM
@@ -130,13 +150,6 @@ function show_help() {
     errcho
 }
 
-function check_dependency() {
-    if ! (builtin command -V "$1" >/dev/null 2>&1); then
-        error "missing dependency: can't find $1"
-        exit 1
-    fi
-}
-
 # verify that value is in the image sizing unit format: N / Npx / N% / auto
 function validate_size_unit() {
     if [[ ! "$1" =~ ^(:?[0-9]+(:?px|%)?|auto)$ ]]; then
@@ -203,9 +216,9 @@ while [ $# -gt 0 ]; do
         is_url=t
         ;;
     -t | --t | --type)
-         file_type="$2"
-         shift
-         ;;
+        file_type="$2"
+        shift
+        ;;
     -*)
         error "Unknown option flag: $1"
         show_help

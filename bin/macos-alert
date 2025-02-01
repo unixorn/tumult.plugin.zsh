@@ -2,9 +2,36 @@
 #
 # Display an alert on macOs
 #
-# Copyright 2021, Joe Block <jpb@unixorn.net>
+# Copyright 2021-2025, Joe Block <jpb@unixorn.net>
 
 set -o pipefail
+
+function echo-stderr() {
+  printf '%s\n' "$1" >&2  ## Send message to stderr. Exclude >&2 if you don't want it that way.
+}
+
+function fail() {
+  echo-stderr "$1"
+  exit "${2-1}"  ## Return a code specified by $2 or 1 by default.
+}
+
+function check-dependency() {
+  if ! (builtin command -V "$1" >/dev/null 2>&1); then
+    fail "Missing dependency: can't find $1 in your PATH"
+  fi
+}
+
+function only-run-on() {
+  # shellcheck disable=SC2086
+  if [[ "$(uname -s | tr '[:upper:]' '[:lower:]')" != "$(echo $1 | tr '[:upper:]' '[:lower:]')" ]]; then
+    fail "This script only runs on $1, this machine is running $(uname -s)"
+  else
+    debug "OS ($(uname -s)) is valid..."
+  fi
+}
+
+only-run-on darwin
+check-dependency osascript
 
 # shellcheck disable=SC2086
 usage(){
@@ -13,22 +40,16 @@ usage(){
   echo "Usage: $(basename $0) AlertTitle"
 }
 
-if [[ "$(uname -s)" = "Darwin" ]]; then
-  if [[ $# -eq 1 ]]; then
-    message_command="display alert \"$1\""
-    exec osascript -e "$message_command"
-  fi
-
-  if [[ $# -eq 2 ]]; then
-    message_command="display alert \"$1\" message  \"$2\""
-    exec osascript -e "$message_command"
-  fi
-
-  # shellcheck disable=SC2068
-  usage $@
-  exit 1
-else
-  # shellcheck disable=SC2086
-  echo "$(basename $0) only works on macOs"
-  exit 1
+if [[ $# -eq 1 ]]; then
+  message_command="display alert \"$1\""
+  exec osascript -e "$message_command"
 fi
+
+if [[ $# -eq 2 ]]; then
+  message_command="display alert \"$1\" message  \"$2\""
+  exec osascript -e "$message_command"
+fi
+
+# shellcheck disable=SC2068
+usage $@
+exit 1

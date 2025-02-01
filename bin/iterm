@@ -24,6 +24,33 @@
 # 9/20/2005 damonp - make sure new session opens in current window, clear screen
 # 9/15/2005 damonp - modify for iTerm usage
 
+function echo-stderr() {
+  printf '%s\n' "$1" >&2  ## Send message to stderr. Exclude >&2 if you don't want it that way.
+}
+
+function fail() {
+  echo-stderr "$1"
+  exit "${2-1}"  ## Return a code specified by $2 or 1 by default.
+}
+
+function check-dependency() {
+  if ! (builtin command -V "$1" >/dev/null 2>&1); then
+    fail "Missing dependency: can't find $1 in your PATH"
+  fi
+}
+
+function only-run-on() {
+  # shellcheck disable=SC2086
+  if [[ "$(uname -s | tr '[:upper:]' '[:lower:]')" != "$(echo $1 | tr '[:upper:]' '[:lower:]')" ]]; then
+    fail "This script only runs on $1, this machine is running $(uname -s)"
+  else
+    debug "OS ($(uname -s)) is valid..."
+  fi
+}
+
+only-run-on darwin
+check-dependency osascript
+
 if [ -z "$3" ]; then
 echo '~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~'
 echo 'Launch the iTerm application in a certain folder'
@@ -36,6 +63,7 @@ echo '~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~'
 exit
 fi
 
+# shellcheck disable=SC2268
 if [ "x-x" = x"$1" ]; then
     EXIT="; exit"; shift;
 fi
@@ -53,7 +81,7 @@ COLOR="$2"
 
 echo "Launching iTerm with COMMAND: $COMMAND TITLE: $TITLE COLOR: $COLOR $EXIT"
 
-osascript 2>/dev/null <<EOF
+exec osascript 2>/dev/null <<EOF
 tell application "iTerm"
   activate
   delay 1
@@ -76,4 +104,3 @@ tell application "iTerm"
 	--set curTerminal to (make new terminal)
 end tell
 EOF
-exit 0

@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+#
+# Copyright 2022-2025 Joe Block <jpb@unixorn.net>
 
 set -o pipefail
 if [[ -n "$DEBUG" ]]; then
@@ -11,14 +13,32 @@ function debug() {
   fi
 }
 
-function fail() {
-  printf '%s\\n' "$1" >&2  ## Send message to stderr. Exclude >&2 if you don't want it that way.
-  exit "${2-1}"  ## Return exit code $2 or 1 if unset.
+function echo-stderr() {
+  printf '%s\n' "$1" >&2  ## Send message to stderr. Exclude >&2 if you don't want it that way.
 }
 
-if [[ "$(uname -s)" != "Darwin" ]]; then
-  fail "Sorry, this script only supports macOS."
-fi
+function fail() {
+  echo-stderr "$1"
+  exit "${2-1}"  ## Return a code specified by $2 or 1 by default.
+}
+
+function check-dependency() {
+  if ! (builtin command -V "$1" >/dev/null 2>&1); then
+    fail "Missing dependency: can't find $1 in your PATH"
+  fi
+}
+
+function only-run-on() {
+  # shellcheck disable=SC2086
+  if [[ "$(uname -s | tr '[:upper:]' '[:lower:]')" != "$(echo $1 | tr '[:upper:]' '[:lower:]')" ]]; then
+    fail "This script only runs on $1, this machine is running $(uname -s)"
+  else
+    debug "OS ($(uname -s)) is valid..."
+  fi
+}
+
+only-run-on darwin
+check-dependency osascript
 
 CORE_ENGINE='/System/Library/CoreServices/ScreenSaverEngine.app'
 FRAME_ENGINE='/System/Library/Frameworks/ScreenSaver.framework/Versions/A/Resources/ScreenSaverEngine.app'
@@ -32,7 +52,7 @@ if [[ -x "$CORE_ENGINE" ]]; then
 fi
 
 if [[ -x "$SCREENSAVER_ENGINE" ]]; then
-  open "$SCREENSAVER_ENGINE"
+  exec open "$SCREENSAVER_ENGINE"
 else
   # We can't find the screensaver app, resort to Applescript, though it could break in future revs of macOS
   debug "Can't find ScreenSaverEngine.app, resorting to Applescript"

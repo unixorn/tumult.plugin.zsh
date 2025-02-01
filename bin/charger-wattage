@@ -2,7 +2,9 @@
 #
 # Show the wattage of your charger
 #
-# Copyright 2021, Joe Block <jpb@unixorn.net>
+# Copyright 2021-2025, Joe Block <jpb@unixorn.net>
+#
+# License: Apache 2.0
 
 set -o pipefail
 if [[ -n "$DEBUG" ]]; then
@@ -29,14 +31,20 @@ function charger-wattage() {
   pmset -g ac | awk '/Wattage/ {print $3}'
 }
 
-if [[ "$(uname -s)" != 'Darwin' ]]; then
-  echo 'Sorry, this script only works on macOS'
-  exit 1
-fi
+function only-run-on() {
+  if [[ "$(uname -s)" != "$1" ]]; then
+    echo "This script only runs on $1"
+    exit 1
+  fi
+}
 
-if has pmset; then
-  charger-wattage
-else
-  # shellcheck disable=SC2016
-  fail 'Cannot find pmset in your $PATH'
-fi
+function check-dependency() {
+  if ! (builtin command -V "$1" >/dev/null 2>&1); then
+      fail "Missing dependency: can't find $1 in your PATH"
+  fi
+}
+
+only-run-on Darwin
+check-dependency pmset
+
+charger-wattage
