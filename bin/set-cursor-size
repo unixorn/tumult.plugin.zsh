@@ -4,8 +4,25 @@
 #
 # set-cursor-size: A command line utility that controls macOS pointer size.
 
+if [[ -n "$DEBUG" ]]; then
+  # shellcheck disable=SC2086
+  if [[ "$(echo $DEBUG | tr '[:upper:]' '[:lower:]')" == "verbose" ]]; then
+    set -x
+  fi
+fi
+
+function echo-stderr() {
+  printf '%s\n' "$1" >&2  ## Send message to stderr. Exclude >&2 if you don't want it that way.
+}
+
+function debug() {
+  if [[ -n "$DEBUG" ]]; then
+    echo-stderr "$@"
+    fi
+  }
+
 function fail() {
-  printf '%s\\n' "$1" >&2  ## Send message to stderr. Exclude >&2 if you don't want it that way.
+  echo-stderr "$1"
   exit "${2-1}"  ## Return a code specified by $2 or 1 by default.
 }
 
@@ -14,37 +31,58 @@ function has() {
   which "$@" > /dev/null 2>&1
 }
 
+function check-dependencies() {
+  debug "Checking dependencies..."
+  # shellcheck disable=SC2041
+  # Placeholders for whatever programs you really need
+  for dep in "$@"
+  do
+    if ! has "$dep"; then
+      fail "Can't find $dep in your $PATH"
+    else
+      debug "- Found $dep"
+    fi
+  done
+}
+
+function only-run-on() {
+  # shellcheck disable=SC2086
+  if [[ "$(uname -s | tr '[:upper:]' '[:lower:]')" != "$(echo $1 | tr '[:upper:]' '[:lower:]')" ]]; then
+    fail "This script only runs on $1, this machine is running $(uname -s)"
+  else
+    debug "OS ($(uname -s)) is valid..."
+  fi
+}
+
 function usage() {
   cat << EOF
-Usage: $0 CURSOR_SIZE
+Usage: $(basename $0) CURSOR_SIZE
 CURSOR_SIZE ranges from 1 to 4, where 1 is the smallest and 4 is the largest.
   (See System Preferences - Accessbility - Display - Pointer Size)
 EOF
 }
 
 # Ensure that this script is running on macOS
-if [ "$(uname)" != "Darwin" ]; then
-  fail "This script can run only on macOS."
-  exit 1;
-fi
+only-run-on darwin
+check-dependencies osascript
 
 VALUE="$1"
 
+# shellcheck disable=SC2046
 if [[ -z "$VALUE" ]]; then
   usage;
   exit 1;
-# shellcheck disable=SC2046
 elif [ 1 -eq $(echo "$VALUE > 4.0" | bc -l) ] || [ 1 -eq $(echo "$VALUE < 1.0" | bc -l) ]; then
   usage;
   exit 1;
 fi
 
 # Based on https://apple.stackexchange.com/questions/298550/how-to-increase-cursor-size-programmatically
-osascript -l JavaScript << EOF
+exec osascript -l JavaScript << EOF
 function cursor_size() {
-    const isRunningSystemPreferences = Application('System Preferences').running();
-    Application('System Preferences').panes.byId('com.apple.preference.universalaccess').anchors.byName('Seeing_Cursor').reveal()
-    const process = Application('System Events').processes.byName('System Preferences');
+    const isRunningSystemPreferences = Application('System Settings').running();
+    Application('System Settings').panes.byId('com.apple.preference.universalaccess').anchors.byName('Seeing_Cursor').reveal()
+    const process = Application('System Events').processes.byName('System Settings');
     while (process.windows.length == 0);
     const window = process.windows[0]
     while (window.groups.length == 0);
@@ -55,7 +93,7 @@ function cursor_size() {
     const slider = tabGroup.sliders[0]
     slider.value = $VALUE;
     if (!isRunningSystemPreferences) {
-        Application('System Preferences').quit()
+        Application('System Settings').quit()
     }
 }
 cursor_size()
