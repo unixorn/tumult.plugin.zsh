@@ -55,6 +55,7 @@ function only-run-on() {
 }
 
 function usage() {
+  # shellcheck disable=SC2086
   cat << EOF
 Usage: $(basename $0) CURSOR_SIZE
 CURSOR_SIZE ranges from 1 to 4, where 1 is the smallest and 4 is the largest.
