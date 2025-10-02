@@ -11,6 +11,14 @@ function debug() {
   echo "$@" 1>&2
 }
 
+function check-dependency() {
+  if ! (builtin command -V "$1" >/dev/null 2>&1); then
+    fail "missing dependency: can't find $1 in your PATH"
+  fi
+}
+
+check-dependency sundown
+
 f=$1
 if [ -z "$f" ] || [ "$f" = "-" ] ; then
   f=/tmp/markdown-$$.txt
