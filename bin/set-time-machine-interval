@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+#
+# Set interval between Time Machine backups
+#
+# Copyright 2025, Joe Block <jpb@unixorn.net>
+#
+# Based on information at https://herrbischoff.com/code/me/awesome-macos-command-line
+
+# shellcheck disable=SC2086
+function usage(){
+  echo "$(basename $0) lets you set the interval between backups to an arbitrary number of seconds" | fmt
+  echo "Usage: $(basename $0) time-in-seconds"
+  echo
+}
+
+if [[ "$(uname -s)" != 'Darwin' ]]; then
+  echo 'Sorry, this script only works on macOS'
+  exit 1
+fi
+
+if [[ $# != 1 ]]; then
+  usage
+  exit 1
+fi
+
+sudo defaults write /System/Library/LaunchDaemons/com.apple.backupd-auto StartInterval -int "$1"

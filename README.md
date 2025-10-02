@@ -60,10 +60,13 @@ The Tumult collection is Apache 2.0 licensed. Some scripts in the `bin` director
 | `diceware-password` | Generate a random but memorable passphrase using the Diceware Passphrase Algorithm. See [http://world.std.com/~reinhold/diceware.html](http://world.std.com/~reinhold/diceware.html) |
 | `disable-bouncing-dock-icons` | Disable icons bouncing in your Dock |
 | `disable-crash-reports` | Keep macOS from asking if you want to submit a crash report |
+| `disable-font-smoothing` | Disable font smoothing |
 | `disable-ftp-server` | Disable the ftp server on a Mac |
 | `disable-network-ds-store-files` | Disable writing `.DS_Store` files to network shares|
 | `disable-ssh-server` | Disable the `sshd` server on a Mac |
 | `disable-startup-chime` | Disable the boot chime |
+| `disable-time-machine-backups` | Disable Time Machine backups |
+| `disable-time-machine-local-backups` | Disable Time Machine local backups when the Time Machine disk is unavailable |
 | `disturb` | Re-enable notifications in Notification Center |
 | `dns-resolvers` | macOS doesn't respect `/etc/resolve.conf`, add a helper to print what it's actually using |
 | `do-not-disturb` | Stifle notifications in Notification Center |
@@ -71,10 +74,13 @@ The Tumult collection is Apache 2.0 licensed. Some scripts in the `bin` director
 | `eject-all` | Eject all removable disks |
 | `enable-bouncing-dock-icons` | Enable icons bouncing in your Dock |
 | `enable-crash-reports` | Re-enable crash report dialogs |
+| `enable-font-smoothing` | Font smoothing has been disabled by default since 10.14. Enable it. |
 | `enable-ftp-server` | Enable the ftp server on a Mac |
 | `enable-network-ds-store-files` | Enable writing `.DS_Store` files to network shares (the default behavior) |
 | `enable-ssh-server` | Enable the `ssh` server on a Mac |
 | `enable-startup-chime` | Re-enable the boot chime |
+| `enable-time-machine-backups` | Enable Time Machine backups |
+| `enable-time-machine-local-backups` | Enable Time Machine local backups when the Time Machine drive is unavailable |
 | `finder-path` | Show the path to the frontmost Finder window |
 | `finder-selection` | Show the paths to all items selected in the Finder, quoted so it copes with spaces in your directory or filenames |
 | `firefox` | Force opening a URL with Firefox |
@@ -132,6 +138,7 @@ The Tumult collection is Apache 2.0 licensed. Some scripts in the `bin` director
 | `set-cursor-size` | Set the macOS cursor's size |
 | `set-macos-hostname` | Set the macOS name of your machine. macOS may be UNIX-based, but the Apple eccentricities mean that no, `sudo hostname newname` isn't enough if you want the new name to be visible on the network for things like File and Screen sharing. |
 | `set-mojave-disk-warning-threshold` | Mojave now pops up a warning when you're running low on disk space. Unfortunately the threshold they pick triggers a warning every couple of minutes on my MacBook Air. This script lets you set a different number of free gigabytes to warn at. |
+| `set-wallpaper` | Set wallpaper |
 | `set-software-update-interval` | Set the interval between software update checks. The current default as of Ventura is 7 days. |
 | `show-desktop-icons` | Display desktop icons in Finder |
 | `show-dotfiles` | Display dotfiles in Finder windows |
@@ -140,6 +147,9 @@ The Tumult collection is Apache 2.0 licensed. Some scripts in the `bin` director
 | `speedup-apple-mail` | Speeds up Mail.app by vaccuuming the indexes - Originally from [http://www.hawkwings.net/2007/03/03/scripts-to-automate-the-mailapp-envelope-speed-trick/](http://www.hawkwings.net/2007/03/03/scripts-to-automate-the-mailapp-envelope-speed-trick/) |
 | `spotlight-reindex` | Rebuilds/creates the spotlight index for a disk. Defaults to rebuilding the index for `/` |
 | `stfu` | Mutes sound |
+| `time-machine-backup-now` | Start an immediate Time Machine backup |
+| `time-machine-backup-on-battery-status` | Check if Time Machine backups are allowed when running on battery |
+| `time-machine-kill-backup-now` | Kill the Time Machine backup in progress |
 | `time-machine-log-viewer` | Dump the Time Machine logs |
 | `time-machine-throttle` | Restore default Time Machine throttle setting |
 | `time-machine-unthrottle` | Disable throttling Time Machine backups - I am having issues with very slow Time Machine backups to an SMB share. No guarantees that this will not cause _other_ subtle issues. |
