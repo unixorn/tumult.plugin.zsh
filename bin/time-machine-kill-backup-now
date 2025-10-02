@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+#
+# Kill Time Machine backup in progress
+#
+# Copyright 2025, Joe Block <jpb@unixorn.net>
+#
+# Based on information at https://herrbischoff.com/code/me/awesome-macos-command-line
+
+if [[ "$(uname -s)" != 'Darwin' ]]; then
+  echo 'Sorry, this script only works on macOS'
+  exit 1
+fi
+
+exec tmutil stopbackup

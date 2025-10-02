@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+#
+# Enable Time Machine backups while on battery power
+#
+# Copyright 2025, Joe Block <jpb@unixorn.net>
+#
+# Based on information at https://herrbischoff.com/code/me/awesome-macos-command-line
+
+if [[ "$(uname -s)" != 'Darwin' ]]; then
+  echo 'Sorry, this script only works on macOS'
+  exit 1
+fi
+
+sudo defaults write /Library/Preferences/com.apple.TimeMachine RequiresACPower -bool true

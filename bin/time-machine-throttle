@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# Unthrottle time machine so the backup doesn't take so long
+# Throttle Time Machine so the backup doesn't take so long
 #
 # Copyright 2021, Joe Block <jpb@unixorn.ne>
 
