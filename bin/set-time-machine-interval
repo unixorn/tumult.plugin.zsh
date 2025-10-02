@@ -6,6 +6,7 @@
 #
 # Based on information at https://herrbischoff.com/code/me/awesome-macos-command-line
 
+# shellcheck disable=SC2086
 function usage(){
   echo "$(basename $0) lets you set the interval between backups to an arbitrary number of seconds" | fmt
   echo "Usage: $(basename $0) time-in-seconds"
