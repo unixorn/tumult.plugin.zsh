@@ -60,6 +60,7 @@ The Tumult collection is Apache 2.0 licensed. Some scripts in the `bin` director
 | `diceware-password` | Generate a random but memorable passphrase using the Diceware Passphrase Algorithm. See [http://world.std.com/~reinhold/diceware.html](http://world.std.com/~reinhold/diceware.html) |
 | `disable-bouncing-dock-icons` | Disable icons bouncing in your Dock |
 | `disable-crash-reports` | Keep macOS from asking if you want to submit a crash report |
+| `disable-font-smoothing` | Disable font smoothing |
 | `disable-ftp-server` | Disable the ftp server on a Mac |
 | `disable-network-ds-store-files` | Disable writing `.DS_Store` files to network shares|
 | `disable-ssh-server` | Disable the `sshd` server on a Mac |
@@ -71,6 +72,7 @@ The Tumult collection is Apache 2.0 licensed. Some scripts in the `bin` director
 | `eject-all` | Eject all removable disks |
 | `enable-bouncing-dock-icons` | Enable icons bouncing in your Dock |
 | `enable-crash-reports` | Re-enable crash report dialogs |
+| `enable-font-smoothing` | Font smoothing has been disabled by default since 10.14. Enable it. |
 | `enable-ftp-server` | Enable the ftp server on a Mac |
 | `enable-network-ds-store-files` | Enable writing `.DS_Store` files to network shares (the default behavior) |
 | `enable-ssh-server` | Enable the `ssh` server on a Mac |
