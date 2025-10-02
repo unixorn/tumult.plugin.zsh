@@ -73,8 +73,8 @@ function usage() {
 only-run-on Darwin
 check-dependencies defaults file killall sqlite3
 
-if [[ ! -f ~/Library/Application\ Support/Dock/desktoppicture.db ]]; then
-  fail '~/Library/Application\ Support/Dock/desktoppicture.db is missing!'
+if [[ ! -f "$HOME/Library/Application\ Support/Dock/desktoppicture.db" ]]; then
+  fail "$HOME/Library/Application\ Support/Dock/desktoppicture.db is missing!"
 fi
 
 if [[ $# != 1 ]]; then
@@ -83,8 +83,8 @@ if [[ $# != 1 ]]; then
 fi
 
 image_f=$1
-if file -I $image_f | grep -q "image/"; then
-  sqlite3 ~/Library/Application\ Support/Dock/desktoppicture.db "update data set value = '$image_f'" && killall Dock
+if file -I "$image_f" | grep -q "image/"; then
+  sqlite3 "$HOME/Library/Application\ Support/Dock/desktoppicture.db" "update data set value = '$image_f'" && killall Dock
 else
   fail "$image_f is not an image."
 fi
