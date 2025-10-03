@@ -108,6 +108,7 @@ The Tumult collection is Apache 2.0 licensed. Some scripts in the `bin` director
 | `mac-alert` | Display a GUI alert with `osascript` |
 | `mac-hibernate` | Set a Mac to use hibernate mode when sleeping |
 | `mac-notification` | Display a notification using the macOS notification manager with `osascript` |
+| `make-ramdisk` | Create a ram disk. Once you eject it, there is no chance of recovering data on it |
 | `mac-safesleep` | Set a Mac to use safesleep mode when sleeping |
 | `mac-sleep` | Set a Mac to use the default sleep mode when sleeping |
 | `macos-consoleuser` | Show user logged into the GUI |
