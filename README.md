@@ -172,6 +172,7 @@ The Tumult collection is Apache 2.0 licensed. Some scripts in the `bin` director
 - [desktoppr](https://github.com/scriptingosx/desktoppr) - A command-line tool which can read and set the desktop picture.
 - [Platypus](https://github.com/sveinbjornt/Platypus) - Allows you to wrap a script inside a Mac GUI wrapper.
 - [sekey](https://github.com/ntrippar/sekey) - Allows you to use Touch ID / Secure Enclave for SSH Authentication.
+- [macos-defaults.com](https://macos-defaults.com/) - A collections of `defaults write` commands that customize macOS behavior.
 
 ## Installation
 
