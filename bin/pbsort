@@ -4,6 +4,17 @@
 
 set -o pipefail
 
+function debug() {
+  if [[ -n "$DEBUG" ]]; then
+    echo "$@"
+  fi
+}
+
+function has() {
+  # Check if a command is in $PATH
+  which "$@" > /dev/null 2>&1
+}
+
 function echo-stderr() {
   # shellcheck disable=SC2317
   echo "$@" 1>&2  ## Send message to stderr.
