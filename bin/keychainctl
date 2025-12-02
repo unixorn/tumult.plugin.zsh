@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 #
+# keychainctl lets you add/remove/list passwords in your keychain from the
+# command line so you can use them more easily in scripts
+#
+# Copyright 2020-2025 Joe Block <jpb@unixorn.net>
+#
 # Original source: https://gist.github.com/AriaFallah/fe7b651ba2652bd301334e011749e4b2/
 
 SERVICE=${SERVICE:-"cli-secret"}
@@ -34,13 +39,13 @@ function only-run-on() {
   fi
 }
 
-function list_secrets() {
+function list-secrets() {
   security dump-keychain | grep 0x00000007 | awk -F= '{print $2}' | tr -d \"
 }
 
-function get_secret() {
+function get-secret() {
   if [[ -z "$1" ]]; then
-    print_usage
+    print-usage
   fi
   secret=$(security find-generic-password -ga "$1" 2>&1 | \
     awk '/password/ {print $NF}' | sed 's/"//g')
@@ -51,21 +56,21 @@ function get_secret() {
   echo "$secret"
 }
 
-function set_secret() {
+function set-secret() {
   if [[ -z "$1" ]]; then
-    print_usage
+    print-usage
   fi
-  security add-generic-password -s "$SERVICE" -a "$1" -w
+  security add-generic-password -s "$1" -a "$1" -w
 }
 
-function delete_secret() {
+function delete-secret() {
   if [[ -z "$1" ]]; then
-    print_usage
+    print-usage
   fi
-  security delete-generic-password -a "$1" -s "$SERVICE"
+  security delete-generic-password -a "$1" -s "$1"
 }
 
-function print_usage() {
+function print-usage() {
   NAME=$(basename "$0")
   cat << EOF
 Usage:
@@ -78,24 +83,23 @@ EOF
   exit 0
 }
 
-only-run-on darwin
-check-dependency security
-
 main () {
   if [[ -z "$1" ]]; then
-    print_usage
+    print-usage
   fi
 
   case "$1" in
-    ls) list_secrets ;;
+    ls) list-secrets ;;
     lock|lock-keychain) exec security lock-keychain;;
-    get) get_secret "$2" ;;
-    set) set_secret "$2" "$3" ;;
-    rm) delete_secret "$2" ;;
-    *) print_usage ;;
+    get) get-secret "$2" ;;
+    set) set-secret "$2" "$3" ;;
+    rm) delete-secret "$2" ;;
+    *) print-usage ;;
   esac
 }
 
+only-run-on darwin
+check-dependency security
 
 # shellcheck disable=SC2068
 main $@
