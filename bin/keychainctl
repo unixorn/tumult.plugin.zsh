@@ -2,7 +2,13 @@
 #
 # Original source: https://gist.github.com/AriaFallah/fe7b651ba2652bd301334e011749e4b2/
 
-KEYCHAIN=${KEYCHAIN:-"secrets.keychain"}
+SERVICE=${SERVICE:-"cli-secret"}
+
+function debug() {
+  if [[ -n "$DEBUG" ]]; then
+      echo-stderr "$@"
+  fi
+}
 
 function echo-stderr() {
   printf '%s\n' "$1" >&2  ## Send message to stderr. Exclude >&2 if you don't want it that way.
@@ -28,6 +34,50 @@ function only-run-on() {
   fi
 }
 
+function list_secrets() {
+  security dump-keychain | grep 0x00000007 | awk -F= '{print $2}' | tr -d \"
+}
+
+function get_secret() {
+  if [[ -z "$1" ]]; then
+    print_usage
+  fi
+  secret=$(security find-generic-password -ga "$1" 2>&1 | \
+    awk '/password/ {print $NF}' | sed 's/"//g')
+  found=$(echo -n "$secret" | awk '{print NR}')
+  if [[ "$found" != 1 ]];then
+    fail "Did not find $1 in keychain"
+  fi
+  echo "$secret"
+}
+
+function set_secret() {
+  if [[ -z "$1" ]]; then
+    print_usage
+  fi
+  security add-generic-password -s "$SERVICE" -a "$1" -w
+}
+
+function delete_secret() {
+  if [[ -z "$1" ]]; then
+    print_usage
+  fi
+  security delete-generic-password -a "$1" -s "$SERVICE"
+}
+
+function print_usage() {
+  NAME=$(basename "$0")
+  cat << EOF
+Usage:
+  $NAME set <name>
+  $NAME get <name>
+  $NAME rm <name>
+  $NAME ls
+  $NAME lock|lock-keychain
+EOF
+  exit 0
+}
+
 only-run-on darwin
 check-dependency security
 
@@ -38,6 +88,7 @@ main () {
 
   case "$1" in
     ls) list_secrets ;;
+    lock|lock-keychain) exec security lock-keychain;;
     get) get_secret "$2" ;;
     set) set_secret "$2" "$3" ;;
     rm) delete_secret "$2" ;;
@@ -45,42 +96,6 @@ main () {
   esac
 }
 
-list_secrets() {
-  security dump-keychain "$KEYCHAIN" | grep 0x00000007 | awk -F= '{print $2}' | tr -d \"
-}
-
-get_secret() {
-  if [[ -z "$1" ]]; then
-    print_usage
-  fi
-  security find-generic-password -a "$USER" -s "$1" -w "$KEYCHAIN"
-}
-
-set_secret() {
-  if [[ -z "$1" ]] || [[ -z "$2" ]]; then
-    print_usage
-  fi
-  security add-generic-password -D secret -U -a "$USER" -s "$1" -w "$2" "$KEYCHAIN"
-}
-
-delete_secret() {
-  if [[ -z "$1" ]]; then
-    print_usage
-  fi
-  security delete-generic-password -a "$USER" -s "$1" "$KEYCHAIN"
-}
-
-print_usage() {
-  NAME=$(basename "$0")
-  cat << EOF
-Usage:
-  $NAME set <name> <value>
-  $NAME get <name>
-  $NAME rm <name>
-  $NAME ls
-EOF
-  exit 0
-}
 
 # shellcheck disable=SC2068
 main $@
