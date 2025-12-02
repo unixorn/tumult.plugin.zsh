@@ -98,7 +98,7 @@ The Tumult collection is Apache 2.0 licensed. Some scripts in the `bin` director
 | `interface-style` | Show whether interface is set to dark or light mode |
 | `iterm` | Open a new `iTerm 2` session with the argument given |
 | `itunesctl` | Play/Pause iTunes from terminal. |
-| `keychainctl` | CRUD for secrets in your macOS keychain - from AriaFallah's [gist](https://gist.github.com/AriaFallah/fe7b651ba2652bd301334e011749e4b2/)|
+| `keychainctl` | CRUD for secrets in your macOS keychain - based on AriaFallah's [gist](https://gist.github.com/AriaFallah/fe7b651ba2652bd301334e011749e4b2/)|
 | `kick-afp` | Restart file sharing from the CLI. I got tired of having to remote desktop in to kick the fileserver via the GUI every time Apple's file sharing got wedged, now it can be fixed over `ssh` |
 | `kick-screensharing` | Sometimes screen sharing just hangs on my Mini running 10.11. This is not new to 10.11, it was exhibiting the same annoying behavior on 10.10 and 10.9. The mini is headless and it's a pain in the ass to plug it into the TV just long enough to restart screen sharing, so I wrote this so I can fix it over an `ssh` connection. |
 | `kill-screensaver` | Kill the screensaver when it locks up |
