@@ -73,8 +73,14 @@ if [[ $# == 1 ]]; then
   echo "Got a volume"
   volume='/'
 else
-  echo "no args"
-  volume=$1
+  # no args
+  if [[ $(sw_vers -productVersion | cut -d '.' -f 1) -gt 25 ]]; then
+    # Tahoe and later have a new volume layout, so the default is the data volume
+    volume='/System/Volumes/Data'
+    echo "Running Tahoe or later, defaulting to $volume"
+  else
+    fail "Please specify a volume to reindex"
+  fi
   shift
 fi
 
