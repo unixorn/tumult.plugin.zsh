@@ -5,5 +5,5 @@
 
 from gitlike_commands import subcommand_driver
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     subcommand_driver()
