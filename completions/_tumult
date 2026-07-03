@@ -1,0 +1,478 @@
+#compdef 720p ask-password autocorrect-disable autocorrect-enable battery-percentage battery-prompt battery-time bundle-id change-wallpaper charger-wattage chrome chrome-tabs clean-clipboard clean-file-context-menu clean-xml-clip clear-macos-font-cache clear-osx-font-cache clip column-view darktoggle diceware-password disable-bouncing-dock-icons disable-crash-reports disable-font-smoothing disable-ftp-server disable-network-ds-store-files disable-smart-quotes disable-ssh-server disable-startup-chime disable-time-machine-backup-on-battery disable-time-machine-backups disable-time-machine-local-backups disturb dns-resolvers do-not-disturb dump-entitlements eject-all enable-bouncing-dock-icons enable-crash-reports enable-font-smoothing enable-ftp-server enable-network-ds-store-files enable-smart-quotes enable-ssh-server enable-startup-chime enable-time-machine-backup-on-battery enable-time-machine-backups enable-time-machine-local-backups finder-path finder-selection firefox fix-airplay focusmode-disable focusmode-enable get-iterm2-buffer get-keychain-generic-password get-wallpaper-path google hide-desktop-icons hide-dotfiles hide-file icon-view imgcat install-latest-chrome interface-style iterm itunesctl keychainctl kick-afp kick-screensharing kill-chrome-helpers kill-screensaver kill-sophos-dead list-view lockscreen mac-alert mac-hibernate mac-notification mac-safesleep mac-sleep mac-smartsleep macos-alert macos-consoleuser macos-dialog macos-frontmost-app macos-major-version macos-menubar-dark macos-menubar-light macos-notification make-ramdisk manp manpreview markdown-open menubar-dark menubar-light mergepdfs mkdmg mkicns mute naptime nitenite osx-frontmost-app osx-major-version pb pb-clean pb-clean-ansi pb-curl pb-indent pb-sed pb-sort pbclean pbclean-ansi pbcurl pbindent pbsed pbsort pledit power-source pubkey quicklook randomize-mac-address reindex-spotlight restart-audio safari screen-resolution screencap-stream set-cursor-size set-macos-hostname set-mojave-disk-warning-threshold set-osx-hostname set-software-update-interval set-time-machine-interval set-wallpaper show-desktop-icons show-dotfiles show-time-machine-logs smart-quote-disable smart-quote-enable speedup-apple-mail spotlight-reindex start-screensaver stfu time-machine-backup-now time-machine-backup-on-battery-status time-machine-kill-backup-now time-machine-log-viewer time-machine-throttle time-machine-unthrottle timemachine-log-viewer timemachine-throttle timemachine-unthrottle toggle-finder-show-dotfiles toggle-ssh unfuck-captive-portal unhide-file unmute unquarantine volume wifi wifi-name wifi-signal-strength zap-ds-store
+
+# Zsh completions for tumult plugin scripts
+# https://github.com/unixorn/tumult.plugin.zsh
+#
+# Provides:
+#   - Per-command argument completions with descriptions
+#   - A top-level _tumult_commands function for browsing all available commands
+
+# Top-level command listing with descriptions (useful for enumeration or wrapper commands)
+_tumult_commands() {
+  local -a commands
+  commands=(
+    '720p:resize an application window to 720p'
+    'ask-password:prompt the user for a password via a GUI dialog'
+    'autocorrect-disable:disable macOS autocorrect'
+    'autocorrect-enable:enable macOS autocorrect'
+    'battery-percentage:display battery charge percentage'
+    'battery-prompt:display a battery indicator for shell prompts'
+    'battery-time:display estimated battery time remaining'
+    'bundle-id:display the bundle identifier of an application'
+    'change-wallpaper:force a wallpaper rotation'
+    'charger-wattage:display the wattage of the connected charger'
+    'chrome:open a URL or search in Google Chrome'
+    'chrome-tabs:list open Chrome tabs'
+    'clean-clipboard:clean formatting from clipboard contents'
+    'clean-file-context-menu:remove duplicate entries from Open With menu'
+    'clean-xml-clip:clean XML pasted from the clipboard'
+    'clear-macos-font-cache:clear the macOS font cache'
+    'clear-osx-font-cache:clear the macOS font cache (legacy name)'
+    'clip:copy file contents to the clipboard'
+    'column-view:switch Finder to column view'
+    'darktoggle:toggle between dark and light mode'
+    'diceware-password:generate a diceware passphrase'
+    'disable-bouncing-dock-icons:stop Dock icons from bouncing'
+    'disable-crash-reports:disable crash report dialogs'
+    'disable-font-smoothing:disable font smoothing'
+    'disable-ftp-server:disable the built-in FTP server'
+    'disable-network-ds-store-files:prevent .DS_Store on network volumes'
+    'disable-smart-quotes:disable smart quotes system-wide'
+    'disable-ssh-server:disable the SSH server'
+    'disable-startup-chime:disable the startup chime'
+    'disable-time-machine-backup-on-battery:prevent TM backups on battery'
+    'disable-time-machine-backups:disable Time Machine backups'
+    'disable-time-machine-local-backups:disable local Time Machine snapshots'
+    'disturb:disable Do Not Disturb'
+    'dns-resolvers:list active DNS resolvers'
+    'do-not-disturb:enable Do Not Disturb'
+    'dump-entitlements:inspect entitlements of a binary'
+    'eject-all:eject all mounted external volumes'
+    'enable-bouncing-dock-icons:allow Dock icons to bounce'
+    'enable-crash-reports:enable crash report dialogs'
+    'enable-font-smoothing:enable font smoothing'
+    'enable-ftp-server:enable the built-in FTP server'
+    'enable-network-ds-store-files:allow .DS_Store on network volumes'
+    'enable-smart-quotes:enable smart quotes system-wide'
+    'enable-ssh-server:enable the SSH server'
+    'enable-startup-chime:enable the startup chime'
+    'enable-time-machine-backup-on-battery:allow TM backups on battery'
+    'enable-time-machine-backups:enable Time Machine backups'
+    'enable-time-machine-local-backups:enable local Time Machine snapshots'
+    'finder-path:print the path of the frontmost Finder window'
+    'finder-selection:print paths of selected Finder items'
+    'firefox:open a URL in Firefox'
+    'fix-airplay:restart Airplay services'
+    'focusmode-disable:disable Focus mode'
+    'focusmode-enable:enable Focus mode'
+    'get-iterm2-buffer:capture the current iTerm2 buffer'
+    'get-keychain-generic-password:retrieve a generic password from Keychain'
+    'get-wallpaper-path:print the current wallpaper file path'
+    'google:search Google from the command line'
+    'hide-desktop-icons:hide all desktop icons'
+    'hide-dotfiles:hide dotfiles in Finder'
+    'hide-file:set the hidden flag on a file'
+    'icon-view:switch Finder to icon view'
+    'imgcat:display an image inline in iTerm2'
+    'install-latest-chrome:download and install the latest Chrome'
+    'interface-style:print the current interface style (dark/light)'
+    'iterm:open a new iTerm2 window or tab'
+    'itunesctl:control Music/iTunes playback'
+    'keychainctl:manage Keychain entries'
+    'kick-afp:restart AFP file sharing'
+    'kick-screensharing:restart screen sharing'
+    'kill-chrome-helpers:kill Chrome helper processes'
+    'kill-screensaver:kill the running screensaver'
+    'kill-sophos-dead:kill Sophos antivirus processes'
+    'list-view:switch Finder to list view'
+    'lockscreen:lock the screen immediately'
+    'mac-alert:display a macOS alert dialog'
+    'mac-hibernate:set sleep mode to hibernate'
+    'mac-notification:display a macOS notification'
+    'mac-safesleep:set sleep mode to safe sleep'
+    'mac-sleep:set sleep mode to default sleep'
+    'mac-smartsleep:set sleep mode to smart sleep'
+    'macos-alert:display a macOS alert dialog'
+    'macos-consoleuser:print the currently logged-in console user'
+    'macos-dialog:display a macOS dialog with custom text'
+    'macos-frontmost-app:print the name of the frontmost application'
+    'macos-major-version:print the macOS major version number'
+    'macos-menubar-dark:set the menu bar to dark mode'
+    'macos-menubar-light:set the menu bar to light mode'
+    'macos-notification:display a macOS notification'
+    'make-ramdisk:create a RAM disk'
+    'manp:open a man page in Preview'
+    'manpreview:open a man page in Preview'
+    'markdown-open:render and open a Markdown file'
+    'menubar-dark:set the menu bar to dark mode'
+    'menubar-light:set the menu bar to light mode'
+    'mergepdfs:merge multiple PDF files into one'
+    'mkdmg:create a DMG from a directory'
+    'mkicns:create an icns file from an image'
+    'mute:mute system audio'
+    'naptime:put the system to sleep'
+    'nitenite:put the system to sleep'
+    'osx-frontmost-app:print the name of the frontmost application (legacy)'
+    'osx-major-version:print the macOS major version number (legacy)'
+    'pb:manipulate the pasteboard (clipboard)'
+    'pb-clean:clean formatting from clipboard contents'
+    'pb-clean-ansi:strip ANSI escape codes from clipboard'
+    'pb-curl:curl a URL from the clipboard'
+    'pb-indent:indent clipboard contents'
+    'pb-sed:run sed on clipboard contents'
+    'pb-sort:sort clipboard contents'
+    'pbclean:clean formatting from clipboard contents'
+    'pbclean-ansi:strip ANSI escape codes from clipboard'
+    'pbcurl:curl a URL from the clipboard'
+    'pbindent:indent clipboard contents'
+    'pbsed:run sed on clipboard contents'
+    'pbsort:sort clipboard contents'
+    'pledit:edit a plist file with a GUI editor'
+    'power-source:display the current power source'
+    'pubkey:copy SSH public key to clipboard'
+    'quicklook:preview a file with Quick Look'
+    'randomize-mac-address:randomize the MAC address of a network interface'
+    'reindex-spotlight:reindex Spotlight'
+    'restart-audio:restart Core Audio'
+    'safari:open a URL in Safari'
+    'screen-resolution:display the current screen resolution'
+    'screencap-stream:create a movie from screen captures'
+    'set-cursor-size:set the cursor size'
+    'set-macos-hostname:set the system hostname'
+    'set-mojave-disk-warning-threshold:set disk space warning threshold'
+    'set-osx-hostname:set the system hostname (legacy name)'
+    'set-software-update-interval:set the software update check interval'
+    'set-time-machine-interval:set the Time Machine backup interval'
+    'set-wallpaper:set the desktop wallpaper to a specific image'
+    'show-desktop-icons:show all desktop icons'
+    'show-dotfiles:show dotfiles in Finder'
+    'show-time-machine-logs:tail Time Machine log entries'
+    'smart-quote-disable:disable smart quotes system-wide'
+    'smart-quote-enable:enable smart quotes system-wide'
+    'speedup-apple-mail:speed up Apple Mail by vacuuming the envelope index'
+    'spotlight-reindex:reindex Spotlight'
+    'start-screensaver:start the screensaver'
+    'stfu:mute system audio'
+    'time-machine-backup-now:start a Time Machine backup immediately'
+    'time-machine-backup-on-battery-status:show TM battery backup status'
+    'time-machine-kill-backup-now:cancel a running Time Machine backup'
+    'time-machine-log-viewer:tail Time Machine log entries'
+    'time-machine-throttle:throttle Time Machine backups'
+    'time-machine-unthrottle:unthrottle Time Machine backups'
+    'timemachine-log-viewer:tail Time Machine log entries (legacy name)'
+    'timemachine-throttle:throttle Time Machine backups (legacy name)'
+    'timemachine-unthrottle:unthrottle Time Machine backups (legacy name)'
+    'toggle-finder-show-dotfiles:toggle Finder dotfile visibility'
+    'toggle-ssh:toggle the SSH server on or off'
+    'unfuck-captive-portal:reset the captive portal assistant'
+    'unhide-file:remove the hidden flag from a file'
+    'unmute:unmute system audio'
+    'unquarantine:remove the quarantine flag from files'
+    'volume:set the system volume level'
+    'wifi:turn Wi-Fi on or off'
+    'wifi-name:display the current Wi-Fi network name'
+    'wifi-signal-strength:display the current Wi-Fi signal strength'
+    'zap-ds-store:recursively remove .DS_Store files'
+  )
+  _describe -t tumult-commands 'tumult command' commands
+}
+
+# --- Per-command completion functions ---
+
+_720p() {
+  _arguments '1:application name:_mac_applications'
+}
+
+_bundle-id() {
+  _arguments '1:application name:_mac_applications'
+}
+
+_change-wallpaper() {
+  _message 'no arguments required (forces wallpaper rotation)'
+}
+
+_chrome() {
+  _arguments '1:URL or search term:'
+}
+
+_clip() {
+  _arguments '*:file:_files'
+}
+
+_darktoggle() {
+  _message 'no arguments required (toggles dark mode)'
+}
+
+_dump-entitlements() {
+  local -a subcommands
+  subcommands=(
+    'find:find binaries with entitlements'
+    'dump:dump entitlements for a binary'
+    'sort:sort entitlements output'
+    'help:show usage information'
+  )
+  _describe -t subcommands 'dump-entitlements subcommand' subcommands
+}
+
+_get-keychain-generic-password() {
+  _arguments '1:secret name:'
+}
+
+_google() {
+  _arguments '*:search terms:'
+}
+
+_hide-file() {
+  _arguments '*:file:_files'
+}
+
+_imgcat() {
+  _arguments \
+    '(-h --help)'{-h,--help}'[display help message]' \
+    '(-p --print)'{-p,--print}'[print filename after each image]' \
+    '(-n --no-print)'{-n,--no-print}'[disable printing of filename]' \
+    '(-W --width)'{-W,--width}'[set image width]:width (N, Npx, N%, auto):' \
+    '(-H --height)'{-H,--height}'[set image height]:height (N, Npx, N%, auto):' \
+    '(-r --preserve-aspect-ratio)'{-r,--preserve-aspect-ratio}'[preserve aspect ratio when scaling]' \
+    '(-s --stretch)'{-s,--stretch}'[stretch image to specified dimensions]' \
+    '(-f --file)'{-f,--file}'[interpret arguments as files]' \
+    '(-u --url)'{-u,--url}'[interpret arguments as URLs]' \
+    '(-t --type)'{-t,--type}'[provide a file type hint]:file type:' \
+    '*:image file:_files -g "*(#i).(png|jpg|jpeg|gif|bmp|tiff|webp|svg|ico)"'
+}
+
+_itunesctl() {
+  local -a subcommands
+  subcommands=(
+    'play:start playback'
+    'pause:pause playback'
+    'mute:mute audio'
+    'unmute:unmute audio'
+    'next:skip to the next track'
+    'prev:go to the previous track'
+  )
+  _describe -t subcommands 'itunesctl command' subcommands
+}
+
+_keychainctl() {
+  local -a subcommands
+  subcommands=(
+    'get:retrieve a secret from the keychain'
+    'set:store a secret in the keychain'
+    'rm:delete a secret from the keychain'
+    'ls:list all secrets in the keychain'
+    'lock:lock the keychain'
+  )
+  if (( CURRENT == 2 )); then
+    _describe -t subcommands 'keychainctl subcommand' subcommands
+  elif (( CURRENT == 3 )); then
+    case "${words[2]}" in
+      get|set|rm)
+        _message 'secret name'
+        ;;
+    esac
+  fi
+}
+
+_mac-alert() {
+  _arguments '1:alert title:' '2:alert body:'
+}
+
+_macos-alert() {
+  _arguments '1:alert title:' '2:alert body:'
+}
+
+_mac-notification() {
+  _macos-notification "$@"
+}
+
+_macos-notification() {
+  _arguments \
+    '1:notification title:' \
+    '2:subtitle:' \
+    '3:sound name:' \
+    '4:notification text:'
+}
+
+_macos-dialog() {
+  _arguments '1:dialog text:'
+}
+
+_make-ramdisk() {
+  _arguments \
+    '(-h --help)'{-h,--help}'[display help]' \
+    '--ram-disk-name[name for the RAM disk]:disk name:' \
+    '--ramdisk-name[name for the RAM disk]:disk name:' \
+    '--ram-disk-size[size in megabytes]:size in MB:' \
+    '--ramdisk-size[size in megabytes]:size in MB:'
+}
+
+_manpreview() {
+  _arguments '*:man page:_man'
+}
+
+_manp() {
+  _arguments '*:man page:_man'
+}
+
+_markdown-open() {
+  _arguments '1:markdown file:_files -g "*(#i).(md|markdown|txt)"'
+}
+
+_mergepdfs() {
+  _arguments \
+    '-o[output file]:output PDF:_files -g "*.pdf"' \
+    '*:input PDF files:_files -g "*.pdf"'
+}
+
+_mkdmg() {
+  _arguments '1:volume name:' '2:source directory:_directories'
+}
+
+_mkicns() {
+  _arguments '1:source image:_files -g "*(#i).(png|jpg|jpeg|tiff|gif)"'
+}
+
+_pbsed() {
+  _arguments '*:sed expression:'
+}
+
+_pb-sed() {
+  _arguments '*:sed expression:'
+}
+
+_pledit() {
+  _arguments '1:plist file:_files -g "*.plist"'
+}
+
+_quicklook() {
+  _arguments '*:file:_files'
+}
+
+_screencap-stream() {
+  _arguments \
+    '-i[interval between frame captures]:seconds:' \
+    '-k[keep captured frames as snapshots]' \
+    '-o[output movie name]:movie file:_files -g "*.mp4"' \
+    '-t[target directory for retained frames]:directory:_directories'
+}
+
+_set-cursor-size() {
+  local -a sizes
+  sizes=(
+    '1:smallest'
+    '1.5:small'
+    '2:medium'
+    '2.5:large'
+    '3:larger'
+    '3.5:very large'
+    '4:largest'
+  )
+  _describe -t sizes 'cursor size' sizes
+}
+
+_set-macos-hostname() {
+  _arguments '1:new hostname:'
+}
+
+_set-osx-hostname() {
+  _arguments '1:new hostname:'
+}
+
+_set-mojave-disk-warning-threshold() {
+  _arguments '1:threshold in GB:'
+}
+
+_set-software-update-interval() {
+  local -a intervals
+  intervals=(
+    '1:every day'
+    '3:every 3 days'
+    '7:weekly'
+    '14:every 2 weeks'
+    '30:monthly'
+  )
+  _describe -t intervals 'update check interval (days)' intervals
+}
+
+_set-time-machine-interval() {
+  local -a intervals
+  intervals=(
+    '1800:every 30 minutes'
+    '3600:every hour'
+    '7200:every 2 hours'
+    '14400:every 4 hours'
+    '43200:every 12 hours'
+    '86400:every 24 hours'
+  )
+  _describe -t intervals 'backup interval (seconds)' intervals
+}
+
+_set-wallpaper() {
+  _arguments '1:image file:_files -g "*(#i).(png|jpg|jpeg|tiff|gif|heic)"'
+}
+
+_time-machine-throttle() {
+  _message 'no arguments required (throttles Time Machine)'
+}
+
+_toggle-ssh() {
+  _message 'no arguments required (toggles SSH server)'
+}
+
+_unfuck-captive-portal() {
+  _message 'no arguments required'
+}
+
+_unhide-file() {
+  _arguments '*:file:_files'
+}
+
+_unquarantine() {
+  _arguments '*:file:_files'
+}
+
+_volume() {
+  local -a levels
+  levels=(
+    '0:mute'
+    '10:barely audible'
+    '20:very quiet'
+    '30:quiet'
+    '40:low'
+    '50:medium'
+    '60:moderate'
+    '70:loud'
+    '80:very loud'
+    '90:near maximum'
+    '100:maximum'
+  )
+  _describe -t levels 'volume level (0-100)' levels
+}
+
+_wifi() {
+  local -a states
+  states=(
+    'on:enable Wi-Fi'
+    'off:disable Wi-Fi'
+  )
+  _describe -t states 'Wi-Fi state' states
+}
+
+# --- Helper functions ---
+
+_mac_applications() {
+  local -a apps
+  apps=( ${(f)"$(find /Applications -maxdepth 2 -name '*.app' -exec basename {} .app \; 2>/dev/null)"} )
+  _describe -t applications 'application' apps
+}
+
+# --- Dispatcher ---
+
+local cmd=${service}
+
+if (( $+functions[_${cmd}] )); then
+  _${cmd} "$@"
+else
+  _message "no specific completion available"
+fi

@@ -24,6 +24,9 @@ if [[ "$(uname -s)" = "Darwin" ]]; then
   # Add our plugin's bin directory to user's path
   path+=("${0:h}/bin")
 
+  # Add completions to fpath
+  fpath+=("${0:h}/completions")
+
 
   # Check if a command exists
   has() {
