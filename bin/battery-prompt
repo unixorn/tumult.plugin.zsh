@@ -26,10 +26,10 @@ empty = (total_slots - len(filled)) * "▹"
 
 out = filled + empty
 
-color_green = "%{[32m%}"
-color_yellow = "%{[1;33m%}"
-color_red = "%{[31m%}"
-color_reset = "%{[00m%}"
+color_green = "%{\x1b[32m%}"
+color_yellow = "%{\x1b[1;33m%}"
+color_red = "%{\x1b[31m%}"
+color_reset = "%{\x1b[00m%}"
 color_out = (
     color_green if len(filled) > 6 else color_yellow if len(filled) > 4 else color_red
 )
