@@ -100,8 +100,8 @@ def format_battery_indicator(charge: float = 1.0, raw: bool = False) -> str:
         A string containing the colored battery bar.
     """
     charge = max(0.0, min(1.0, charge))
-    charge_threshold = int(math.ceil(10 * charge))
-    filled_count = int(math.ceil(charge_threshold * (TOTAL_SLOTS / 10.0)))
+    charge_threshold = math.ceil(10 * charge)
+    filled_count = math.ceil(charge_threshold * (TOTAL_SLOTS / 10.0))
     empty_count = TOTAL_SLOTS - filled_count
 
     filled = FILLED_CHAR * filled_count
