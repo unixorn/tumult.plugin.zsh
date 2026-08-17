@@ -135,7 +135,9 @@ def format_battery_indicator(charge: float = 1.0, raw: bool = False) -> str:
 
 def main() -> None:
     """Entry point: read battery state and write colored indicator to stdout."""
-    parser = argparse.ArgumentParser(description="Display a colored battery charge indicator.")
+    parser = argparse.ArgumentParser(
+        description="Display a colored battery charge indicator."
+    )
     parser.add_argument(
         "--raw",
         action="store_true",

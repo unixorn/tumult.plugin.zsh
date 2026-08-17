@@ -18,7 +18,9 @@ def main() -> None:
     try:
         from gitlike_commands import subcommand_driver
     except ImportError:
-        logger.error("Missing dependency: gitlike-commands. Install with: pip install gitlike-commands")
+        logger.error(
+            "Missing dependency: gitlike-commands. Install with: pip install gitlike-commands"
+        )
         sys.exit(1)
 
     subcommand_driver()
