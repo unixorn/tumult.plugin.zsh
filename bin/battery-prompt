@@ -110,11 +110,17 @@ def format_battery_indicator(charge: float = 1.0, raw: bool = False) -> str:
 
     if raw:
         color_green, color_yellow, color_red, color_reset = (
-            RAW_COLOR_GREEN, RAW_COLOR_YELLOW, RAW_COLOR_RED, RAW_COLOR_RESET
+            RAW_COLOR_GREEN,
+            RAW_COLOR_YELLOW,
+            RAW_COLOR_RED,
+            RAW_COLOR_RESET,
         )
     else:
         color_green, color_yellow, color_red, color_reset = (
-            ZSH_COLOR_GREEN, ZSH_COLOR_YELLOW, ZSH_COLOR_RED, ZSH_COLOR_RESET
+            ZSH_COLOR_GREEN,
+            ZSH_COLOR_YELLOW,
+            ZSH_COLOR_RED,
+            ZSH_COLOR_RESET,
         )
 
     if filled_count > GREEN_THRESHOLD:
