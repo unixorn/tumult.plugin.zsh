@@ -2,7 +2,7 @@
 #
 # Enable autocorrect
 #
-# Copyright 2021-2025, Joe Block <jpb@unixorn.net>
+# Copyright 2021-2026, Joe Block <jpb@unixorn.net>
 # License: Apache 2
 
 function echo-stderr() {
@@ -17,6 +17,12 @@ function fail() {
 function check-dependency() {
   if ! (builtin command -V "$1" >/dev/null 2>&1); then
       fail "Missing dependency: can't find $1 in your PATH"
+  fi
+}
+
+function debug() {
+  if [[ -n "$DEBUG" ]]; then
+    echo "$@"
   fi
 }
 

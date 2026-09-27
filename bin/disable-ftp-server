@@ -2,7 +2,7 @@
 #
 # Disable the FTP server on macOS
 #
-# Copyright 2016-2025, Joe Block <jpb@ApesSeekingKnowledge.net>
+# Copyright 2016-2026, Joe Block <jpb@ApesSeekingKnowledge.net>
 # License: Apache 2
 
 set -o pipefail
@@ -19,6 +19,12 @@ function fail() {
 function check-dependency() {
   if ! (builtin command -V "$1" >/dev/null 2>&1); then
       fail "Missing dependency: can't find $1 in your PATH"
+  fi
+}
+
+function debug() {
+  if [[ -n "$DEBUG" ]]; then
+    echo "$@"
   fi
 }
 

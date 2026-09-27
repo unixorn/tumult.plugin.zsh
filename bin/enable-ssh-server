@@ -2,7 +2,7 @@
 #
 # Enable the SSH server on macOS and configure it to start every boot
 #
-# Copyright 2016-2025, Joe Block <jpb@ApesSeekingKnowledge.net>
+# Copyright 2016-2026, Joe Block <jpb@ApesSeekingKnowledge.net>
 #
 # License: Apache 2.0
 
@@ -20,6 +20,12 @@ function fail() {
 function check-dependency() {
   if ! (builtin command -V "$1" >/dev/null 2>&1); then
     fail "Missing dependency: can't find $1 in your PATH"
+  fi
+}
+
+function debug() {
+  if [[ -n "$DEBUG" ]]; then
+    echo "$@"
   fi
 }
 

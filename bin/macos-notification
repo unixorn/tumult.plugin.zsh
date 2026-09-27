@@ -2,9 +2,15 @@
 #
 # Display a notification on macOs
 #
-# Copyright 2021-2025, Joe Block <jpb@unixorn.net>
+# Copyright 2021-2026, Joe Block <jpb@unixorn.net>
 
 set -o pipefail
+
+function debug() {
+  if [[ -n "$DEBUG" ]]; then
+    echo "$@"
+  fi
+}
 
 # shellcheck disable=SC2086
 usage(){
