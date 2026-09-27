@@ -1,5 +1,11 @@
 #!/bin/bash
 
+function debug() {
+  if [[ -n "$DEBUG" ]]; then
+    echo "$@"
+  fi
+}
+
 function echo-stderr() {
   echo "$@" 1>&2  ## Send message to stderr.
 }
