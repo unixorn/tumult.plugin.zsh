@@ -126,6 +126,7 @@ The Tumult collection is Apache 2.0 licensed. Some scripts in the `bin` director
 | `pb-clean-ansi` | Clean ansi codes out of the clipboard |
 | `pb-curl` | `curl` the address in the clipboard. Originally from Ryan Tomayko's [dotfiles](https://github.com/rtomayko) |
 | `pb-indent` | Indent the contents of the clipboard 4 spaces. With `-o`, write result to standard output instead of to the clipboard. Originally from Ryan Tomayko's [dotfiles](https://github.com/rtomayko) |
+| `pb-json` | Reformat the json the contents of the clipboard by piping it through `jq .` |
 | `pb-sed` | Run `sed`(1) on the contents of the clipboard and put the result back on the clipboard. All `sed` options and arguments are supported. Originally from Ryan Tomayko's [dotfiles](https://github.com/rtomayko) |
 | `pb-sort` | Sorts the contents of the clipboard |
 | `pledit` | Convert a plist to XML, run `${EDITOR}` on it, then convert it back. |
