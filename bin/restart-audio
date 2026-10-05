@@ -6,6 +6,12 @@
 #
 # This fixes the "no sound" issue that happens occasionally.
 
+function debug() {
+  if [[ -n "$DEBUG" ]]; then
+    echo "$@"
+  fi
+}
+
 function echo-stderr() {
   echo "$@" 1>&2  ## Send message to stderr.
 }

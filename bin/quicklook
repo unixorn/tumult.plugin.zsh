@@ -2,12 +2,18 @@
 #
 # Run quicklook on files
 #
-# Copyright 2021, Joe Block <jpb@unixorn.net>
+# Copyright 2021-2026, Joe Block <jpb@unixorn.net>
 
 set -o pipefail
 if [[ -n "$DEBUG" ]]; then
   set -x
 fi
+
+function debug() {
+  if [[ -n "$DEBUG" ]]; then
+    echo "$@"
+  fi
+}
 
 function echo-stderr() {
   echo "$@" 1>&2  ## Send message to stderr.

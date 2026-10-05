@@ -2,9 +2,15 @@
 #
 # Helper script to control iTunes
 #
-# Copyright 2016-2025, Joe Block <jpb@unixorn.net>
+# Copyright 2016-2026, Joe Block <jpb@unixorn.net>
 #
 # License: Apache 2.0
+
+function debug() {
+  if [[ -n "$DEBUG" ]]; then
+    echo "$@"
+  fi
+}
 
 usage() {
   name=$(basename "$0")

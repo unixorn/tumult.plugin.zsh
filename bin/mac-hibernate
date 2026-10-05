@@ -2,7 +2,13 @@
 #
 # Set your mac to use hibernate mode
 #
-# Copyright 2017-2025, Joe Block <jpb@unixorn.net>
+# Copyright 2017-2026, Joe Block <jpb@unixorn.net>
+
+function debug() {
+  if [[ -n "$DEBUG" ]]; then
+    echo "$@"
+  fi
+}
 
 function echo-stderr() {
   printf '%s\n' "$1" >&2  ## Send message to stderr. Exclude >&2 if you don't want it that way.
