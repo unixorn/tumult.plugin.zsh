@@ -55,6 +55,6 @@ test $# -eq 0 -o "$1" = "--help" && {
 
 # pipe pboard through sed and then back again
 only-run-on darwin
-check-dependencies jq pbpcopy pbpaste
+check-dependencies jq pbcopy pbpaste
 pbpaste | jq . | pbcopy
 exit $?
