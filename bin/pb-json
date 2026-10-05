@@ -1,6 +1,7 @@
 #!/bin/bash
 #
 #/ Usage: pbjson
+#/
 #/ Clean the formatting of the json on clipboard by piping it through `jq .`
 #/ and replacing the original json with jq's output.
 #
@@ -48,7 +49,7 @@ function check-dependencies() {
 }
 
 # print help/usage with no pattern/args
-test $# -eq 0 -o "$1" = "--help" && {
+test "$1" == "--help" && {
   grep '^#/' < "$0" | cut -c4-
   exit 0
 }
