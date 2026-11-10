@@ -19,6 +19,12 @@ function debug() {
   fi
 }
 
+function check-dependency() {
+  if ! (builtin command -V "$1" >/dev/null 2>&1); then
+      fail "Missing dependency: can't find $1 in your PATH"
+  fi
+}
+
 function only-run-on() {
   # shellcheck disable=SC2086
   if [[ "$(uname -s | tr '[:upper:]' '[:lower:]')" != "$(echo $1 | tr '[:upper:]' '[:lower:]')" ]]; then
@@ -179,8 +185,8 @@ if [ $has_stdin = f ] && [ $# -eq 0 ]; then
     exit
 fi
 
-check_dependency base64
-check_dependency wc
+check-dependency base64
+check-dependency wc
 file_type=""
 
 # Look for command line flags.
@@ -217,7 +223,7 @@ while [ $# -gt 0 ]; do
         is_url=f
         ;;
     -u | --u | --url)
-        check_dependency curl
+        check-dependency curl
         has_stdin=f
         is_url=t
         ;;
